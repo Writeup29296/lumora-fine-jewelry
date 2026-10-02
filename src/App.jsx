@@ -64,27 +64,33 @@ function StoreLayout() {
   const [domainGuideOpen, setDomainGuideOpen] = useState(false);
   const [secretAdminModalOpen, setSecretAdminModalOpen] = useState(false);
 
-  // Secret Shortcut: Ctrl + Shift + AAA29296 to open Admin Portal
+  // Secret Shortcut: CTRL + YYY29296 to open Admin Portal
   useEffect(() => {
     let keyBuffer = [];
     let bufferTimer = null;
 
     const handleKeyDown = (e) => {
-      // Don't intercept if user is typing inside an input or textarea (unless holding Ctrl+Shift)
+      // Don't intercept if user is typing inside an input or textarea (unless holding Ctrl)
       const isInput = e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA');
-      if (isInput && !(e.ctrlKey && e.shiftKey)) {
+      if (isInput && !e.ctrlKey) {
         return;
       }
 
       // Normalize key/code for cross-platform and Shift+Number keys (e.g. Shift+2 = @)
       let char = '';
-      if (e.code === 'KeyA' || e.key === 'a' || e.key === 'A') char = 'a';
+      if (e.code === 'KeyY' || e.key === 'y' || e.key === 'Y') char = 'y';
+      else if (e.code === 'KeyA' || e.key === 'a' || e.key === 'A') char = 'a';
       else if (e.code === 'Digit2' || e.code === 'Numpad2' || e.key === '2' || e.key === '@') char = '2';
       else if (e.code === 'Digit9' || e.code === 'Numpad9' || e.key === '9' || e.key === '(') char = '9';
       else if (e.code === 'Digit6' || e.code === 'Numpad6' || e.key === '6' || e.key === '^') char = '6';
       else if (e.key && e.key.length === 1) char = e.key.toLowerCase();
 
       if (char) {
+        // Prevent default browser actions for Ctrl+Y (Redo) when entering secret key
+        if (e.ctrlKey && (char === 'y' || char === 'a' || char === '2' || char === '9' || char === '6')) {
+          e.preventDefault();
+        }
+
         keyBuffer.push(char);
         if (keyBuffer.length > 20) {
           keyBuffer.shift();
@@ -96,10 +102,11 @@ function StoreLayout() {
 
         const joined = keyBuffer.join('');
 
-        // Trigger on "aaa29296" or when Ctrl+Shift is held and "aaa29296" or "29296" is typed
+        // Trigger on "yyy29296" or "aaa29296"
         const matched = 
-          joined.includes('aaa29296') || 
-          (e.ctrlKey && e.shiftKey && (joined.includes('aaa29296') || joined.includes('29296')));
+          joined.includes('yyy29296') || 
+          joined.includes('aaa29296') ||
+          (e.ctrlKey && (joined.includes('yyy29296') || joined.includes('29296')));
 
         if (matched) {
           e.preventDefault();
