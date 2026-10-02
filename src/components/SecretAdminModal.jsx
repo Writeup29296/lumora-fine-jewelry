@@ -19,7 +19,13 @@ export const SecretAdminModal = ({ isOpen, onClose, onSuccess }) => {
     setAuthenticating(true);
 
     if (usePasskeyMode) {
-      if (passkey.trim() === 'LUMORA2026' || passkey.trim() === adminSecretCode) {
+      const cleanPasskey = passkey.trim();
+      if (
+        cleanPasskey === 'AAA29296' || 
+        cleanPasskey === 'aaa29296' || 
+        cleanPasskey === 'LUMORA2026' || 
+        cleanPasskey === adminSecretCode
+      ) {
         const ok = login('admin@lumorafinejewelery.com', 'admin123');
         if (ok) {
           onSuccess();
@@ -28,7 +34,7 @@ export const SecretAdminModal = ({ isOpen, onClose, onSuccess }) => {
           setError('Failed to initialize administrator session.');
         }
       } else {
-        setError('Invalid master atelier passkey. Please check code.');
+        setError('Invalid master atelier passkey. (Use AAA29296 or LUMORA2026)');
       }
     } else {
       const ok = login(email, password);
@@ -135,7 +141,7 @@ export const SecretAdminModal = ({ isOpen, onClose, onSuccess }) => {
                   <input
                     type="text"
                     required
-                    placeholder="Enter LUMORA2026"
+                    placeholder="Enter AAA29296 or LUMORA2026"
                     value={passkey}
                     onChange={(e) => setPasskey(e.target.value)}
                     className="w-full pl-9 pr-3.5 py-2 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-[#1F2022] font-mono tracking-wider focus:outline-none focus:border-[#C5A059]"
@@ -170,7 +176,7 @@ export const SecretAdminModal = ({ isOpen, onClose, onSuccess }) => {
               onClick={handleQuickUnlock}
               className="w-full py-2 bg-[#F4EFE6] hover:bg-[#EAE3D5] text-[#1F2022] border border-[#C5A059] rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
             >
-              <span>Instant 1-Click Director Unlock (LUMORA2026)</span>
+              <span>Instant 1-Click Director Unlock (Passkey: AAA29296)</span>
             </button>
           </div>
 
@@ -178,7 +184,7 @@ export const SecretAdminModal = ({ isOpen, onClose, onSuccess }) => {
 
         {/* Security watermark footer */}
         <div className="py-2.5 bg-[#FAF8F5] border-t border-[#EAE3D5] text-center text-[10px] text-[#747780] font-mono">
-          🔒 Shortcut: Ctrl + Shift + AkM &bull; Encrypted Session
+          🔒 Shortcut: Ctrl + Shift + AAA29296 &bull; Encrypted Session
         </div>
 
       </div>

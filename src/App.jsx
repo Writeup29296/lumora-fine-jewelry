@@ -64,33 +64,44 @@ function StoreLayout() {
   const [domainGuideOpen, setDomainGuideOpen] = useState(false);
   const [secretAdminModalOpen, setSecretAdminModalOpen] = useState(false);
 
-  // Secret Shortcut: Ctrl + Shift + AkM to open Admin Portal
+  // Secret Shortcut: Ctrl + Shift + AAA29296 to open Admin Portal
   useEffect(() => {
     let keyBuffer = [];
     let bufferTimer = null;
 
     const handleKeyDown = (e) => {
-      // Check if Ctrl and Shift are held down
-      if (e.ctrlKey && e.shiftKey) {
-        const key = (e.key || '').toLowerCase();
+      // Don't intercept if user is typing inside an input or textarea (unless holding Ctrl+Shift)
+      const isInput = e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA');
+      if (isInput && !(e.ctrlKey && e.shiftKey)) {
+        return;
+      }
 
-        // Track sequence of keys pressed with Ctrl+Shift
-        keyBuffer.push(key);
+      // Normalize key/code for cross-platform and Shift+Number keys (e.g. Shift+2 = @)
+      let char = '';
+      if (e.code === 'KeyA' || e.key === 'a' || e.key === 'A') char = 'a';
+      else if (e.code === 'Digit2' || e.code === 'Numpad2' || e.key === '2' || e.key === '@') char = '2';
+      else if (e.code === 'Digit9' || e.code === 'Numpad9' || e.key === '9' || e.key === '(') char = '9';
+      else if (e.code === 'Digit6' || e.code === 'Numpad6' || e.key === '6' || e.key === '^') char = '6';
+      else if (e.key && e.key.length === 1) char = e.key.toLowerCase();
+
+      if (char) {
+        keyBuffer.push(char);
+        if (keyBuffer.length > 20) {
+          keyBuffer.shift();
+        }
         clearTimeout(bufferTimer);
         bufferTimer = setTimeout(() => {
           keyBuffer = [];
-        }, 1500);
+        }, 4000);
 
         const joined = keyBuffer.join('');
 
-        // Triggers if 'a', 'k', 'm' or typed sequence "akm" with Ctrl+Shift
-        if (
-          key === 'a' || 
-          key === 'k' || 
-          key === 'm' || 
-          joined.includes('akm') ||
-          joined.includes('ak')
-        ) {
+        // Trigger on "aaa29296" or when Ctrl+Shift is held and "aaa29296" or "29296" is typed
+        const matched = 
+          joined.includes('aaa29296') || 
+          (e.ctrlKey && e.shiftKey && (joined.includes('aaa29296') || joined.includes('29296')));
+
+        if (matched) {
           e.preventDefault();
           keyBuffer = [];
           if (isAdmin) {
