@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   X, ShoppingBag, Plus, Minus, Trash2, 
-  ShieldCheck, ArrowRight, Plane, Sparkles, CheckCircle2 
+  ShieldCheck, ArrowRight, Plane, Sparkles, CheckCircle2, 
+  Gift, Heart, Check 
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
@@ -13,6 +14,7 @@ export const CartDrawer = ({ onNavigateToCheckout }) => {
     closeCart,
     updateQuantity,
     removeFromCart,
+    addToCart,
     cartSubtotalUSD,
     hasFreeShipping,
     freeShippingRemainingUSD,
@@ -21,6 +23,26 @@ export const CartDrawer = ({ onNavigateToCheckout }) => {
   } = useCart();
 
   const { formatPrice, currency, activeCurrency } = useCurrency();
+  const [isGiftNoteOpen, setIsGiftNoteOpen] = useState(false);
+  const [giftNote, setGiftNote] = useState('');
+
+  // Add-on products (Mejuri style one-click cross sell)
+  const addOns = [
+    {
+      id: 'addon-pen',
+      name: 'Atelier Diamond & Gold Polishing Wand',
+      priceUSD: 18,
+      image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=300&q=80',
+      description: 'Microfiber polishing solution for radiant sparkle.'
+    },
+    {
+      id: 'addon-pouch',
+      name: 'Signature Velvet Travel Jewel Pouch',
+      priceUSD: 24,
+      image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=300&q=80',
+      description: 'Anti-tarnish compartments for travel protection.'
+    }
+  ];
 
   if (!isCartOpen) return null;
 
@@ -31,11 +53,27 @@ export const CartDrawer = ({ onNavigateToCheckout }) => {
     }
   };
 
+  const handleAddAddon = (addon) => {
+    addToCart(
+      {
+        id: addon.id,
+        name: addon.name,
+        category: 'Care Accessories',
+        images: [addon.image],
+        priceUSD: addon.priceUSD
+      },
+      'Standard Atelier Accessory',
+      null,
+      '',
+      addon.priceUSD
+    );
+  };
+
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
       {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-black/50 backdrop-blur-xs transition-opacity animate-fade-in"
+        className="absolute inset-0 bg-black/60 backdrop-blur-xs transition-opacity animate-fade-in"
         onClick={closeCart}
       />
 
@@ -70,7 +108,7 @@ export const CartDrawer = ({ onNavigateToCheckout }) => {
                 </span>
               ) : (
                 <span className="text-[#575A61]">
-                  Add <strong className="text-[#A8843E]">{formatPrice(freeShippingRemainingUSD)}</strong> for <strong className="text-[#1F2022]">Free Express DHL Air Delivery</strong>
+                  Add <strong className="text-[#A8843E]">{formatPrice(freeShippingRemainingUSD)}</strong> for <strong className="text-[#1F2022]">Free Insured Express Air</strong>
                 </span>
               )}
               <span className="text-[#747780] text-[11px] font-mono">{freeShippingProgressPercent}%</span>
@@ -98,69 +136,142 @@ export const CartDrawer = ({ onNavigateToCheckout }) => {
                   onClick={closeCart}
                   className="px-6 py-2.5 bg-[#1F2022] text-[#FAF8F5] text-xs font-semibold uppercase tracking-wider rounded hover:bg-[#A8843E] transition-colors"
                 >
-                  Explore Jewellery
+                  Explore Jewelry
                 </button>
               </div>
             ) : (
-              items.map((item) => (
-                <div key={item.cartItemId} className="pt-5 first:pt-0 flex gap-4">
-                  {/* Thumbnail */}
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-20 h-20 rounded-xl object-cover border border-[#EAE3D5] bg-[#FAF8F5] shrink-0"
-                  />
+              <>
+                {items.map((item) => (
+                  <div key={item.cartItemId} className="pt-5 first:pt-0 flex gap-4">
+                    {/* Thumbnail */}
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-20 h-20 rounded-xl object-cover border border-[#EAE3D5] bg-[#FAF8F5] shrink-0"
+                    />
 
-                  {/* Details */}
-                  <div className="flex-1 flex flex-col justify-between space-y-1">
-                    <div>
-                      <div className="flex items-start justify-between gap-2">
-                        <h4 className="font-serif text-sm font-medium text-[#1F2022] line-clamp-1">{item.name}</h4>
-                        <button
-                          onClick={() => removeFromCart(item.cartItemId)}
-                          className="text-[#747780] hover:text-rose-600 transition-colors p-0.5"
-                          title="Remove item"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                    {/* Details */}
+                    <div className="flex-1 flex flex-col justify-between space-y-1">
+                      <div>
+                        <div className="flex items-start justify-between gap-2">
+                          <h4 className="font-serif text-sm font-medium text-[#1F2022] line-clamp-1">{item.name}</h4>
+                          <button
+                            onClick={() => removeFromCart(item.cartItemId)}
+                            className="text-[#747780] hover:text-rose-600 transition-colors p-0.5"
+                            title="Remove item"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+
+                        <div className="text-[11px] text-[#747780] space-y-0.5">
+                          <p>{item.metal}</p>
+                          {item.size && <p>Size: {item.size}</p>}
+                          {item.engraving && (
+                            <p className="text-[#A8843E] italic">Engraved: "{item.engraving}"</p>
+                          )}
+                        </div>
                       </div>
 
-                      <div className="text-[11px] text-[#747780] space-y-0.5">
-                        <p>{item.metal}</p>
-                        {item.size && <p>Size: {item.size}</p>}
-                        {item.engraving && (
-                          <p className="text-[#A8843E] italic">Engraved: "{item.engraving}"</p>
-                        )}
-                      </div>
-                    </div>
+                      {/* Quantity & Unit Price */}
+                      <div className="flex items-center justify-between pt-1">
+                        <div className="flex items-center border border-[#EAE3D5] rounded bg-[#FAF8F5]">
+                          <button
+                            onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)}
+                            className="p-1 text-[#575A61] hover:text-[#1F2022] hover:bg-white transition-colors"
+                          >
+                            <Minus className="w-3 h-3" />
+                          </button>
+                          <span className="px-2 text-xs font-semibold font-mono text-[#1F2022]">
+                            {item.quantity}
+                          </span>
+                          <button
+                            onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)}
+                            className="p-1 text-[#575A61] hover:text-[#1F2022] hover:bg-white transition-colors"
+                          >
+                            <Plus className="w-3 h-3" />
+                          </button>
+                        </div>
 
-                    {/* Quantity & Unit Price */}
-                    <div className="flex items-center justify-between pt-1">
-                      <div className="flex items-center border border-[#EAE3D5] rounded bg-[#FAF8F5]">
-                        <button
-                          onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)}
-                          className="p-1 text-[#575A61] hover:text-[#1F2022] hover:bg-white transition-colors"
-                        >
-                          <Minus className="w-3 h-3" />
-                        </button>
-                        <span className="px-2 text-xs font-semibold font-mono text-[#1F2022]">
-                          {item.quantity}
+                        <span className="font-semibold text-sm text-[#1F2022]">
+                          {formatPrice(item.unitPriceUSD * item.quantity)}
                         </span>
-                        <button
-                          onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)}
-                          className="p-1 text-[#575A61] hover:text-[#1F2022] hover:bg-white transition-colors"
-                        >
-                          <Plus className="w-3 h-3" />
-                        </button>
                       </div>
-
-                      <span className="font-semibold text-sm text-[#1F2022]">
-                        {formatPrice(item.unitPriceUSD * item.quantity)}
-                      </span>
                     </div>
                   </div>
+                ))}
+
+                {/* ONE-CLICK CROSS-SELL ADD-ONS (Mejuri Style) */}
+                <div className="pt-6 mt-6 border-t border-[#EAE3D5] space-y-3">
+                  <span className="text-[10px] uppercase tracking-wider text-[#A8843E] font-semibold block">
+                    Complete Your Heirloom Suite:
+                  </span>
+                  <div className="space-y-2">
+                    {addOns.map((addon) => {
+                      const alreadyInCart = items.some(it => it.id === addon.id);
+                      return (
+                        <div 
+                          key={addon.id} 
+                          className="p-2.5 rounded-xl bg-[#FAF8F5] border border-[#EAE3D5] flex items-center justify-between gap-3"
+                        >
+                          <img 
+                            src={addon.image} 
+                            alt={addon.name} 
+                            className="w-10 h-10 rounded-lg object-cover border border-[#EAE3D5] shrink-0" 
+                          />
+                          <div className="min-w-0 flex-1">
+                            <h5 className="text-xs font-medium text-[#1F2022] truncate">{addon.name}</h5>
+                            <span className="text-[11px] font-semibold text-[#A8843E]">{formatPrice(addon.priceUSD)}</span>
+                          </div>
+                          {alreadyInCart ? (
+                            <span className="px-2.5 py-1 text-[10px] font-semibold text-emerald-700 bg-emerald-50 rounded border border-emerald-200 flex items-center gap-1">
+                              <Check className="w-3 h-3" />
+                              Added
+                            </span>
+                          ) : (
+                            <button
+                              onClick={() => handleAddAddon(addon)}
+                              className="px-2.5 py-1 text-[11px] font-semibold rounded bg-white hover:bg-[#1F2022] hover:text-white border border-[#EAE3D5] transition-colors"
+                            >
+                              + Add
+                            </button>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-              ))
+
+                {/* COMPLIMENTARY GIFT NOTE ACCORDION */}
+                <div className="pt-4 border-t border-[#F5F1E8]">
+                  <button
+                    onClick={() => setIsGiftNoteOpen(!isGiftNoteOpen)}
+                    className="w-full flex items-center justify-between text-xs text-[#575A61] hover:text-[#1F2022]"
+                  >
+                    <span className="flex items-center gap-1.5 font-medium">
+                      <Gift className="w-4 h-4 text-[#A8843E]" />
+                      <span>Complimentary Gift Packaging & Card</span>
+                    </span>
+                    <span className="text-xs text-[#A8843E]">{isGiftNoteOpen ? 'Hide' : '+ Add Note'}</span>
+                  </button>
+
+                  {isGiftNoteOpen && (
+                    <div className="mt-2.5 space-y-1.5 animate-fade-in">
+                      <textarea
+                        rows={2}
+                        maxLength={150}
+                        placeholder="Write a message to accompany your gift..."
+                        value={giftNote}
+                        onChange={(e) => setGiftNote(e.target.value)}
+                        className="w-full p-2.5 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg focus:outline-none focus:border-[#C5A059] text-[#1F2022]"
+                      />
+                      <span className="text-[10px] text-[#747780] block text-right">
+                        {150 - giftNote.length} characters remaining
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </>
             )}
           </div>
 
@@ -173,13 +284,13 @@ export const CartDrawer = ({ onNavigateToCheckout }) => {
                   <span className="font-serif text-lg">{formatPrice(cartSubtotalUSD)}</span>
                 </div>
                 <div className="flex justify-between items-center text-[11px]">
-                  <span>Air Shipping:</span>
+                  <span>Express DHL Air Delivery:</span>
                   <span className="text-emerald-700 font-semibold">
-                    {hasFreeShipping ? 'FREE (DHL Express)' : '$24 USD / $32 CAD'}
+                    {hasFreeShipping ? 'FREE (Orders over $300)' : '$24 USD / $32 CAD'}
                   </span>
                 </div>
                 <p className="text-[10px] text-[#747780] leading-tight">
-                  Taxes, duties & delivery calculated at final review based on destination country (USA / Canada).
+                  🇺🇸 US orders under $800 qualify for Section 321 Duty-Free &bull; 🇨🇦 Canadian orders include DDP pre-clearance.
                 </p>
               </div>
 
@@ -192,9 +303,10 @@ export const CartDrawer = ({ onNavigateToCheckout }) => {
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              <div className="text-center text-[10px] text-[#747780] flex items-center justify-center gap-2">
+              {/* Supported Payment Badges */}
+              <div className="pt-2 flex items-center justify-center gap-3 text-[10px] text-[#747780] border-t border-[#EAE3D5]">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Handcrafted in Jaipur & Surat &bull; Insured Delivery to USA & Canada</span>
+                <span>256-bit Encrypted Checkout &bull; Visa &bull; MC &bull; AMEX &bull; Apple Pay</span>
               </div>
             </div>
           )}

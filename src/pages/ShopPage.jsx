@@ -1,10 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { 
   Filter, Search, SlidersHorizontal, ArrowUpDown, 
-  Check, X, Sparkles, Eye, ShieldCheck, ShoppingBag 
+  Check, X, Sparkles, Eye, ShieldCheck, ShoppingBag, 
+  ChevronRight, Heart 
 } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
 import { useCart } from '../context/CartContext';
+import { QuickViewModal } from '../components/QuickViewModal';
 
 export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'all' }) => {
   const { formatPrice, activeCurrency } = useCurrency();
@@ -20,6 +22,9 @@ export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'al
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('featured');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+  const [quickViewProduct, setQuickViewProduct] = useState(null);
+  const [hoveredCardId, setHoveredCardId] = useState(null);
+  const [selectedSwatches, setSelectedSwatches] = useState({});
 
   // Filter logic
   const filteredProducts = useMemo(() => {
@@ -103,91 +108,63 @@ export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'al
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       
-      {/* Header Banner */}
+      {/* Category Header Banner */}
       <div className="bg-[#FAF8F5] border border-[#EAE3D5] rounded-2xl p-6 sm:p-10 text-center space-y-3">
         <span className="text-xs uppercase tracking-[0.2em] text-[#A8843E] font-semibold">
-          Curated Atelier Collection
+          Handcrafted in Jaipur & Surat
         </span>
-        <h1 className="text-3xl sm:text-4xl font-serif text-[#1F2022] font-normal">
-          Fine Jewelry Shop
+        <h1 className="text-3xl sm:text-4xl font-serif text-[#1F2022] font-normal capitalize">
+          {selectedCategory === 'all' ? 'The Fine Jewelry Collection' : `${selectedCategory} Collection`}
         </h1>
-        <p className="text-sm text-[#575A61] max-w-2xl mx-auto">
-          Explore solid 9K, 14K, and 18K gold and 925 sterling silver jewelry. Featuring certified lab-grown diamonds (CVD/HPHT) and natural untreated gemstones handcrafted in Jaipur & Surat, India.
+        <p className="text-xs sm:text-sm text-[#575A61] max-w-2xl mx-auto leading-relaxed">
+          Solid 9K, 14K, and 18K gold and 925 sterling silver set with certified lab-grown diamonds (CVD/HPHT). Delivered door-to-door to the USA and Canada with 100% full insurance coverage.
         </p>
 
-        {/* Currency & Duty Notice */}
-        <div className="pt-2 flex flex-wrap justify-center gap-3 text-xs text-[#575A61]">
-          <span className="px-3 py-1 rounded-full bg-white border border-[#EAE3D5]">
-            Pricing Display: <strong>{activeCurrency.name} ({activeCurrency.symbol})</strong>
-          </span>
-          <span className="px-3 py-1 rounded-full bg-white border border-[#EAE3D5]">
-            Checkout Currency: <strong>{activeCurrency.statement}</strong>
-          </span>
-          <span className="px-3 py-1 rounded-full bg-white border border-[#EAE3D5]">
-            Destination: <strong>USA & Canada Direct Air Cargo</strong>
-          </span>
+        {/* Quick Category Chips */}
+        <div className="flex flex-wrap justify-center gap-2 pt-3">
+          {[
+            { id: 'all', label: 'All Jewelry' },
+            { id: 'rings', label: 'Rings & Bands' },
+            { id: 'earrings', label: 'Earrings & Huggies' },
+            { id: 'necklaces', label: 'Necklaces & Pendants' },
+            { id: 'bracelets', label: 'Tennis Bracelets' }
+          ].map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-4 py-1.5 rounded-full text-xs transition-all ${
+                selectedCategory === cat.id
+                  ? 'bg-[#1F2022] text-[#FAF8F5] font-semibold shadow-xs'
+                  : 'bg-white border border-[#EAE3D5] text-[#575A61] hover:border-[#C5A059]'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* Category Pills Bar */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-[#EAE3D5]">
-        {[
-          { id: 'all', label: 'All Heirlooms' },
-          { id: 'rings', label: 'Rings & Bands' },
-          { id: 'earrings', label: 'Earrings & Huggies' },
-          { id: 'necklaces', label: 'Necklaces & Pendants' },
-          { id: 'bracelets', label: 'Tennis Bracelets' }
-        ].map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => setSelectedCategory(cat.id)}
-            className={`px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all shrink-0 ${
-              selectedCategory === cat.id
-                ? 'bg-[#1F2022] text-[#FAF8F5] shadow-sm'
-                : 'bg-white border border-[#EAE3D5] text-[#575A61] hover:border-[#C5A059] hover:text-[#1F2022]'
-            }`}
-          >
-            {cat.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Main Grid: Filters Sidebar + Product Cards */}
+      {/* Main Layout: Sidebar Filters + Products Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        {/* DESKTOP FILTERS SIDEBAR */}
-        <div className="hidden lg:block lg:col-span-3 bg-white border border-[#EAE3D5] rounded-xl p-5 space-y-6 sticky top-24">
+        {/* DESKTOP FILTER SIDEBAR */}
+        <div className="hidden lg:block lg:col-span-3 bg-white border border-[#EAE3D5] rounded-xl p-5 space-y-6">
           <div className="flex items-center justify-between pb-3 border-b border-[#EAE3D5]">
-            <div className="flex items-center gap-2">
-              <SlidersHorizontal className="w-4 h-4 text-[#A8843E]" />
-              <h2 className="text-xs uppercase tracking-wider font-semibold text-[#1F2022]">Filter Catalog</h2>
-            </div>
+            <span className="text-xs uppercase tracking-wider font-semibold text-[#1F2022] flex items-center gap-1.5">
+              <Filter className="w-3.5 h-3.5 text-[#A8843E]" />
+              <span>Refine Pieces</span>
+            </span>
             {activeFilterCount > 0 && (
               <button
                 onClick={resetFilters}
                 className="text-[11px] text-[#A8843E] hover:underline"
               >
-                Reset ({activeFilterCount})
+                Clear All ({activeFilterCount})
               </button>
             )}
           </div>
 
-          {/* Search Box */}
-          <div className="space-y-1.5">
-            <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Search</label>
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search piece, gem, style..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-8 pr-3 py-2 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg focus:outline-none focus:border-[#C5A059] text-[#1F2022]"
-              />
-              <Search className="w-3.5 h-3.5 text-[#747780] absolute left-2.5 top-2.5" />
-            </div>
-          </div>
-
-          {/* Metal Classification */}
+          {/* Metal Filter */}
           <div className="space-y-2">
             <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Precious Metal</label>
             <div className="space-y-1">
@@ -241,7 +218,7 @@ export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'al
               {[
                 { id: 'all', label: 'All Gemstones' },
                 { id: 'lab_diamond', label: 'Lab-Grown Diamond (CVD/HPHT)' },
-                { id: 'natural_gem', label: 'Natural Moonstone / Gem' },
+                { id: 'natural_gem', label: 'Natural Gemstone' },
                 { id: 'pearl', label: 'Cultured Freshwater Pearl' }
               ].map((st) => (
                 <label key={st.id} className="flex items-center gap-2 text-xs text-[#575A61] cursor-pointer hover:text-[#1F2022]">
@@ -344,7 +321,7 @@ export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'al
             </div>
           </div>
 
-          {/* Mobile Filter Drawer (toggleable) */}
+          {/* Mobile Filter Drawer */}
           {mobileFilterOpen && (
             <div className="lg:hidden p-5 rounded-xl bg-white border border-[#EAE3D5] space-y-4 shadow-md">
               <div className="flex items-center justify-between pb-2 border-b border-[#EAE3D5]">
@@ -354,7 +331,6 @@ export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'al
                 </button>
               </div>
 
-              {/* Mobile search */}
               <input
                 type="text"
                 placeholder="Search..."
@@ -363,7 +339,6 @@ export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'al
                 className="w-full px-3 py-2 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded"
               />
 
-              {/* Mobile reset */}
               <button
                 onClick={resetFilters}
                 className="w-full py-2 bg-[#FAF8F5] border border-[#EAE3D5] text-xs font-medium text-[#1F2022] rounded"
@@ -387,84 +362,137 @@ export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'al
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProducts.map((product) => (
-                <div
-                  key={product.id}
-                  className="bg-white border border-[#EAE3D5] rounded-xl overflow-hidden hover:border-[#C5A059] transition-all hover:shadow-lg flex flex-col group"
-                >
-                  {/* Image container */}
+              {filteredProducts.map((product) => {
+                const hasMultipleImages = product.images && product.images.length > 1;
+                const isHovered = hoveredCardId === product.id;
+                const displayImg = isHovered && hasMultipleImages ? product.images[1] : product.images[0];
+                const activeSwatch = selectedSwatches[product.id] || product.variants?.[0];
+                const displayPriceUSD = activeSwatch?.priceUSD || product.priceUSD;
+
+                return (
                   <div
-                    onClick={() => onSelectProduct(product)}
-                    className="relative aspect-square overflow-hidden bg-[#FAF8F5] cursor-pointer"
+                    key={product.id}
+                    onMouseEnter={() => setHoveredCardId(product.id)}
+                    onMouseLeave={() => setHoveredCardId(null)}
+                    className="bg-white border border-[#EAE3D5] rounded-xl overflow-hidden hover:border-[#C5A059] transition-all hover:shadow-lg flex flex-col group relative"
                   >
-                    <img
-                      src={product.images[0]}
-                      alt={product.name}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    />
-                    {/* Sample Data Badge */}
-                    <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-[#1F2022]/85 text-[#FAF8F5] text-[10px] font-mono tracking-tight">
-                      Sample Data
-                    </div>
-                    {product.isBestSeller && (
-                      <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-[#F4EFE6] text-[#A8843E] border border-[#E0D5C1] text-[10px] font-semibold uppercase tracking-wider">
-                        Best Seller
+                    {/* Image container with dual-image hover */}
+                    <div
+                      onClick={() => onSelectProduct(product)}
+                      className="relative aspect-square overflow-hidden bg-[#FAF8F5] cursor-pointer"
+                    >
+                      <img
+                        src={displayImg}
+                        alt={product.name}
+                        className="w-full h-full object-cover object-center transition-all duration-500 group-hover:scale-105"
+                      />
+
+                      {/* Sample Data Badge */}
+                      <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-[#1F2022]/85 text-[#FAF8F5] text-[10px] font-mono tracking-tight">
+                        Sample Data
                       </div>
-                    )}
-                  </div>
 
-                  {/* Body Content */}
-                  <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
-                    <div>
-                      <div className="flex items-center justify-between text-[10px] uppercase tracking-wider text-[#A8843E] font-semibold">
-                        <span>{product.category}</span>
-                        <span className="text-[#747780] font-normal">Jaipur Atelier</span>
-                      </div>
-                      
-                      <h3
-                        onClick={() => onSelectProduct(product)}
-                        className="font-serif text-base text-[#1F2022] font-medium hover:text-[#A8843E] cursor-pointer transition-colors mt-1 line-clamp-1"
-                      >
-                        {product.name}
-                      </h3>
+                      {product.isBestSeller && (
+                        <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-[#F4EFE6] text-[#A8843E] border border-[#E0D5C1] text-[10px] font-semibold uppercase tracking-wider">
+                          Best Seller
+                        </div>
+                      )}
 
-                      <p className="text-xs text-[#747780] line-clamp-2 mt-1">
-                        {product.description}
-                      </p>
-
-                      {/* Stone Type distinction */}
-                      <div className="mt-2.5 inline-block px-2 py-0.5 rounded bg-[#FAF8F5] border border-[#EAE3D5] text-[10px] text-[#575A61] font-mono">
-                        {product.stoneType}
+                      {/* Quick View Button on Hover */}
+                      <div className="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setQuickViewProduct(product);
+                          }}
+                          className="w-full py-2 bg-white/95 backdrop-blur-xs text-[#1F2022] hover:bg-[#1F2022] hover:text-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors shadow-sm flex items-center justify-center gap-1.5"
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                          <span>Quick View</span>
+                        </button>
                       </div>
                     </div>
 
-                    <div className="pt-3 border-t border-[#F5F1E8] flex items-center justify-between">
+                    {/* Body Content */}
+                    <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                       <div>
-                        <span className="text-base font-semibold text-[#1F2022]">
-                          {formatPrice(product.priceUSD)}
-                        </span>
-                        <span className="block text-[10px] text-[#747780]">
-                          {activeCurrency.statement}
-                        </span>
+                        <div className="flex items-center justify-between text-[10px] uppercase tracking-wider text-[#A8843E] font-semibold">
+                          <span>{product.category}</span>
+                          <span className="text-[#747780] font-normal">Jaipur Atelier</span>
+                        </div>
+                        
+                        <h3
+                          onClick={() => onSelectProduct(product)}
+                          className="font-serif text-base text-[#1F2022] font-medium hover:text-[#A8843E] cursor-pointer transition-colors mt-1 line-clamp-1"
+                        >
+                          {product.name}
+                        </h3>
+
+                        <p className="text-xs text-[#747780] line-clamp-2 mt-1">
+                          {product.description}
+                        </p>
+
+                        {/* Interactive Color/Metal Swatches (Mejuri standard) */}
+                        {product.variants && product.variants.length > 0 && (
+                          <div className="flex items-center gap-1.5 mt-2.5">
+                            {product.variants.map((v, i) => (
+                              <button
+                                key={i}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setSelectedSwatches({ ...selectedSwatches, [product.id]: v });
+                                }}
+                                title={`${v.metal} (${v.color})`}
+                                className={`w-3.5 h-3.5 rounded-full border transition-all ${
+                                  activeSwatch?.id === v.id ? 'ring-2 ring-[#C5A059] scale-110' : 'border-black/20'
+                                } ${
+                                  v.color.includes('Yellow') ? 'bg-amber-300' :
+                                  v.color.includes('Rose') ? 'bg-rose-300' : 'bg-slate-200'
+                                }`}
+                              />
+                            ))}
+                            <span className="text-[10px] text-[#747780] ml-1">
+                              {activeSwatch ? activeSwatch.metal : `${product.variants.length} metals`}
+                            </span>
+                          </div>
+                        )}
                       </div>
 
-                      <button
-                        onClick={() => onSelectProduct(product)}
-                        className="px-3.5 py-1.5 rounded bg-[#FAF8F5] hover:bg-[#1F2022] hover:text-[#FAF8F5] border border-[#EAE3D5] text-xs font-medium text-[#1F2022] transition-colors flex items-center gap-1.5"
-                      >
-                        <Eye className="w-3.5 h-3.5" />
-                        <span>View Piece</span>
-                      </button>
+                      <div className="pt-3 border-t border-[#F5F1E8] flex items-center justify-between">
+                        <div>
+                          <span className="text-base font-semibold text-[#1F2022]">
+                            {formatPrice(displayPriceUSD)}
+                          </span>
+                          <span className="block text-[10px] text-[#747780]">
+                            {activeCurrency.statement}
+                          </span>
+                        </div>
+
+                        <button
+                          onClick={() => onSelectProduct(product)}
+                          className="px-3 py-1.5 rounded bg-[#FAF8F5] hover:bg-[#1F2022] hover:text-[#FAF8F5] border border-[#EAE3D5] text-xs font-medium text-[#1F2022] transition-colors"
+                        >
+                          Details
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
 
         </div>
 
       </div>
+
+      {/* QUICK VIEW POPUP MODAL */}
+      <QuickViewModal
+        product={quickViewProduct}
+        isOpen={Boolean(quickViewProduct)}
+        onClose={() => setQuickViewProduct(null)}
+        onSelectProduct={onSelectProduct}
+      />
 
     </div>
   );

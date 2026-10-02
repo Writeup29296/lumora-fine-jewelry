@@ -134,6 +134,8 @@ function StoreLayout() {
         onNavigate={handleNavigate}
         onOpenAdmin={handleOpenAdmin}
         onOpenDomainGuide={() => setDomainGuideOpen(true)}
+        onSelectProduct={handleSelectProduct}
+        products={products}
       />
 
       {/* Main Page Content */}

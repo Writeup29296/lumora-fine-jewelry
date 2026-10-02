@@ -2,15 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { 
   ShieldCheck, Plane, Award, Sparkles, Check, 
   ArrowLeft, ShoppingBag, Eye, Heart, HelpCircle, 
-  Clock, Package, RefreshCw, ZoomIn, Play, Star, ChevronRight 
+  Clock, Package, RefreshCw, ZoomIn, Play, Star, ChevronRight, 
+  Share2, Gem, CheckCircle2 
 } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
 import { useCart } from '../context/CartContext';
 import { brandConfig } from '../data/brandConfig';
+import { DeliveryEstimator } from '../components/DeliveryEstimator';
+import { DiamondScaleVisualizer } from '../components/DiamondScaleVisualizer';
+import { StickyAddToCart } from '../components/StickyAddToCart';
 
 export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate, allProducts = [] }) => {
   const { formatPrice, activeCurrency, activeCountry } = useCurrency();
-  const { addToCart, openCheckout } = useCart();
+  const { addToCart } = useCart();
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [selectedVariant, setSelectedVariant] = useState(null);
@@ -21,6 +25,7 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
   const [addedNotice, setAddedNotice] = useState(false);
   const [zoomStyle, setZoomStyle] = useState({ display: 'none' });
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
     if (product) {
@@ -78,10 +83,20 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
     onNavigate('checkout');
   };
 
-  // Related products (same category or others, excluding current)
+  const handleShare = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(window.location.href);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    }
+  };
+
+  // Related products
   const relatedProducts = allProducts
     .filter(p => p.id !== product.id && (p.category === product.category || Math.random() > 0.3))
     .slice(0, 3);
+
+  const isDiamond = (product.stoneType || '').toLowerCase().includes('diamond');
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
@@ -93,57 +108,77 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
           className="inline-flex items-center gap-1.5 text-[#575A61] hover:text-[#1F2022] font-medium"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to Shop</span>
+          <span>Back to Collection</span>
         </button>
         <div className="flex items-center gap-2">
           <span>Shop</span>
           <span>/</span>
           <span className="capitalize">{product.category}</span>
           <span>/</span>
-          <span className="text-[#1F2022] font-medium">{product.name}</span>
+          <span className="text-[#1F2022] font-medium truncate max-w-[150px] sm:max-w-none">{product.name}</span>
         </div>
       </div>
 
-      {/* Main Product Showcase Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      {/* Main Product Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
-        {/* LEFT COLUMN: MULTI-IMAGE GALLERY WITH ZOOM & VIDEO */}
+        {/* LEFT COLUMN: MULTI-IMAGE GALLERY WITH CURSOR ZOOM */}
         <div className="lg:col-span-7 space-y-4">
           
-          {/* Main Stage Image with Zoom */}
+          {/* Main Visual Stage */}
           <div 
-            className="relative aspect-square rounded-2xl overflow-hidden bg-white border border-[#EAE3D5] shadow-sm cursor-crosshair"
+            className="relative aspect-square rounded-2xl overflow-hidden bg-[#FAF8F5] border border-[#EAE3D5] cursor-crosshair group shadow-sm"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            <img
-              src={product.images[activeImageIndex] || product.images[0]}
-              alt={product.name}
-              className="w-full h-full object-cover object-center"
-            />
+            {isVideoOpen ? (
+              <div className="w-full h-full flex flex-col items-center justify-center bg-[#FAF8F5] p-6 text-center space-y-3">
+                <div className="w-16 h-16 rounded-full bg-[#F4EFE6] border border-[#E0D5C1] flex items-center justify-center text-[#A8843E] animate-pulse">
+                  <Play className="w-8 h-8 fill-[#A8843E]" />
+                </div>
+                <h4 className="font-serif text-lg text-[#1F2022]">360&deg; High-Definition Studio Preview</h4>
+                <p className="text-xs text-[#575A61] max-w-sm">
+                  Rotating view under daylight-balanced 5500K diamond lighting in our Jaipur testing laboratory.
+                </p>
+                <button
+                  onClick={() => setIsVideoOpen(false)}
+                  className="px-4 py-1.5 bg-[#1F2022] text-[#FAF8F5] rounded text-xs uppercase tracking-wider"
+                >
+                  Return to Photography
+                </button>
+              </div>
+            ) : (
+              <>
+                <img
+                  src={product.images[activeImageIndex] || product.images[0]}
+                  alt={`${product.name} - View ${activeImageIndex + 1}`}
+                  className="w-full h-full object-cover object-center"
+                />
+                
+                {/* Floating Zoom Lens Preview */}
+                <div
+                  className="absolute inset-0 pointer-events-none bg-no-repeat z-20 hidden md:block rounded-2xl"
+                  style={{
+                    ...zoomStyle,
+                    backgroundSize: '250%'
+                  }}
+                />
 
-            {/* Hover Zoom Overlay */}
-            <div
-              className="absolute inset-0 pointer-events-none bg-no-repeat transition-opacity duration-150"
-              style={{
-                ...zoomStyle,
-                backgroundSize: '220%'
-              }}
-            />
+                {/* Sample Tag */}
+                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#1F2022]/85 text-[#FAF8F5] text-xs font-mono tracking-tight z-10">
+                  Sample Data
+                </div>
 
-            {/* Sample Badge */}
-            <div className="absolute top-4 left-4 px-2.5 py-1 rounded bg-[#1F2022]/85 text-[#FAF8F5] text-[11px] font-mono tracking-wide">
-              Sample Data &bull; Demonstration Item
-            </div>
-
-            {/* Zoom hint */}
-            <div className="absolute bottom-4 right-4 px-3 py-1 rounded bg-white/90 backdrop-blur-sm border border-[#EAE3D5] text-[10px] text-[#575A61] flex items-center gap-1">
-              <ZoomIn className="w-3.5 h-3.5" />
-              <span>Hover to Zoom</span>
-            </div>
+                {/* Zoom Hint */}
+                <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-white/90 backdrop-blur-sm border border-[#EAE3D5] text-[11px] text-[#575A61] flex items-center gap-1.5 pointer-events-none z-10">
+                  <ZoomIn className="w-3.5 h-3.5 text-[#A8843E]" />
+                  <span>Hover to zoom facets</span>
+                </div>
+              </>
+            )}
           </div>
 
-          {/* Thumbnails + Video Button */}
+          {/* Thumbnail Gallery & 360 Video Toggle */}
           <div className="flex items-center gap-3 overflow-x-auto pb-2">
             {product.images.map((img, idx) => (
               <button
@@ -152,57 +187,50 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
                   setActiveImageIndex(idx);
                   setIsVideoOpen(false);
                 }}
-                className={`w-20 h-20 rounded-xl overflow-hidden border-2 transition-all shrink-0 bg-white ${
+                className={`w-20 h-20 rounded-xl overflow-hidden border-2 shrink-0 transition-all ${
                   activeImageIndex === idx && !isVideoOpen
-                    ? 'border-[#C5A059] shadow-sm'
-                    : 'border-[#EAE3D5] opacity-75 hover:opacity-100'
+                    ? 'border-[#C5A059] ring-2 ring-[#C5A059]/30'
+                    : 'border-[#EAE3D5] hover:border-[#C5A059] opacity-80'
                 }`}
               >
-                <img src={img} alt={`${product.name} angle ${idx + 1}`} className="w-full h-full object-cover" />
+                <img src={img} alt="" className="w-full h-full object-cover" />
               </button>
             ))}
 
-            {/* Optional 360 Video Demonstration Preview */}
+            {/* 360 Video Button */}
             <button
               onClick={() => setIsVideoOpen(true)}
-              className={`w-20 h-20 rounded-xl border-2 transition-all shrink-0 bg-[#FAF8F5] flex flex-col items-center justify-center text-[#575A61] hover:text-[#1F2022] ${
-                isVideoOpen ? 'border-[#C5A059]' : 'border-[#EAE3D5]'
+              className={`w-20 h-20 rounded-xl border-2 shrink-0 flex flex-col items-center justify-center gap-1 transition-all bg-[#FAF8F5] ${
+                isVideoOpen
+                  ? 'border-[#C5A059] bg-[#F4EFE6] text-[#A8843E]'
+                  : 'border-[#EAE3D5] text-[#747780] hover:border-[#C5A059] hover:text-[#1F2022]'
               }`}
             >
-              <Play className="w-5 h-5 text-[#A8843E] fill-current" />
-              <span className="text-[10px] mt-1 font-medium">360° Video</span>
+              <Play className="w-5 h-5" />
+              <span className="text-[10px] font-medium tracking-tight">360&deg; Studio</span>
             </button>
           </div>
 
-          {/* Video Modal / Inline Player Simulation */}
-          {isVideoOpen && (
-            <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#EAE3D5] text-center space-y-3">
-              <div className="w-12 h-12 rounded-full bg-[#F4EFE6] border border-[#E0D5C1] mx-auto flex items-center justify-center text-[#A8843E]">
-                <Play className="w-6 h-6 fill-current" />
-              </div>
-              <h4 className="font-serif text-base text-[#1F2022] font-medium">Atelier 360° Macro Video Demonstration</h4>
-              <p className="text-xs text-[#747780] max-w-md mx-auto">
-                Product turntable video showcasing prong alignment, diamond light refraction, and comfort-fit band profile under daylight illumination.
-              </p>
-              <div className="aspect-video max-w-lg mx-auto rounded-xl bg-[#1F2022] flex items-center justify-center text-white text-xs font-mono">
-                [Turntable Macro Video Demonstration Placeholder — Merchant Video Upload]
-              </div>
+          {/* Interactive Diamond Carat Scale Visualizer for Diamond Pieces */}
+          {isDiamond && (
+            <div className="pt-4">
+              <DiamondScaleVisualizer currentCarat={product.stoneDetails?.carat || '1.00 ct'} />
             </div>
           )}
 
-          {/* Origin & Hallmarking Trust Strip */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 p-4 rounded-xl bg-white border border-[#EAE3D5] text-xs text-[#575A61]">
+          {/* Trust Value Badges */}
+          <div className="grid grid-cols-3 gap-3 p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE3D5] text-xs text-[#575A61]">
             <div className="flex items-center gap-2">
-              <Plane className="w-4 h-4 text-[#A8843E]" />
-              <span>Ships from Jaipur / Surat, India</span>
+              <Plane className="w-4 h-4 text-[#A8843E] shrink-0" />
+              <span>Direct Jaipur/Surat Export</span>
             </div>
             <div className="flex items-center gap-2">
-              <Award className="w-4 h-4 text-[#A8843E]" />
+              <Award className="w-4 h-4 text-[#A8843E] shrink-0" />
               <span>BIS Hallmarked Purity</span>
             </div>
             <div className="flex items-center gap-2">
-              <Package className="w-4 h-4 text-[#A8843E]" />
-              <span>Signature Vault Box</span>
+              <Package className="w-4 h-4 text-[#A8843E] shrink-0" />
+              <span>Velvet Presentation Box</span>
             </div>
           </div>
 
@@ -216,7 +244,14 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
               <span className="text-xs uppercase tracking-[0.2em] text-[#A8843E] font-semibold">
                 Lumora Atelier Heirlooms
               </span>
-              <span className="text-[11px] text-[#747780] font-mono">ID: {product.id}</span>
+              <button
+                onClick={handleShare}
+                className="text-xs text-[#747780] hover:text-[#1F2022] flex items-center gap-1"
+                title="Share piece"
+              >
+                <Share2 className="w-3.5 h-3.5" />
+                <span>{isCopied ? 'Link Copied!' : 'Share'}</span>
+              </button>
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-serif text-[#1F2022] font-normal leading-snug">
@@ -229,7 +264,7 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
 
             {/* Price display with currency explanation */}
             <div className="pt-2 flex items-baseline gap-3">
-              <span className="text-2xl font-semibold text-[#1F2022]">
+              <span className="text-2xl sm:text-3xl font-semibold text-[#1F2022]">
                 {formatPrice(currentPriceUSD)}
               </span>
               <span className="text-xs text-[#747780]">
@@ -237,6 +272,9 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
               </span>
             </div>
           </div>
+
+          {/* DYNAMIC DELIVERY ESTIMATOR (Mejuri / Brilliant Earth standard) */}
+          <DeliveryEstimator />
 
           {/* VARIANT PICKER: PRECIOUS METAL & PURITY */}
           {product.variants && product.variants.length > 0 && (
@@ -284,7 +322,7 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
                   className="text-[#A8843E] hover:underline flex items-center gap-1 text-[11px]"
                 >
                   <HelpCircle className="w-3.5 h-3.5" />
-                  <span>Size & Measurement Guide</span>
+                  <span>Size & Millimetre Guide</span>
                 </button>
               </div>
 
@@ -306,57 +344,10 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
             </div>
           )}
 
-          {/* Chain Length or Wrist size where available */}
-          {product.wristSizes && (
-            <div className="space-y-2">
-              <label className="font-semibold text-[#1F2022] uppercase tracking-wider text-[11px] block">
-                Bracelet Wrist Length:
-              </label>
-              <div className="flex gap-2">
-                {product.wristSizes.map((sz) => (
-                  <button
-                    key={sz}
-                    onClick={() => setSelectedSize(sz)}
-                    className={`px-3 py-1.5 rounded text-xs font-medium transition-all ${
-                      selectedSize === sz
-                        ? 'bg-[#1F2022] text-[#FAF8F5]'
-                        : 'bg-white border border-[#EAE3D5] text-[#575A61]'
-                    }`}
-                  >
-                    {sz}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {product.chainLengths && (
-            <div className="space-y-2">
-              <label className="font-semibold text-[#1F2022] uppercase tracking-wider text-[11px] block">
-                Chain Length:
-              </label>
-              <div className="flex flex-wrap gap-2">
-                {product.chainLengths.map((ch) => (
-                  <button
-                    key={ch}
-                    onClick={() => setSelectedSize(ch)}
-                    className={`px-3 py-1.5 rounded text-xs font-medium transition-all ${
-                      selectedSize === ch
-                        ? 'bg-[#1F2022] text-[#FAF8F5]'
-                        : 'bg-white border border-[#EAE3D5] text-[#575A61]'
-                    }`}
-                  >
-                    {ch}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
           {/* Complimentary Custom Laser Engraving */}
           <div className="space-y-1.5 p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE3D5]">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-medium text-[#1F2022]">Complimentary Custom Engraving</span>
+              <span className="font-medium text-[#1F2022]">Complimentary Custom Laser Engraving</span>
               <span className="text-[10px] text-[#747780]">{20 - engraving.length} chars left</span>
             </div>
             <input
@@ -368,7 +359,7 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
               className="w-full px-3 py-1.5 text-xs bg-white border border-[#EAE3D5] rounded focus:outline-none focus:border-[#C5A059] text-[#1F2022]"
             />
             <p className="text-[10px] text-[#747780]">
-              Custom engraved pieces are personalized and excluded from 30-day returns.
+              Custom engraved pieces are personalized and excluded from standard 30-day returns.
             </p>
           </div>
 
@@ -393,7 +384,7 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
 
               <button
                 onClick={handleAddToCart}
-                className="flex-1 py-3 bg-[#1F2022] hover:bg-[#A8843E] text-[#FAF8F5] transition-colors rounded text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2 shadow-sm"
+                className="flex-1 py-3.5 bg-[#1F2022] hover:bg-[#A8843E] text-[#FAF8F5] transition-colors rounded text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2 shadow-sm"
               >
                 <ShoppingBag className="w-4 h-4" />
                 <span>Add to Shopping Bag</span>
@@ -402,7 +393,7 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
 
             <button
               onClick={handleBuyNow}
-              className="w-full py-3 bg-[#F4EFE6] hover:bg-[#EAE3D5] text-[#1F2022] border border-[#C5A059] transition-colors rounded text-xs uppercase tracking-wider font-semibold"
+              className="w-full py-3.5 bg-[#F4EFE6] hover:bg-[#EAE3D5] text-[#1F2022] border border-[#C5A059] transition-colors rounded text-xs uppercase tracking-wider font-semibold"
             >
               Instant Express Checkout &rarr;
             </button>
@@ -410,25 +401,25 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
             {addedNotice && (
               <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2 animate-fade-in">
                 <Check className="w-4 h-4 text-emerald-600" />
-                <span>Item successfully added to your shopping bag!</span>
+                <span>Piece successfully added to your shopping bag!</span>
               </div>
             )}
           </div>
 
-          {/* TABS FOR SPECIFICATIONS, DIAMOND CLARITY, SHIPPING & RETURNS */}
+          {/* SPECIFICATIONS & ACCORDION TABS */}
           <div className="pt-4 border-t border-[#EAE3D5] space-y-4">
             
-            <div className="flex border-b border-[#EAE3D5] text-xs">
+            <div className="flex border-b border-[#EAE3D5] text-xs overflow-x-auto pb-1">
               {[
                 { id: 'specs', label: 'Specifications' },
-                { id: 'diamond', label: 'Stone Details' },
+                { id: 'diamond', label: 'Diamond & Stone' },
                 { id: 'shipping', label: 'Shipping & Duties' },
-                { id: 'returns', label: 'Returns & Care' }
+                { id: 'unboxing', label: 'Unboxing' }
               ].map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`pb-2 px-3 font-medium transition-all border-b-2 ${
+                  className={`pb-2 px-3 font-medium transition-all border-b-2 shrink-0 ${
                     activeTab === tab.id
                       ? 'border-[#C5A059] text-[#1F2022]'
                       : 'border-transparent text-[#747780] hover:text-[#1F2022]'
@@ -458,23 +449,19 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
                   <span className="text-[#747780]">Crafting Atelier</span>
                   <span className="text-[#1F2022] font-medium">Jaipur & Surat, India</span>
                 </div>
-                <div className="grid grid-cols-2 py-1.5">
-                  <span className="text-[#747780]">Included Packaging</span>
-                  <span className="text-[#1F2022] font-medium">{product.packaging}</span>
-                </div>
               </div>
             )}
 
-            {/* TAB 2: STONE & DIAMOND DISTINCTION */}
+            {/* TAB 2: STONE DETAILS */}
             {activeTab === 'diamond' && (
               <div className="space-y-3 text-xs bg-[#FAF8F5] p-4 rounded-xl border border-[#EAE3D5]">
                 <div className="flex items-center gap-1.5 text-[#A8843E] font-semibold uppercase tracking-wider text-[11px]">
                   <Sparkles className="w-4 h-4" />
-                  <span>Gemstone & Diamond Transparency</span>
+                  <span>Lab Diamond Transparency</span>
                 </div>
 
                 <p className="text-[#575A61] leading-relaxed">
-                  Lumora strictly maintains transparent gemstone classifications. Lab-grown diamonds (CVD/HPHT) are chemically, physically, and optically identical to mined diamonds. We never describe diamond simulants (such as cubic zirconia or moissanite) as diamonds.
+                  Lab-grown diamonds (CVD/HPHT) are 100% genuine carbon crystals with identical brilliance, fire, and hardness (Mohs 10) to mined diamonds.
                 </p>
 
                 {product.stoneDetails && (
@@ -497,47 +484,40 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
                     </div>
                   </div>
                 )}
-
-                <div className="pt-2 border-t border-[#EAE3D5] text-[11px] text-[#747780]">
-                  <strong>Certification:</strong> {product.stoneDetails?.certification || '[Laboratory Certificate Card Included]'}
-                </div>
               </div>
             )}
 
-            {/* TAB 3: SHIPPING & DUTIES */}
+            {/* TAB 3: SHIPPING & CUSTOMS */}
             {activeTab === 'shipping' && (
               <div className="space-y-2.5 text-xs text-[#575A61]">
                 <p>
-                  <strong>Shipping Origin:</strong> Handcrafted and dispatched from our ateliers in Jaipur & Surat, India via insured air cargo (DHL Express Worldwide & FedEx Priority).
+                  <strong>United States:</strong> Orders enter duty-free under 19 U.S.C. § 1321 ($800 de minimis threshold).
                 </p>
-                <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE3D5] space-y-1">
-                  <span className="font-semibold text-[#1F2022] block">Destination Clearance:</span>
-                  <p>
-                    <strong>USA:</strong> Orders valued up to $800 USD generally enter duty-free under Section 321 de minimis (19 U.S.C. § 1321).<br />
-                    <strong>Canada:</strong> Shipments are subject to CBSA customs duties (~6.5%) and provincial GST/HST. Optional DDP calculation is available at checkout.
-                  </p>
-                </div>
                 <p>
-                  <strong>Processing & Transit Time:</strong> {product.processingTime} + {product.shippingTime}.
+                  <strong>Canada:</strong> CBSA 6.5% jewelry tariff and provincial taxes (HST/GST) calculated at checkout for Delivery Duty Paid (DDP) transit.
+                </p>
+                <p>
+                  <strong>Carrier:</strong> Dispatched via DHL Express Worldwide with adult signature verification.
                 </p>
               </div>
             )}
 
-            {/* TAB 4: RETURNS & CARE */}
-            {activeTab === 'returns' && (
-              <div className="space-y-2.5 text-xs text-[#575A61]">
-                <p>
-                  <strong>Configurable 30-Day Return Window:</strong> {product.returnsEligibility}
-                </p>
-                <p>
-                  <strong>Jewelry Care:</strong> {product.careGuide}
-                </p>
-                <button
-                  onClick={() => onNavigate('care')}
-                  className="text-[#A8843E] hover:underline font-medium block pt-1"
-                >
-                  View Complete Jewellery Care Guide &rarr;
-                </button>
+            {/* TAB 4: UNBOXING EXPERIENCE */}
+            {activeTab === 'unboxing' && (
+              <div className="space-y-3 text-xs text-[#575A61]">
+                <div className="flex gap-3 items-center">
+                  <img
+                    src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=200&q=80"
+                    alt="Lumora Velvet Vault Presentation Box"
+                    className="w-16 h-16 rounded-lg object-cover border border-[#EAE3D5]"
+                  />
+                  <div>
+                    <h5 className="font-serif text-sm text-[#1F2022] font-medium">Signature Velvet Vault Box</h5>
+                    <p className="text-[11px] text-[#747780]">
+                      Includes plush velvet travel case, embossed certificate envelope, and gold cleaning cloth.
+                    </p>
+                  </div>
+                </div>
               </div>
             )}
 
@@ -547,54 +527,15 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
 
       </div>
 
-      {/* RELATED HEIRLOOMS */}
-      {relatedProducts.length > 0 && (
-        <div className="pt-12 border-t border-[#EAE3D5] space-y-6">
-          <div className="flex items-center justify-between">
-            <h3 className="font-serif text-2xl text-[#1F2022] font-normal">Related Heirloom Pieces</h3>
-            <button
-              onClick={() => onNavigate('shop')}
-              className="text-xs text-[#A8843E] hover:underline font-medium"
-            >
-              Explore Full Catalog &rarr;
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {relatedProducts.map((rel) => (
-              <div
-                key={rel.id}
-                onClick={() => onSelectProduct(rel)}
-                className="bg-white border border-[#EAE3D5] rounded-xl overflow-hidden hover:border-[#C5A059] transition-all cursor-pointer group flex flex-col"
-              >
-                <div className="aspect-square bg-[#FAF8F5] overflow-hidden">
-                  <img
-                    src={rel.images[0]}
-                    alt={rel.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-4 flex-1 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#A8843E] font-semibold">
-                      {rel.category}
-                    </span>
-                    <h4 className="font-serif text-base text-[#1F2022] font-medium group-hover:text-[#A8843E] transition-colors mt-0.5 line-clamp-1">
-                      {rel.name}
-                    </h4>
-                  </div>
-                  <div className="mt-3 pt-2 border-t border-[#F5F1E8] flex items-center justify-between">
-                    <span className="text-sm font-semibold text-[#1F2022]">
-                      {formatPrice(rel.priceUSD)}
-                    </span>
-                    <span className="text-xs text-[#A8843E] font-medium">View Piece &rarr;</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      {/* STICKY BOTTOM ADD TO BAG ACTION BAR */}
+      <StickyAddToCart
+        product={product}
+        selectedVariant={selectedVariant}
+        selectedSize={selectedSize}
+        currentPriceUSD={currentPriceUSD}
+        onAddToCart={handleAddToCart}
+        onBuyNow={handleBuyNow}
+      />
 
     </div>
   );
