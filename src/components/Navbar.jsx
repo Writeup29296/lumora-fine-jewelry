@@ -124,9 +124,6 @@ export const Navbar = ({ onNavigate, onSelectProduct, products = [] }) => {
       {/* 1. ROTATING ANNOUNCEMENT BAR */}
       <AnnouncementBar 
         onNavigate={onNavigate} 
-        isAdmin={isAdmin} 
-        onOpenAdmin={onOpenAdmin} 
-        openLogin={openLogin} 
       />
 
       {/* 2. MAIN NAVIGATION */}

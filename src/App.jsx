@@ -13,6 +13,7 @@ import { DomainSetupModal } from './components/DomainSetupModal';
 import { CookieConsentBanner } from './components/CookieConsentBanner';
 import { AdminDashboard } from './components/AdminDashboard';
 import { SecretAdminModal } from './components/SecretAdminModal';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 // All 13 Pages
 import { HomePage } from './pages/HomePage';
@@ -338,7 +339,9 @@ export function App() {
         <ProductsProvider>
           <OrdersProvider>
             <CartProvider>
-              <StoreLayout />
+              <ErrorBoundary>
+                <StoreLayout />
+              </ErrorBoundary>
             </CartProvider>
           </OrdersProvider>
         </ProductsProvider>

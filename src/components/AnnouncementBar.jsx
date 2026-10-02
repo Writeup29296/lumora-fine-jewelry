@@ -22,7 +22,7 @@ const MESSAGES = [
   }
 ];
 
-export const AnnouncementBar = ({ onNavigate, isAdmin, onOpenAdmin, openLogin }) => {
+export const AnnouncementBar = ({ onNavigate }) => {
   const [currentIdx, setCurrentIdx] = useState(0);
 
   useEffect(() => {
