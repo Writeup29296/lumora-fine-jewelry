@@ -11,6 +11,7 @@ export const AuthModal = () => {
     setAuthError,
     login,
     signup,
+    forgotPassword,
     closeAuthModal,
     loginAsDemoAdmin,
     loginAsDemoCustomer,
@@ -28,6 +29,12 @@ export const AuthModal = () => {
   const [signupRole, setSignupRole] = useState('customer');
   const [signupAdminPasskey, setSignupAdminPasskey] = useState('');
   const [signupCountry, setSignupCountry] = useState('United States');
+
+  // Forgot password form state
+  const [forgotEmail, setForgotEmail] = useState('');
+  const [forgotNewPassword, setForgotNewPassword] = useState('');
+  const [forgotConfirmPassword, setForgotConfirmPassword] = useState('');
+  const [forgotSuccess, setForgotSuccess] = useState('');
 
   if (!isAuthModalOpen) return null;
 
@@ -48,6 +55,34 @@ export const AuthModal = () => {
     });
   };
 
+  const handleForgotSubmit = async (e) => {
+    e.preventDefault();
+    setForgotSuccess('');
+    setAuthError(null);
+
+    if (forgotNewPassword !== forgotConfirmPassword) {
+      setAuthError('New passwords do not match. Please re-enter.');
+      return;
+    }
+
+    if (forgotNewPassword.length < 6) {
+      setAuthError('New password must be at least 6 characters long.');
+      return;
+    }
+
+    const res = await forgotPassword(forgotEmail, forgotNewPassword);
+    if (res.success) {
+      setForgotSuccess(res.message);
+      setForgotEmail('');
+      setForgotNewPassword('');
+      setForgotConfirmPassword('');
+      setTimeout(() => {
+        setAuthModalMode('login');
+        setForgotSuccess('');
+      }, 3000);
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-fade-in text-[#1F2022]">
       <div className="bg-white border border-[#EAE3D5] rounded-3xl max-w-md w-full shadow-2xl overflow-hidden flex flex-col my-auto">
@@ -58,7 +93,7 @@ export const AuthModal = () => {
             <span className="text-[#1F2022] font-serif tracking-widest text-lg font-bold">LUMORA</span>
             <span className="text-[#EAE3D5]">|</span>
             <span className="text-xs uppercase tracking-wider text-[#A8843E] font-medium">
-              {authModalMode === 'login' ? 'Authentication' : 'Register Account'}
+              {authModalMode === 'login' ? 'Authentication' : authModalMode === 'forgot' ? 'Reset Password' : 'Register Account'}
             </span>
           </div>
           <button
@@ -74,6 +109,7 @@ export const AuthModal = () => {
           <button
             onClick={() => {
               setAuthError(null);
+              setForgotSuccess('');
               setAuthModalMode('login');
             }}
             className={`flex-1 py-3 font-semibold uppercase tracking-wider transition-all border-b-2 ${
@@ -87,6 +123,7 @@ export const AuthModal = () => {
           <button
             onClick={() => {
               setAuthError(null);
+              setForgotSuccess('');
               setAuthModalMode('signup');
             }}
             className={`flex-1 py-3 font-semibold uppercase tracking-wider transition-all border-b-2 ${
@@ -97,6 +134,20 @@ export const AuthModal = () => {
           >
             Create Account
           </button>
+          <button
+            onClick={() => {
+              setAuthError(null);
+              setForgotSuccess('');
+              setAuthModalMode('forgot');
+            }}
+            className={`flex-1 py-3 font-semibold uppercase tracking-wider transition-all border-b-2 ${
+              authModalMode === 'forgot'
+                ? 'border-[#C5A059] text-[#1F2022] bg-white'
+                : 'border-transparent text-[#747780] hover:text-[#1F2022]'
+            }`}
+          >
+            Forgot Password
+          </button>
         </div>
 
         {/* Modal Body */}
@@ -105,6 +156,13 @@ export const AuthModal = () => {
           {authError && (
             <div className="p-3 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs">
               {authError}
+            </div>
+          )}
+
+          {forgotSuccess && (
+            <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
+              <span>{forgotSuccess}</span>
             </div>
           )}
 
@@ -127,7 +185,21 @@ export const AuthModal = () => {
               </div>
 
               <div className="space-y-1">
-                <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Password</label>
+                <div className="flex items-center justify-between">
+                  <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Password</label>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setAuthError(null);
+                      setForgotSuccess('');
+                      setForgotEmail(loginEmail);
+                      setAuthModalMode('forgot');
+                    }}
+                    className="text-[11px] text-[#A8843E] hover:underline"
+                  >
+                    Forgot Password?
+                  </button>
+                </div>
                 <div className="relative">
                   <Lock className="w-4 h-4 text-[#747780] absolute left-3 top-2.5" />
                   <input
@@ -147,6 +219,79 @@ export const AuthModal = () => {
               >
                 Sign In
               </button>
+            </form>
+          ) : authModalMode === 'forgot' ? (
+            /* FORGOT PASSWORD FORM */
+            <form onSubmit={handleForgotSubmit} className="space-y-3.5">
+              <p className="text-xs text-[#575A61]">
+                Enter your registered Lumora account email address and specify your new password below.
+              </p>
+
+              <div className="space-y-1">
+                <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Registered Email Address</label>
+                <div className="relative">
+                  <Mail className="w-4 h-4 text-[#747780] absolute left-3 top-2.5" />
+                  <input
+                    type="email"
+                    required
+                    placeholder="e.g. victoria@nyc.com"
+                    value={forgotEmail}
+                    onChange={(e) => setForgotEmail(e.target.value)}
+                    className="w-full pl-9 pr-3 py-2 bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-xs text-[#1F2022] focus:outline-none focus:border-[#C5A059]"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">New Password</label>
+                <div className="relative">
+                  <Lock className="w-4 h-4 text-[#747780] absolute left-3 top-2.5" />
+                  <input
+                    type="password"
+                    required
+                    placeholder="Minimum 6 characters"
+                    value={forgotNewPassword}
+                    onChange={(e) => setForgotNewPassword(e.target.value)}
+                    className="w-full pl-9 pr-3 py-2 bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-xs text-[#1F2022] focus:outline-none focus:border-[#C5A059]"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Confirm New Password</label>
+                <div className="relative">
+                  <Lock className="w-4 h-4 text-[#747780] absolute left-3 top-2.5" />
+                  <input
+                    type="password"
+                    required
+                    placeholder="Re-type new password"
+                    value={forgotConfirmPassword}
+                    onChange={(e) => setForgotConfirmPassword(e.target.value)}
+                    className="w-full pl-9 pr-3 py-2 bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-xs text-[#1F2022] focus:outline-none focus:border-[#C5A059]"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-2.5 bg-[#1F2022] hover:bg-[#A8843E] text-[#FAF8F5] transition-colors rounded-lg font-semibold uppercase tracking-wider"
+              >
+                Reset Password
+              </button>
+
+              <div className="text-center pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setAuthError(null);
+                    setForgotSuccess('');
+                    setAuthModalMode('login');
+                  }}
+                  className="text-xs text-[#A8843E] hover:underline"
+                >
+                  Remembered your password? Back to Sign In
+                </button>
+              </div>
             </form>
           ) : (
             /* SIGNUP FORM */

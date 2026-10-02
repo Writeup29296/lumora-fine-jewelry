@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CurrencyProvider } from './context/CurrencyContext';
+import { SettingsProvider } from './context/SettingsContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ProductsProvider, useProducts } from './context/ProductsContext';
 import { OrdersProvider, useOrders } from './context/OrdersContext';
@@ -352,19 +353,21 @@ function StoreLayout() {
 
 export function App() {
   return (
-    <CurrencyProvider>
-      <AuthProvider>
-        <ProductsProvider>
-          <OrdersProvider>
-            <CartProvider>
-              <ErrorBoundary>
-                <StoreLayout />
-              </ErrorBoundary>
-            </CartProvider>
-          </OrdersProvider>
-        </ProductsProvider>
-      </AuthProvider>
-    </CurrencyProvider>
+    <SettingsProvider>
+      <CurrencyProvider>
+        <AuthProvider>
+          <ProductsProvider>
+            <OrdersProvider>
+              <CartProvider>
+                <ErrorBoundary>
+                  <StoreLayout />
+                </ErrorBoundary>
+              </CartProvider>
+            </OrdersProvider>
+          </ProductsProvider>
+        </AuthProvider>
+      </CurrencyProvider>
+    </SettingsProvider>
   );
 }
 

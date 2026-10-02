@@ -8,7 +8,18 @@ import { useOrders } from '../context/OrdersContext';
 import { useCurrency } from '../context/CurrencyContext';
 
 export const AccountPage = ({ onNavigate }) => {
-  const { currentUser, login, signup, logout, isLoggedIn, authError, loginAsDemoCustomer } = useAuth();
+  const { 
+    currentUser, 
+    login, 
+    signup, 
+    forgotPassword, 
+    changePassword, 
+    logout, 
+    isLoggedIn, 
+    authError, 
+    setAuthError, 
+    loginAsDemoCustomer 
+  } = useAuth();
   const { orders } = useOrders();
   const { formatPrice } = useCurrency();
 
@@ -25,11 +36,21 @@ export const AccountPage = ({ onNavigate }) => {
   const [returnNotes, setReturnNotes] = useState('');
   const [returnSuccess, setReturnSuccess] = useState('');
 
-  // Sign In / Register toggle for guests
-  const [authMode, setAuthMode] = useState('login');
+  // Sign In / Register / Forgot Password toggle for guests
+  const [authMode, setAuthMode] = useState('login'); // 'login' | 'signup' | 'forgot'
   const [authEmail, setAuthEmail] = useState('');
   const [authPassword, setAuthPassword] = useState('');
   const [authName, setAuthName] = useState('');
+  const [forgotNewPassword, setForgotNewPassword] = useState('');
+  const [forgotConfirmPassword, setForgotConfirmPassword] = useState('');
+  const [forgotSuccess, setForgotSuccess] = useState('');
+
+  // Change Password state for logged-in user
+  const [currentPw, setCurrentPw] = useState('');
+  const [newPw, setNewPw] = useState('');
+  const [confirmNewPw, setConfirmNewPw] = useState('');
+  const [changePwSuccess, setChangePwSuccess] = useState('');
+  const [changePwError, setChangePwError] = useState('');
 
   // Handle Guest Lookup
   const handleGuestLookup = async (e) => {
@@ -69,12 +90,60 @@ export const AccountPage = ({ onNavigate }) => {
     }
   };
 
-  const handleAuthSubmit = (e) => {
+  const handleAuthSubmit = async (e) => {
     e.preventDefault();
+    setForgotSuccess('');
     if (authMode === 'login') {
       login(authEmail, authPassword);
-    } else {
+    } else if (authMode === 'signup') {
       signup({ name: authName, email: authEmail, password: authPassword, role: 'customer' });
+    } else if (authMode === 'forgot') {
+      setAuthError(null);
+      if (forgotNewPassword !== forgotConfirmPassword) {
+        setAuthError('New passwords do not match. Please re-enter.');
+        return;
+      }
+      if (forgotNewPassword.length < 6) {
+        setAuthError('New password must be at least 6 characters long.');
+        return;
+      }
+      const res = await forgotPassword(authEmail, forgotNewPassword);
+      if (res.success) {
+        setForgotSuccess(res.message);
+        setForgotNewPassword('');
+        setForgotConfirmPassword('');
+        setTimeout(() => {
+          setAuthMode('login');
+          setForgotSuccess('');
+        }, 3000);
+      }
+    }
+  };
+
+  const handleChangePasswordSubmit = async (e) => {
+    e.preventDefault();
+    setChangePwSuccess('');
+    setChangePwError('');
+
+    if (newPw !== confirmNewPw) {
+      setChangePwError('New passwords do not match.');
+      return;
+    }
+
+    if (newPw.length < 6) {
+      setChangePwError('New password must be at least 6 characters long.');
+      return;
+    }
+
+    const res = await changePassword(currentPw, newPw);
+    if (res.success) {
+      setChangePwSuccess(res.message);
+      setCurrentPw('');
+      setNewPw('');
+      setConfirmNewPw('');
+      setTimeout(() => setChangePwSuccess(''), 4000);
+    } else {
+      setChangePwError(res.error || 'Failed to update password.');
     }
   };
 
@@ -191,63 +260,162 @@ export const AccountPage = ({ onNavigate }) => {
               <div className="flex items-center gap-2">
                 <User className="w-5 h-5 text-[#A8843E]" />
                 <h2 className="font-serif text-xl text-[#1F2022] font-medium">
-                  {authMode === 'login' ? 'Customer Sign In' : 'Create Account'}
+                  {authMode === 'login' ? 'Customer Sign In' : authMode === 'forgot' ? 'Reset Password' : 'Create Account'}
                 </h2>
               </div>
-              <button
-                onClick={() => setAuthMode(authMode === 'login' ? 'signup' : 'login')}
-                className="text-xs text-[#A8843E] hover:underline"
-              >
-                {authMode === 'login' ? 'New client? Register' : 'Existing client? Sign In'}
-              </button>
+              <div className="flex items-center gap-2 text-xs">
+                {authMode !== 'login' && (
+                  <button
+                    onClick={() => { setAuthError(null); setForgotSuccess(''); setAuthMode('login'); }}
+                    className="text-[#A8843E] hover:underline"
+                  >
+                    Sign In
+                  </button>
+                )}
+                {authMode !== 'signup' && (
+                  <button
+                    onClick={() => { setAuthError(null); setForgotSuccess(''); setAuthMode('signup'); }}
+                    className="text-[#A8843E] hover:underline"
+                  >
+                    Register
+                  </button>
+                )}
+                {authMode !== 'forgot' && (
+                  <button
+                    onClick={() => { setAuthError(null); setForgotSuccess(''); setAuthMode('forgot'); }}
+                    className="text-[#747780] hover:text-[#1F2022]"
+                  >
+                    Forgot Password?
+                  </button>
+                )}
+              </div>
             </div>
 
-            <form onSubmit={handleAuthSubmit} className="space-y-3.5">
-              {authMode === 'signup' && (
+            {forgotSuccess && (
+              <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
+                <span>{forgotSuccess}</span>
+              </div>
+            )}
+
+            {authMode === 'forgot' ? (
+              <form onSubmit={handleAuthSubmit} className="space-y-3.5">
+                <p className="text-xs text-[#575A61]">
+                  Enter your registered email address and enter a new password below.
+                </p>
+
                 <div className="space-y-1">
-                  <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Full Name *</label>
+                  <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Registered Email Address *</label>
                   <input
-                    type="text"
+                    type="email"
                     required
-                    placeholder="e.g. Victoria Sterling"
-                    value={authName}
-                    onChange={(e) => setAuthName(e.target.value)}
+                    placeholder="e.g. victoria@nyc.com"
+                    value={authEmail}
+                    onChange={(e) => setAuthEmail(e.target.value)}
                     className="w-full px-3.5 py-2 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-[#1F2022]"
                   />
                 </div>
-              )}
 
-              <div className="space-y-1">
-                <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Email Address *</label>
-                <input
-                  type="email"
-                  required
-                  placeholder="e.g. victoria@nyc.com"
-                  value={authEmail}
-                  onChange={(e) => setAuthEmail(e.target.value)}
-                  className="w-full px-3.5 py-2 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-[#1F2022]"
-                />
-              </div>
+                <div className="space-y-1">
+                  <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">New Password *</label>
+                  <input
+                    type="password"
+                    required
+                    placeholder="Minimum 6 characters"
+                    value={forgotNewPassword}
+                    onChange={(e) => setForgotNewPassword(e.target.value)}
+                    className="w-full px-3.5 py-2 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-[#1F2022]"
+                  />
+                </div>
 
-              <div className="space-y-1">
-                <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Password *</label>
-                <input
-                  type="password"
-                  required
-                  placeholder="••••••••"
-                  value={authPassword}
-                  onChange={(e) => setAuthPassword(e.target.value)}
-                  className="w-full px-3.5 py-2 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-[#1F2022]"
-                />
-              </div>
+                <div className="space-y-1">
+                  <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Confirm New Password *</label>
+                  <input
+                    type="password"
+                    required
+                    placeholder="Re-type new password"
+                    value={forgotConfirmPassword}
+                    onChange={(e) => setForgotConfirmPassword(e.target.value)}
+                    className="w-full px-3.5 py-2 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-[#1F2022]"
+                  />
+                </div>
 
-              <button
-                type="submit"
-                className="w-full py-2.5 bg-[#1F2022] hover:bg-[#A8843E] text-[#FAF8F5] transition-colors rounded text-xs uppercase tracking-wider font-semibold"
-              >
-                {authMode === 'login' ? 'Sign In to Account' : 'Register Account'}
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="w-full py-2.5 bg-[#1F2022] hover:bg-[#A8843E] text-[#FAF8F5] transition-colors rounded text-xs uppercase tracking-wider font-semibold"
+                >
+                  Reset Password
+                </button>
+
+                <div className="text-center pt-1">
+                  <button
+                    type="button"
+                    onClick={() => { setAuthError(null); setForgotSuccess(''); setAuthMode('login'); }}
+                    className="text-xs text-[#A8843E] hover:underline"
+                  >
+                    Remembered password? Back to Sign In
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <form onSubmit={handleAuthSubmit} className="space-y-3.5">
+                {authMode === 'signup' && (
+                  <div className="space-y-1">
+                    <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Full Name *</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Victoria Sterling"
+                      value={authName}
+                      onChange={(e) => setAuthName(e.target.value)}
+                      className="w-full px-3.5 py-2 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-[#1F2022]"
+                    />
+                  </div>
+                )}
+
+                <div className="space-y-1">
+                  <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Email Address *</label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="e.g. victoria@nyc.com"
+                    value={authEmail}
+                    onChange={(e) => setAuthEmail(e.target.value)}
+                    className="w-full px-3.5 py-2 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-[#1F2022]"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <div className="flex items-center justify-between">
+                    <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Password *</label>
+                    {authMode === 'login' && (
+                      <button
+                        type="button"
+                        onClick={() => { setAuthError(null); setForgotSuccess(''); setAuthMode('forgot'); }}
+                        className="text-[11px] text-[#A8843E] hover:underline"
+                      >
+                        Forgot Password?
+                      </button>
+                    )}
+                  </div>
+                  <input
+                    type="password"
+                    required
+                    placeholder="••••••••"
+                    value={authPassword}
+                    onChange={(e) => setAuthPassword(e.target.value)}
+                    className="w-full px-3.5 py-2 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-[#1F2022]"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-2.5 bg-[#1F2022] hover:bg-[#A8843E] text-[#FAF8F5] transition-colors rounded text-xs uppercase tracking-wider font-semibold"
+                >
+                  {authMode === 'login' ? 'Sign In to Account' : 'Register Account'}
+                </button>
+              </form>
+            )}
 
             {authError && (
               <p className="text-xs text-rose-600">{authError}</p>
@@ -373,6 +541,80 @@ export const AccountPage = ({ onNavigate }) => {
                 ))}
               </div>
             )}
+          </div>
+
+          {/* Security & Password Management */}
+          <div className="bg-white border border-[#EAE3D5] rounded-3xl p-6 sm:p-10 space-y-6 shadow-xs">
+            <div className="flex items-center justify-between pb-3 border-b border-[#F5F1E8]">
+              <div className="flex items-center gap-2">
+                <Lock className="w-5 h-5 text-[#A8843E]" />
+                <h3 className="font-serif text-2xl text-[#1F2022] font-medium">Security & Password</h3>
+              </div>
+              <span className="text-xs text-[#747780]">Client Credentials</span>
+            </div>
+
+            <p className="text-xs text-[#575A61]">
+              Manage and update your account security credentials for your Lumora client profile.
+            </p>
+
+            {changePwSuccess && (
+              <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
+                <span>{changePwSuccess}</span>
+              </div>
+            )}
+
+            {changePwError && (
+              <div className="p-3 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
+                <span>{changePwError}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleChangePasswordSubmit} className="max-w-md space-y-4 text-xs">
+              <div className="space-y-1">
+                <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Current Password *</label>
+                <input
+                  type="password"
+                  required
+                  placeholder="Enter current password"
+                  value={currentPw}
+                  onChange={(e) => setCurrentPw(e.target.value)}
+                  className="w-full px-3.5 py-2 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-[#1F2022] focus:outline-none focus:border-[#C5A059]"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">New Password *</label>
+                <input
+                  type="password"
+                  required
+                  placeholder="Minimum 6 characters"
+                  value={newPw}
+                  onChange={(e) => setNewPw(e.target.value)}
+                  className="w-full px-3.5 py-2 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-[#1F2022] focus:outline-none focus:border-[#C5A059]"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Confirm New Password *</label>
+                <input
+                  type="password"
+                  required
+                  placeholder="Re-type new password"
+                  value={confirmNewPw}
+                  onChange={(e) => setConfirmNewPw(e.target.value)}
+                  className="w-full px-3.5 py-2 text-xs bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-[#1F2022] focus:outline-none focus:border-[#C5A059]"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="px-6 py-2.5 bg-[#1F2022] hover:bg-[#A8843E] text-[#FAF8F5] transition-colors rounded text-xs uppercase tracking-wider font-semibold"
+              >
+                Update Password
+              </button>
+            </form>
           </div>
 
         </div>

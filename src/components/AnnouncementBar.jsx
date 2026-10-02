@@ -1,46 +1,52 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Sparkles, Plane, ShieldCheck, Lock } from 'lucide-react';
-
-const MESSAGES = [
-  {
-    icon: Sparkles,
-    text: 'Direct Atelier Pricing: Handcrafted in Jaipur & Surat • Zero 400% Retail Markups',
-    linkText: 'Our Atelier Story',
-    page: 'about'
-  },
-  {
-    icon: ShieldCheck,
-    text: '🇺🇸 USA: Section 321 Duty-Free Under $800 • 🇨🇦 Canada: CBSA & Provincial DDP Pre-Cleared',
-    linkText: 'Shipping & Customs',
-    page: 'shipping'
-  },
-  {
-    icon: Plane,
-    text: 'Complimentary Insured DHL Air Express on Orders Over $300 • 30-Day Effortless Returns',
-    linkText: '30-Day Return Policy',
-    page: 'returns'
-  }
-];
+import { ChevronLeft, ChevronRight, Sparkles, Plane, ShieldCheck } from 'lucide-react';
+import { useSettings } from '../context/SettingsContext';
 
 export const AnnouncementBar = ({ onNavigate }) => {
+  const { settings } = useSettings();
   const [currentIdx, setCurrentIdx] = useState(0);
+
+  const messages = [
+    {
+      icon: Sparkles,
+      text: settings?.announcement1 || 'Direct Atelier Pricing: Handcrafted in Jaipur & Surat • Zero 400% Retail Markups',
+      linkText: settings?.announcement1Link || 'Our Atelier Story',
+      page: settings?.announcement1Page || 'about'
+    },
+    {
+      icon: ShieldCheck,
+      text: settings?.announcement2 || '🇺🇸 USA: Section 321 Duty-Free Under $800 • 🇨🇦 Canada: CBSA & Provincial DDP Pre-Cleared',
+      linkText: settings?.announcement2Link || 'Shipping & Customs',
+      page: settings?.announcement2Page || 'shipping'
+    },
+    {
+      icon: Plane,
+      text: settings?.announcement3 || 'Complimentary Insured DHL Air Express on Orders Over $150 • 30-Day Effortless Returns',
+      linkText: settings?.announcement3Link || '30-Day Return Policy',
+      page: settings?.announcement3Page || 'returns'
+    }
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIdx((prev) => (prev + 1) % MESSAGES.length);
+      setCurrentIdx((prev) => (prev + 1) % messages.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [messages.length]);
 
-  const msg = MESSAGES[currentIdx];
+  if (settings?.announcementActive === false) {
+    return null;
+  }
+
+  const msg = messages[currentIdx] || messages[0];
   const Icon = msg.icon;
 
   const handlePrev = () => {
-    setCurrentIdx((prev) => (prev - 1 + MESSAGES.length) % MESSAGES.length);
+    setCurrentIdx((prev) => (prev - 1 + messages.length) % messages.length);
   };
 
   const handleNext = () => {
-    setCurrentIdx((prev) => (prev + 1) % MESSAGES.length);
+    setCurrentIdx((prev) => (prev + 1) % messages.length);
   };
 
   return (
@@ -59,27 +65,25 @@ export const AnnouncementBar = ({ onNavigate }) => {
         {/* Central Rotating Message */}
         <div className="flex-1 flex items-center justify-center gap-2 text-center transition-all duration-300">
           <Icon className="w-3.5 h-3.5 text-[#A8843E] shrink-0" />
-          <span className="text-[11px] sm:text-xs font-medium text-[#1F2022]">
+          <span className="text-[#1F2022] font-medium text-[11px] sm:text-xs">
             {msg.text}
           </span>
-          <button
+          <button 
             onClick={() => onNavigate(msg.page)}
-            className="hidden md:inline-block text-[11px] underline decoration-[#C5A059] hover:text-[#A8843E] text-[#575A61] font-normal transition-colors"
+            className="text-[11px] text-[#A8843E] hover:text-[#1F2022] underline underline-offset-2 ml-1 hidden md:inline font-semibold"
           >
-            {msg.linkText}
+            {msg.linkText} &rarr;
           </button>
         </div>
 
         {/* Right Arrow */}
-        <div className="flex items-center gap-2">
-          <button 
-            onClick={handleNext}
-            className="p-1 hover:text-[#1F2022] transition-colors hidden sm:block"
-            aria-label="Next announcement"
-          >
-            <ChevronRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
+        <button 
+          onClick={handleNext}
+          className="p-1 hover:text-[#1F2022] transition-colors hidden sm:block"
+          aria-label="Next announcement"
+        >
+          <ChevronRight className="w-3.5 h-3.5" />
+        </button>
 
       </div>
     </div>

@@ -177,6 +177,94 @@ export const AuthProvider = ({ children }) => {
     setIsAuthModalOpen(true);
   };
 
+  // Forgot Password / Reset method
+  const forgotPassword = async (email, newPassword) => {
+    setAuthError(null);
+    const normalizedEmail = (email || '').trim().toLowerCase();
+    if (!normalizedEmail || !newPassword) {
+      const err = 'Please provide both your registered email and new password.';
+      setAuthError(err);
+      return { success: false, error: err };
+    }
+
+    const userIndex = users.findIndex(u => u.email.toLowerCase() === normalizedEmail);
+    if (userIndex === -1) {
+      const err = 'No client account found registered with this email address.';
+      setAuthError(err);
+      return { success: false, error: err };
+    }
+
+    // Update password in users state
+    setUsers(prev => {
+      const copy = [...prev];
+      copy[userIndex] = { ...copy[userIndex], password: newPassword };
+      return copy;
+    });
+
+    // Notify backend API
+    try {
+      await fetch('/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: normalizedEmail, newPassword })
+      });
+    } catch {}
+
+    return { 
+      success: true, 
+      message: 'Your password has been successfully reset. You may now sign in with your new password.' 
+    };
+  };
+
+  // Change Password for logged in user
+  const changePassword = async (currentPassword, newPassword) => {
+    setAuthError(null);
+    if (!currentUser) {
+      return { success: false, error: 'You must be signed in to change your password.' };
+    }
+
+    const user = users.find(u => u.email.toLowerCase() === currentUser.email.toLowerCase());
+    if (!user) {
+      return { success: false, error: 'User account not found.' };
+    }
+
+    if (user.password !== currentPassword) {
+      return { success: false, error: 'Current password does not match our records.' };
+    }
+
+    if (newPassword.length < 6) {
+      return { success: false, error: 'New password must be at least 6 characters long.' };
+    }
+
+    // Update password
+    setUsers(prev => prev.map(u => 
+      u.email.toLowerCase() === currentUser.email.toLowerCase()
+        ? { ...u, password: newPassword }
+        : u
+    ));
+
+    // Notify backend API
+    try {
+      await fetch('/api/auth/change-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          email: currentUser.email, 
+          currentPassword, 
+          newPassword 
+        })
+      });
+    } catch {}
+
+    return { success: true, message: 'Password updated successfully!' };
+  };
+
+  const openForgotPassword = () => {
+    setAuthError(null);
+    setAuthModalMode('forgot');
+    setIsAuthModalOpen(true);
+  };
+
   const closeAuthModal = () => {
     setAuthError(null);
     setIsAuthModalOpen(false);
@@ -195,9 +283,12 @@ export const AuthProvider = ({ children }) => {
         setAuthError,
         login,
         signup,
+        forgotPassword,
+        changePassword,
         logout,
         openLogin,
         openSignup,
+        openForgotPassword,
         closeAuthModal,
         loginAsDemoAdmin,
         loginAsDemoCustomer,

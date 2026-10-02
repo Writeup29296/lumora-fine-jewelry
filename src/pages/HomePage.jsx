@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
 import { useCart } from '../context/CartContext';
+import { useSettings } from '../context/SettingsContext';
 import { brandConfig } from '../data/brandConfig';
 import { demonstrationReviews, trustStats } from '../data/reviews';
 import { AtelierCostComparison } from '../components/AtelierCostComparison';
@@ -14,6 +15,7 @@ import { QuickViewModal } from '../components/QuickViewModal';
 export const HomePage = ({ onNavigate, onSelectProduct, products = [] }) => {
   const { formatPrice, activeCurrency, activeCountry } = useCurrency();
   const { addToCart } = useCart();
+  const { settings } = useSettings();
 
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [activeGiftTab, setActiveGiftTab] = useState('under250');
@@ -22,8 +24,8 @@ export const HomePage = ({ onNavigate, onSelectProduct, products = [] }) => {
   // Top 4 best sellers
   const bestSellers = products.slice(0, 4);
 
-  // Category circular avatars (Mejuri Style)
-  const categoryPills = [
+  // Category circular avatars (Dynamic from Admin CMS with fallback)
+  const defaultCategoryPills = [
     { id: 'rings', name: 'Solitaire Rings', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=400&q=80' },
     { id: 'bracelets', name: 'Tennis Suite', image: 'https://images.unsplash.com/photo-1611591475152-47831c367295?auto=format&fit=crop&w=400&q=80' },
     { id: 'earrings', name: 'Huggie Hoops', image: 'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=400&q=80' },
@@ -31,6 +33,10 @@ export const HomePage = ({ onNavigate, onSelectProduct, products = [] }) => {
     { id: 'rings', name: 'Eternity Bands', image: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=400&q=80' },
     { id: 'shop', name: 'Solid 14K Gold', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=400&q=80' }
   ];
+
+  const categoryPills = settings?.categoryPills && settings.categoryPills.length > 0 
+    ? settings.categoryPills 
+    : defaultCategoryPills;
 
   // Gift tabs data
   const getGiftProducts = () => {
@@ -60,16 +66,16 @@ export const HomePage = ({ onNavigate, onSelectProduct, products = [] }) => {
             <div className="lg:col-span-7 space-y-6 text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4EFE6] border border-[#E0D5C1] text-[#A8843E] text-xs uppercase tracking-[0.2em] font-medium">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Jaipur & Surat Ateliers &bull; Direct Export to USA & Canada</span>
+                <span>{settings.heroBadge || "Jaipur & Surat Ateliers • Direct Export to USA & Canada"}</span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-[#1F2022] leading-[1.12] font-normal tracking-tight">
-                Everyday Heirlooms, <br />
-                <span className="italic font-light text-[#A8843E]">Direct from Master Ateliers.</span>
+                {settings.heroTitle || "Everyday Heirlooms,"} <br />
+                <span className="italic font-light text-[#A8843E]">{settings.heroTitleHighlight || "Direct from Master Ateliers."}</span>
               </h1>
 
               <p className="text-base sm:text-lg text-[#575A61] max-w-xl leading-relaxed">
-                Handcrafted solid gold, 925 sterling silver, and certified lab-grown diamonds. Shipped directly from the jewelry capitals of Jaipur and Surat straight to North America — without traditional 400% boutique markups.
+                {settings.heroDescription || "Handcrafted solid gold, 925 sterling silver, and certified lab-grown diamonds. Shipped directly from the jewelry capitals of Jaipur and Surat straight to North America — without traditional 400% boutique markups."}
               </p>
 
               <div className="pt-2 flex flex-wrap gap-4 items-center">
@@ -77,7 +83,7 @@ export const HomePage = ({ onNavigate, onSelectProduct, products = [] }) => {
                   onClick={() => onNavigate('shop')}
                   className="px-8 py-3.5 bg-[#1F2022] text-[#FAF8F5] hover:bg-[#A8843E] transition-all rounded shadow-md text-xs font-semibold tracking-wider uppercase flex items-center gap-2"
                 >
-                  <span>Explore The Shop</span>
+                  <span>{settings.heroCtaPrimary || "Explore The Shop"}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
@@ -85,14 +91,14 @@ export const HomePage = ({ onNavigate, onSelectProduct, products = [] }) => {
                   onClick={() => onNavigate('shop', { category: 'rings' })}
                   className="px-6 py-3.5 border border-[#C5A059] text-[#1F2022] hover:bg-[#F4EFE6] transition-all rounded text-xs font-semibold tracking-wider uppercase"
                 >
-                  Solitaires & Bands
+                  {settings.heroCtaSecondary || "Solitaires & Bands"}
                 </button>
 
                 <button
                   onClick={() => onNavigate('about')}
                   className="px-4 py-3.5 text-[#575A61] hover:text-[#1F2022] transition-colors text-xs font-semibold tracking-wider uppercase flex items-center gap-1"
                 >
-                  <span>Atelier Story</span>
+                  <span>{settings.heroCtaTertiary || "Atelier Story"}</span>
                   <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
@@ -102,22 +108,22 @@ export const HomePage = ({ onNavigate, onSelectProduct, products = [] }) => {
                 <div className="flex items-start gap-2">
                   <Plane className="w-4 h-4 text-[#A8843E] mt-0.5 shrink-0" />
                   <div>
-                    <strong className="block text-[#1F2022]">Ships from India</strong>
-                    <span>3–5 Days via DHL Express</span>
+                    <strong className="block text-[#1F2022]">{settings.trustBadge1Title || "Ships from India"}</strong>
+                    <span>{settings.trustBadge1Desc || "3–5 Days via DHL Express"}</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
                   <ShieldCheck className="w-4 h-4 text-[#A8843E] mt-0.5 shrink-0" />
                   <div>
-                    <strong className="block text-[#1F2022]">US Section 321 / DDP</strong>
-                    <span>Zero US Duty under $800</span>
+                    <strong className="block text-[#1F2022]">{settings.trustBadge2Title || "US Section 321 / DDP"}</strong>
+                    <span>{settings.trustBadge2Desc || "Zero US Duty under $800"}</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
                   <Award className="w-4 h-4 text-[#A8843E] mt-0.5 shrink-0" />
                   <div>
-                    <strong className="block text-[#1F2022]">BIS Hallmarked</strong>
-                    <span>Solid 9K/14K/18K Gold</span>
+                    <strong className="block text-[#1F2022]">{settings.trustBadge3Title || "BIS Hallmarked"}</strong>
+                    <span>{settings.trustBadge3Desc || "Solid 9K/14K/18K Gold"}</span>
                   </div>
                 </div>
               </div>
@@ -128,8 +134,8 @@ export const HomePage = ({ onNavigate, onSelectProduct, products = [] }) => {
               <div className="relative mx-auto max-w-md lg:max-w-none">
                 <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-[#EAE3D5] shadow-2xl bg-white">
                   <img
-                    src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80"
-                    alt="Aura Solitaire Lab-Grown Diamond Ring"
+                    src={settings.heroImageUrl || "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80"}
+                    alt={settings.heroCardTitle || "Aura Solitaire Lab-Grown Diamond Ring"}
                     className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
                   />
                   {/* Floating Atelier Card */}
@@ -137,11 +143,11 @@ export const HomePage = ({ onNavigate, onSelectProduct, products = [] }) => {
                     <div className="flex items-center justify-between">
                       <div>
                         <span className="text-[10px] uppercase tracking-wider text-[#A8843E] font-semibold">Atelier Signature</span>
-                        <h4 className="font-serif text-base text-[#1F2022] font-medium">Aura Solitaire Diamond Ring</h4>
+                        <h4 className="font-serif text-base text-[#1F2022] font-medium">{settings.heroCardTitle || "Aura Solitaire Diamond Ring"}</h4>
                       </div>
                       <div className="text-right">
-                        <span className="text-sm font-semibold text-[#1F2022]">{formatPrice(420)}</span>
-                        <span className="block text-[10px] text-[#747780]">14K Gold &bull; BIS 585</span>
+                        <span className="text-sm font-semibold text-[#1F2022]">{formatPrice(settings.heroCardPrice || 420)}</span>
+                        <span className="block text-[10px] text-[#747780]">{settings.heroCardSubtitle || "14K Gold • BIS 585"}</span>
                       </div>
                     </div>
                   </div>
@@ -351,9 +357,9 @@ export const HomePage = ({ onNavigate, onSelectProduct, products = [] }) => {
           
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-[#EAE3D5]">
             <div>
-              <span className="text-xs uppercase tracking-[0.2em] text-[#A8843E] font-semibold">The Art of Giving</span>
+              <span className="text-xs uppercase tracking-[0.2em] text-[#A8843E] font-semibold">{settings.giftSubtitle || "The Art of Giving"}</span>
               <h2 className="text-2xl sm:text-3xl font-serif text-[#1F2022] mt-1 font-normal">
-                Curated Gifting by Budget
+                {settings.giftHeadline || "Curated Gifting by Budget"}
               </h2>
             </div>
 
@@ -438,30 +444,30 @@ export const HomePage = ({ onNavigate, onSelectProduct, products = [] }) => {
             
             <div className="lg:col-span-7 space-y-5 text-left">
               <span className="text-xs uppercase tracking-[0.2em] text-[#A8843E] font-semibold">
-                Science & Conscience
+                {settings.bannerBadge || "Science & Conscience"}
               </span>
               <h2 className="text-3xl sm:text-4xl font-serif text-[#1F2022] font-normal leading-snug">
-                Why Discerning North American Buyers Choose Certified Lab Diamonds
+                {settings.bannerTitle || "Why Discerning North American Buyers Choose Certified Lab Diamonds"}
               </h2>
               <p className="text-sm text-[#575A61] leading-relaxed">
-                Lab-grown diamonds are 100% crystallized carbon. Under the microscope, Raman spectroscopy, and diamond testers, they possess the exact same physical, optical, and chemical lattice as mined diamonds (Mohs hardness 10).
+                {settings.bannerDescription || "Lab-grown diamonds are 100% crystallized carbon. Under the microscope, Raman spectroscopy, and diamond testers, they possess the exact same physical, optical, and chemical lattice as mined diamonds (Mohs hardness 10)."}
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
                 <div className="p-4 rounded-xl bg-white border border-[#EAE3D5]">
                   <Gem className="w-5 h-5 text-[#A8843E] mb-2" />
-                  <h4 className="font-serif text-sm text-[#1F2022] font-medium">Type IIa Purity</h4>
-                  <p className="text-[11px] text-[#747780] mt-1">Chemically the purest diamonds, representing the top 2% of diamonds globally.</p>
+                  <h4 className="font-serif text-sm text-[#1F2022] font-medium">{settings.bannerFeature1Title || "Type IIa Purity"}</h4>
+                  <p className="text-[11px] text-[#747780] mt-1">{settings.bannerFeature1Desc || "Chemically the purest diamonds, representing the top 2% of diamonds globally."}</p>
                 </div>
                 <div className="p-4 rounded-xl bg-white border border-[#EAE3D5]">
                   <Sparkles className="w-5 h-5 text-[#A8843E] mb-2" />
-                  <h4 className="font-serif text-sm text-[#1F2022] font-medium">Zero Mining Conflict</h4>
-                  <p className="text-[11px] text-[#747780] mt-1">Created using advanced CVD and HPHT technology with traceable origins.</p>
+                  <h4 className="font-serif text-sm text-[#1F2022] font-medium">{settings.bannerFeature2Title || "Zero Mining Conflict"}</h4>
+                  <p className="text-[11px] text-[#747780] mt-1">{settings.bannerFeature2Desc || "Created using advanced CVD and HPHT technology with traceable origins."}</p>
                 </div>
                 <div className="p-4 rounded-xl bg-white border border-[#EAE3D5]">
                   <Award className="w-5 h-5 text-[#A8843E] mb-2" />
-                  <h4 className="font-serif text-sm text-[#1F2022] font-medium">IGI / GIA Standards</h4>
-                  <p className="text-[11px] text-[#747780] mt-1">Graded strictly across the 4Cs: Carat, Color (E-F), Clarity (VS1+), Cut.</p>
+                  <h4 className="font-serif text-sm text-[#1F2022] font-medium">{settings.bannerFeature3Title || "IGI / GIA Standards"}</h4>
+                  <p className="text-[11px] text-[#747780] mt-1">{settings.bannerFeature3Desc || "Graded strictly across the 4Cs: Carat, Color (DEF), Clarity (VS1+), Cut."}</p>
                 </div>
               </div>
 
@@ -470,7 +476,7 @@ export const HomePage = ({ onNavigate, onSelectProduct, products = [] }) => {
                   onClick={() => onNavigate('shop', { category: 'rings' })}
                   className="px-6 py-3 bg-[#1F2022] text-[#FAF8F5] hover:bg-[#A8843E] transition-colors rounded text-xs font-semibold uppercase tracking-wider inline-flex items-center gap-2"
                 >
-                  <span>Browse Solitaire Lab Diamonds</span>
+                  <span>{settings.bannerButtonText || "Browse Solitaire Lab Diamonds"}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -479,7 +485,7 @@ export const HomePage = ({ onNavigate, onSelectProduct, products = [] }) => {
             <div className="lg:col-span-5">
               <div className="aspect-square rounded-2xl overflow-hidden border border-[#EAE3D5] shadow-lg bg-white">
                 <img
-                  src="https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=1000&q=80"
+                  src={settings.bannerImageUrl || "https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=1000&q=80"}
                   alt="Jaipur and Surat Master Gem Setter"
                   className="w-full h-full object-cover object-center"
                 />

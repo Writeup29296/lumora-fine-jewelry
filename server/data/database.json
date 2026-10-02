@@ -834,9 +834,460 @@
     "supportEmail": "concierge@lumorafinejewelery.com",
     "whatsappNumber": "+91 98765 43210 (VIP Concierge)",
     "usPhonePlaceholder": "[US/Canada Toll-Free Inquiries: Number to be configured]",
-    "supportHours": "Mon–Sat: 9:00 AM – 8:00 PM EST (Dedicated North America hours)"
+    "supportHours": "Mon–Sat: 9:00 AM – 8:00 PM EST (Dedicated North America hours)",
+    "brandName": "LUMORA",
+    "brandSubtitle": "FINE JEWELRY",
+    "atelierAddress": "Ateliers in Jaipur & Surat, Rajasthan / Gujarat, India",
+    "brandTagline": "Solid gold (9K, 14K, 18K) and 925 sterling silver fine jewelry handcrafted in the historic artisan workshops of Jaipur and Surat, India. Delivered directly to clients across the United States and Canada with 100% transit insurance and transparent customs clearance.",
+    "heroBadge": "Jaipur & Surat Ateliers • Direct Export to USA & Canada",
+    "heroTitle": "Everyday Heirlooms,",
+    "heroTitleHighlight": "Direct from Master Ateliers.",
+    "heroDescription": "Handcrafted solid gold, 925 sterling silver, and certified lab-grown diamonds. Shipped directly from the jewelry capitals of Jaipur and Surat straight to North America — without traditional 400% boutique markups.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80",
+    "heroCardTitle": "Aura Solitaire Diamond Ring",
+    "heroCardSubtitle": "14K Gold • BIS 585",
+    "heroCardPrice": 425,
+    "heroCtaPrimary": "Explore The Shop",
+    "heroCtaSecondary": "Solitaires & Bands",
+    "heroCtaTertiary": "Atelier Story",
+    "announcementActive": true,
+    "announcement1": "Direct Atelier Pricing: Handcrafted in Jaipur & Surat • Zero 400% Retail Markups",
+    "announcement1Link": "Our Atelier Story",
+    "announcement1Page": "about",
+    "announcement2": "🇺🇸 USA: Section 321 Duty-Free Under $800 • 🇨🇦 Canada: CBSA & Provincial DDP Pre-Cleared",
+    "announcement2Link": "Shipping & Customs",
+    "announcement2Page": "shipping",
+    "announcement3": "Complimentary Insured DHL Air Express on Orders Over $150 • 30-Day Effortless Returns",
+    "announcement3Link": "30-Day Return Policy",
+    "announcement3Page": "returns",
+    "categoryPills": [
+      {
+        "id": "rings",
+        "name": "Solitaire Rings",
+        "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=400&q=80"
+      },
+      {
+        "id": "bracelets",
+        "name": "Tennis Suite",
+        "image": "https://images.unsplash.com/photo-1611591475152-47831c367295?auto=format&fit=crop&w=400&q=80"
+      },
+      {
+        "id": "earrings",
+        "name": "Huggie Hoops",
+        "image": "https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=400&q=80"
+      },
+      {
+        "id": "necklaces",
+        "name": "Pendants",
+        "image": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=400&q=80"
+      },
+      {
+        "id": "rings",
+        "name": "Eternity Bands",
+        "image": "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=400&q=80"
+      },
+      {
+        "id": "shop",
+        "name": "Solid 14K Gold",
+        "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=400&q=80"
+      }
+    ],
+    "bannerBadge": "Science & Conscience",
+    "bannerTitle": "Why Discerning North American Buyers Choose Certified Lab Diamonds",
+    "bannerDescription": "Lab-grown diamonds are 100% crystallized carbon. Under the microscope, Raman spectroscopy, and diamond testers, they possess the exact same physical, optical, and chemical lattice as mined diamonds (Mohs hardness 10).",
+    "bannerImageUrl": "https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=1000&q=80",
+    "bannerButtonText": "Browse Solitaire Lab Diamonds",
+    "bannerFeature1Title": "Type IIa Purity",
+    "bannerFeature1Desc": "Chemically the purest diamonds, representing the top 2% of diamonds globally.",
+    "bannerFeature2Title": "Zero Mining Conflict",
+    "bannerFeature2Desc": "Created using advanced CVD and HPHT technology with traceable origins.",
+    "bannerFeature3Title": "IGI / GIA Standards",
+    "bannerFeature3Desc": "Graded strictly across the 4Cs: Carat, Color (DEF), Clarity (VS1+), Ideal Cut.",
+    "giftHeadline": "Curated Gifting by Budget",
+    "giftSubtitle": "The Art of Giving",
+    "trustBadge1Title": "Ships from India",
+    "trustBadge1Desc": "3–5 Days via DHL Express",
+    "trustBadge2Title": "US Section 321 / DDP",
+    "trustBadge2Desc": "Zero US Duty under $800",
+    "trustBadge3Title": "BIS Hallmarked",
+    "trustBadge3Desc": "Solid 9K/14K/18K Gold"
   },
   "orders": [
+    {
+      "id": "LUM-736792",
+      "date": "2026-10-02T20:44:19.244Z",
+      "customer": {
+        "firstName": "Liam",
+        "lastName": "Tremblay",
+        "email": "liam.tremblay@example.ca",
+        "phone": "+1 (416) 555-0144",
+        "address1": "180 University Ave",
+        "address2": "Suite 2200",
+        "city": "Toronto",
+        "state": "ON",
+        "postalCode": "M5H 0A2",
+        "country": "CA"
+      },
+      "items": [
+        {
+          "id": "lum-03",
+          "name": "Elysian Radiant Cut Tennis Bracelet",
+          "metal": "14K White Gold",
+          "size": "7.0 inch",
+          "quantity": 1,
+          "unitPrice": 1070
+        }
+      ],
+      "pricing": {
+        "subtotal": 1070,
+        "discountAmount": 0,
+        "discountCode": null,
+        "shippingFee": 0,
+        "dutiesTaxes": 218,
+        "total": 1288,
+        "currency": "CAD"
+      },
+      "payment": {
+        "status": "paid",
+        "method": "Credit Card (Stripe India Test Simulation)",
+        "transactionId": "tx_canada_test_1790973859155",
+        "paidAt": "2026-10-02T20:44:19.244Z",
+        "currencyCharged": "CAD"
+      },
+      "shipping": {
+        "carrier": "DHL Express Worldwide",
+        "trackingNumber": "DHL-IN-8251253910",
+        "origin": "Jaipur / Surat Atelier, India",
+        "destination": "Toronto, ON, CA",
+        "csbVNumber": "CSB-V-2026-DEL-812250",
+        "hsCode": "7113.19.10",
+        "fulfillmentStatus": "processing",
+        "statusHistory": [
+          {
+            "status": "order_confirmed",
+            "timestamp": "2026-10-02T20:44:19.244Z",
+            "note": "Order placed and payment authorized. Atelier preparing pieces for quality verification."
+          }
+        ]
+      },
+      "returnRequest": null
+    },
+    {
+      "id": "LUM-326061",
+      "date": "2026-10-02T20:44:18.956Z",
+      "customer": {
+        "firstName": "Elena",
+        "lastName": "Rostova",
+        "email": "elena.rostova@example.com",
+        "phone": "+1 (310) 555-0199",
+        "address1": "9641 Sunset Blvd",
+        "address2": "Suite 400",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "postalCode": "90210",
+        "country": "US"
+      },
+      "items": [
+        {
+          "id": "lum-01",
+          "name": "Astraea Oval Solitaire Ring",
+          "metal": "14K Gold",
+          "size": "7.0",
+          "quantity": 1,
+          "unitPrice": 420
+        }
+      ],
+      "pricing": {
+        "subtotal": 420,
+        "discountAmount": 42,
+        "discountCode": "WELCOME10",
+        "shippingFee": 0,
+        "dutiesTaxes": 0,
+        "total": 378,
+        "currency": "USD"
+      },
+      "payment": {
+        "status": "paid",
+        "method": "Credit Card (Stripe India Test Simulation)",
+        "transactionId": "tx_test_suite_1790973858953",
+        "paidAt": "2026-10-02T20:44:18.956Z",
+        "currencyCharged": "USD"
+      },
+      "shipping": {
+        "carrier": "DHL Express Worldwide",
+        "trackingNumber": "DHL-IN-4074970937",
+        "origin": "Jaipur / Surat Atelier, India",
+        "destination": "Beverly Hills, CA, US",
+        "csbVNumber": "CSB-V-2026-DEL-981182",
+        "hsCode": "7113.19.10",
+        "fulfillmentStatus": "processing",
+        "statusHistory": [
+          {
+            "status": "order_confirmed",
+            "timestamp": "2026-10-02T20:44:18.956Z",
+            "note": "Order placed and payment authorized. Atelier preparing pieces for quality verification."
+          }
+        ]
+      },
+      "returnRequest": {
+        "requestedAt": "2026-10-02T20:44:18.973Z",
+        "reason": "size_adjustment",
+        "itemIds": [],
+        "notes": "Need ring adjusted from size 7 to size 6.5.",
+        "status": "pending_review",
+        "instructions": "Please do not ship items back without authorization. If approved, return hub instructions will be dispatched to your email."
+      }
+    },
+    {
+      "id": "LUM-836995",
+      "date": "2026-10-02T20:42:58.820Z",
+      "customer": {
+        "firstName": "Liam",
+        "lastName": "Tremblay",
+        "email": "liam.tremblay@example.ca",
+        "phone": "+1 (416) 555-0144",
+        "address1": "180 University Ave",
+        "address2": "Suite 2200",
+        "city": "Toronto",
+        "state": "ON",
+        "postalCode": "M5H 0A2",
+        "country": "CA"
+      },
+      "items": [
+        {
+          "id": "lum-03",
+          "name": "Elysian Radiant Cut Tennis Bracelet",
+          "metal": "14K White Gold",
+          "size": "7.0 inch",
+          "quantity": 1,
+          "unitPrice": 1070
+        }
+      ],
+      "pricing": {
+        "subtotal": 1070,
+        "discountAmount": 0,
+        "discountCode": null,
+        "shippingFee": 0,
+        "dutiesTaxes": 218,
+        "total": 1288,
+        "currency": "CAD"
+      },
+      "payment": {
+        "status": "paid",
+        "method": "Credit Card (Stripe India Test Simulation)",
+        "transactionId": "tx_canada_test_1790973778742",
+        "paidAt": "2026-10-02T20:42:58.820Z",
+        "currencyCharged": "CAD"
+      },
+      "shipping": {
+        "carrier": "DHL Express Worldwide",
+        "trackingNumber": "DHL-IN-6111620880",
+        "origin": "Jaipur / Surat Atelier, India",
+        "destination": "Toronto, ON, CA",
+        "csbVNumber": "CSB-V-2026-DEL-645823",
+        "hsCode": "7113.19.10",
+        "fulfillmentStatus": "processing",
+        "statusHistory": [
+          {
+            "status": "order_confirmed",
+            "timestamp": "2026-10-02T20:42:58.820Z",
+            "note": "Order placed and payment authorized. Atelier preparing pieces for quality verification."
+          }
+        ]
+      },
+      "returnRequest": null
+    },
+    {
+      "id": "LUM-512714",
+      "date": "2026-10-02T20:42:58.596Z",
+      "customer": {
+        "firstName": "Elena",
+        "lastName": "Rostova",
+        "email": "elena.rostova@example.com",
+        "phone": "+1 (310) 555-0199",
+        "address1": "9641 Sunset Blvd",
+        "address2": "Suite 400",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "postalCode": "90210",
+        "country": "US"
+      },
+      "items": [
+        {
+          "id": "lum-01",
+          "name": "Astraea Oval Solitaire Ring",
+          "metal": "14K Gold",
+          "size": "7.0",
+          "quantity": 1,
+          "unitPrice": 420
+        }
+      ],
+      "pricing": {
+        "subtotal": 420,
+        "discountAmount": 42,
+        "discountCode": "WELCOME10",
+        "shippingFee": 0,
+        "dutiesTaxes": 0,
+        "total": 378,
+        "currency": "USD"
+      },
+      "payment": {
+        "status": "paid",
+        "method": "Credit Card (Stripe India Test Simulation)",
+        "transactionId": "tx_test_suite_1790973778592",
+        "paidAt": "2026-10-02T20:42:58.596Z",
+        "currencyCharged": "USD"
+      },
+      "shipping": {
+        "carrier": "DHL Express Worldwide",
+        "trackingNumber": "DHL-IN-4407395474",
+        "origin": "Jaipur / Surat Atelier, India",
+        "destination": "Beverly Hills, CA, US",
+        "csbVNumber": "CSB-V-2026-DEL-754979",
+        "hsCode": "7113.19.10",
+        "fulfillmentStatus": "processing",
+        "statusHistory": [
+          {
+            "status": "order_confirmed",
+            "timestamp": "2026-10-02T20:42:58.596Z",
+            "note": "Order placed and payment authorized. Atelier preparing pieces for quality verification."
+          }
+        ]
+      },
+      "returnRequest": {
+        "requestedAt": "2026-10-02T20:42:58.613Z",
+        "reason": "size_adjustment",
+        "itemIds": [],
+        "notes": "Need ring adjusted from size 7 to size 6.5.",
+        "status": "pending_review",
+        "instructions": "Please do not ship items back without authorization. If approved, return hub instructions will be dispatched to your email."
+      }
+    },
+    {
+      "id": "LUM-459533",
+      "date": "2026-10-02T20:41:24.301Z",
+      "customer": {
+        "firstName": "Liam",
+        "lastName": "Tremblay",
+        "email": "liam.tremblay@example.ca",
+        "phone": "+1 (416) 555-0144",
+        "address1": "180 University Ave",
+        "address2": "Suite 2200",
+        "city": "Toronto",
+        "state": "ON",
+        "postalCode": "M5H 0A2",
+        "country": "CA"
+      },
+      "items": [
+        {
+          "id": "lum-03",
+          "name": "Elysian Radiant Cut Tennis Bracelet",
+          "metal": "14K White Gold",
+          "size": "7.0 inch",
+          "quantity": 1,
+          "unitPrice": 1070
+        }
+      ],
+      "pricing": {
+        "subtotal": 1070,
+        "discountAmount": 0,
+        "discountCode": null,
+        "shippingFee": 0,
+        "dutiesTaxes": 218,
+        "total": 1288,
+        "currency": "CAD"
+      },
+      "payment": {
+        "status": "paid",
+        "method": "Credit Card (Stripe India Test Simulation)",
+        "transactionId": "tx_canada_test_1790973684215",
+        "paidAt": "2026-10-02T20:41:24.301Z",
+        "currencyCharged": "CAD"
+      },
+      "shipping": {
+        "carrier": "DHL Express Worldwide",
+        "trackingNumber": "DHL-IN-5095652896",
+        "origin": "Jaipur / Surat Atelier, India",
+        "destination": "Toronto, ON, CA",
+        "csbVNumber": "CSB-V-2026-DEL-157886",
+        "hsCode": "7113.19.10",
+        "fulfillmentStatus": "processing",
+        "statusHistory": [
+          {
+            "status": "order_confirmed",
+            "timestamp": "2026-10-02T20:41:24.301Z",
+            "note": "Order placed and payment authorized. Atelier preparing pieces for quality verification."
+          }
+        ]
+      },
+      "returnRequest": null
+    },
+    {
+      "id": "LUM-508344",
+      "date": "2026-10-02T20:41:24.048Z",
+      "customer": {
+        "firstName": "Elena",
+        "lastName": "Rostova",
+        "email": "elena.rostova@example.com",
+        "phone": "+1 (310) 555-0199",
+        "address1": "9641 Sunset Blvd",
+        "address2": "Suite 400",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "postalCode": "90210",
+        "country": "US"
+      },
+      "items": [
+        {
+          "id": "lum-01",
+          "name": "Astraea Oval Solitaire Ring",
+          "metal": "14K Gold",
+          "size": "7.0",
+          "quantity": 1,
+          "unitPrice": 420
+        }
+      ],
+      "pricing": {
+        "subtotal": 420,
+        "discountAmount": 42,
+        "discountCode": "WELCOME10",
+        "shippingFee": 0,
+        "dutiesTaxes": 0,
+        "total": 378,
+        "currency": "USD"
+      },
+      "payment": {
+        "status": "paid",
+        "method": "Credit Card (Stripe India Test Simulation)",
+        "transactionId": "tx_test_suite_1790973684046",
+        "paidAt": "2026-10-02T20:41:24.048Z",
+        "currencyCharged": "USD"
+      },
+      "shipping": {
+        "carrier": "DHL Express Worldwide",
+        "trackingNumber": "DHL-IN-1891523890",
+        "origin": "Jaipur / Surat Atelier, India",
+        "destination": "Beverly Hills, CA, US",
+        "csbVNumber": "CSB-V-2026-DEL-314937",
+        "hsCode": "7113.19.10",
+        "fulfillmentStatus": "processing",
+        "statusHistory": [
+          {
+            "status": "order_confirmed",
+            "timestamp": "2026-10-02T20:41:24.048Z",
+            "note": "Order placed and payment authorized. Atelier preparing pieces for quality verification."
+          }
+        ]
+      },
+      "returnRequest": {
+        "requestedAt": "2026-10-02T20:41:24.062Z",
+        "reason": "size_adjustment",
+        "itemIds": [],
+        "notes": "Need ring adjusted from size 7 to size 6.5.",
+        "status": "pending_review",
+        "instructions": "Please do not ship items back without authorization. If approved, return hub instructions will be dispatched to your email."
+      }
+    },
     {
       "id": "LUM-292129",
       "date": "2026-10-02T20:25:14.144Z",
@@ -1946,7 +2397,43 @@
       "orderId": "LUM-292129",
       "amount": 1288,
       "currency": "CAD"
+    },
+    "tx_test_suite_1790973684046": {
+      "timestamp": "2026-10-02T20:41:24.049Z",
+      "orderId": "LUM-508344",
+      "amount": 378,
+      "currency": "USD"
+    },
+    "tx_canada_test_1790973684215": {
+      "timestamp": "2026-10-02T20:41:24.303Z",
+      "orderId": "LUM-459533",
+      "amount": 1288,
+      "currency": "CAD"
+    },
+    "tx_test_suite_1790973778592": {
+      "timestamp": "2026-10-02T20:42:58.598Z",
+      "orderId": "LUM-512714",
+      "amount": 378,
+      "currency": "USD"
+    },
+    "tx_canada_test_1790973778742": {
+      "timestamp": "2026-10-02T20:42:58.821Z",
+      "orderId": "LUM-836995",
+      "amount": 1288,
+      "currency": "CAD"
+    },
+    "tx_test_suite_1790973858953": {
+      "timestamp": "2026-10-02T20:44:18.958Z",
+      "orderId": "LUM-326061",
+      "amount": 378,
+      "currency": "USD"
+    },
+    "tx_canada_test_1790973859155": {
+      "timestamp": "2026-10-02T20:44:19.246Z",
+      "orderId": "LUM-736792",
+      "amount": 1288,
+      "currency": "CAD"
     }
   },
-  "lastUpdated": "2026-10-02T20:25:14.145Z"
+  "lastUpdated": "2026-10-02T20:44:19.246Z"
 }

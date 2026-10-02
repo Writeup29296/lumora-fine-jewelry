@@ -1,11 +1,14 @@
 import React from 'react';
 import { brandConfig } from '../data/brandConfig';
+import { useSettings } from '../context/SettingsContext';
 import { 
   ShieldCheck, Plane, Award, Mail, Phone, MapPin, 
   Globe, Lock, ExternalLink, Settings, Sparkles, Heart 
 } from 'lucide-react';
 
 export const Footer = ({ onNavigate, onOpenAdmin, onOpenDomainGuide }) => {
+  const { settings } = useSettings();
+
   return (
     <footer className="bg-[#FAF8F5] text-[#575A61] border-t border-[#EAE3D5] pt-16 pb-12 text-left">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -17,43 +20,34 @@ export const Footer = ({ onNavigate, onOpenAdmin, onOpenDomainGuide }) => {
           <div className="lg:col-span-2 space-y-4">
             <div className="flex flex-col cursor-pointer" onClick={() => onNavigate('home')}>
               <span className="text-2xl font-serif tracking-[0.25em] font-semibold text-[#1F2022]">
-                {brandConfig.brandName}
+                {settings?.brandName || brandConfig.brandName}
               </span>
               <span className="text-[10px] tracking-[0.25em] uppercase text-[#A8843E] font-medium">
-                {brandConfig.brandSubtitle} &bull; DIRECT EXPORT TO USA & CANADA
+                {settings?.brandSubtitle || brandConfig.brandSubtitle} &bull; DIRECT EXPORT TO USA & CANADA
               </span>
             </div>
 
             <p className="text-xs text-[#575A61] leading-relaxed max-w-sm">
-              Solid gold (9K, 14K, 18K) and 925 sterling silver fine jewelry handcrafted in the historic artisan workshops of Jaipur and Surat, India. Delivered directly to clients across the United States and Canada with 100% transit insurance and transparent customs clearance.
+              {settings?.brandTagline || brandConfig.brandTagline}
             </p>
 
             <div className="space-y-1.5 text-xs text-[#575A61]">
               <div className="flex items-center gap-2">
                 <Globe className="w-3.5 h-3.5 text-[#A8843E]" />
-                <span className="font-mono text-[#1F2022]">lumorafinejewelery.com</span>
+                <span className="font-mono text-[#1F2022]">{settings?.domain || brandConfig.domain}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#A8843E]" />
-                <a href={`mailto:${brandConfig.concierge.supportEmail}`} className="hover:text-[#1F2022]">
-                  {brandConfig.concierge.supportEmail}
+                <a href={`mailto:${settings?.supportEmail || brandConfig.concierge.supportEmail}`} className="hover:text-[#1F2022]">
+                  {settings?.supportEmail || brandConfig.concierge.supportEmail}
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#A8843E]" />
-                <span>Ateliers in Jaipur & Surat, Rajasthan / Gujarat, India</span>
+                <span>{settings?.atelierAddress || "Ateliers in Jaipur & Surat, Rajasthan / Gujarat, India"}</span>
               </div>
             </div>
 
-            <div className="pt-2 flex flex-wrap gap-2">
-              <button
-                onClick={onOpenDomainGuide}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-[#EAE3D5] text-xs font-mono text-[#1F2022] hover:border-[#C5A059] transition-colors"
-              >
-                <Settings className="w-3.5 h-3.5 text-[#A8843E]" />
-                <span>Domain & DNS Setup Hub</span>
-              </button>
-            </div>
           </div>
 
           {/* Column 3: Fine Collections */}
