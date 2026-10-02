@@ -1,0 +1,1130 @@
+{
+  "products": [
+    {
+      "id": "lum-01",
+      "name": "Astraea Oval Solitaire Ring",
+      "category": "rings",
+      "subtitle": "Classic 4-Prong Hidden Halo Solitaire",
+      "priceUSD": 420,
+      "priceCAD": 575,
+      "isSample": true,
+      "isBestSeller": true,
+      "isNew": false,
+      "featured": true,
+      "images": [
+        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "description": "Forged in solid gold or 925 sterling silver with a delicate hidden halo setting and an elongated oval lab-grown diamond. Hand-finished by master jewelers in Jaipur with comfort-fit band profile.",
+      "stoneType": "Lab-Grown Diamond (CVD/HPHT)",
+      "stoneDetails": {
+        "type": "Lab-Grown Diamond",
+        "carat": "1.75 ct Center + 0.10 ct Hidden Halo",
+        "color": "DEF (Colorless)",
+        "clarity": "VVS1 - VS1",
+        "cut": "Ideal Oval Brilliant",
+        "certification": "[IGI / GIA Lab Certificate Included — Certified #Pending Merchant Upload]"
+      },
+      "metalDetails": {
+        "purityOptions": [
+          "925 Sterling Silver",
+          "9K Gold (375)",
+          "14K Gold (585)",
+          "18K Gold (750)"
+        ],
+        "colorOptions": [
+          "Yellow Gold",
+          "White Gold (Rhodium)",
+          "Rose Gold"
+        ],
+        "approxWeightGrams": 3.8,
+        "hallmark": "BIS Hallmarked (Bureau of Indian Standards) / 925 Laser Stamped"
+      },
+      "variants": [
+        {
+          "id": "v-925",
+          "metal": "925 Sterling Silver",
+          "purity": "925",
+          "color": "White Gold (Rhodium)",
+          "priceUSD": 160,
+          "priceCAD": 220,
+          "stock": 12
+        },
+        {
+          "id": "v-9k-yg",
+          "metal": "9K Gold",
+          "purity": "375",
+          "color": "Yellow Gold",
+          "priceUSD": 310,
+          "priceCAD": 425,
+          "stock": 8
+        },
+        {
+          "id": "v-9k-wg",
+          "metal": "9K Gold",
+          "purity": "375",
+          "color": "White Gold (Rhodium)",
+          "priceUSD": 310,
+          "priceCAD": 425,
+          "stock": 6
+        },
+        {
+          "id": "v-14k-yg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "Yellow Gold",
+          "priceUSD": 420,
+          "priceCAD": 575,
+          "stock": 15
+        },
+        {
+          "id": "v-14k-wg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "White Gold (Rhodium)",
+          "priceUSD": 420,
+          "priceCAD": 575,
+          "stock": 10
+        },
+        {
+          "id": "v-14k-rg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "Rose Gold",
+          "priceUSD": 420,
+          "priceCAD": 575,
+          "stock": 7
+        },
+        {
+          "id": "v-18k-yg",
+          "metal": "18K Gold",
+          "purity": "750",
+          "color": "Yellow Gold",
+          "priceUSD": 590,
+          "priceCAD": 810,
+          "stock": 5
+        },
+        {
+          "id": "v-18k-wg",
+          "metal": "18K Gold",
+          "purity": "750",
+          "color": "White Gold (Rhodium)",
+          "priceUSD": 590,
+          "priceCAD": 810,
+          "stock": 4
+        },
+        {
+          "id": "v-18k-rg",
+          "metal": "18K Gold",
+          "purity": "750",
+          "color": "Rose Gold",
+          "priceUSD": 590,
+          "priceCAD": 810,
+          "stock": 3
+        }
+      ],
+      "ringSizes": [
+        "4",
+        "4.5",
+        "5",
+        "5.5",
+        "6",
+        "6.5",
+        "7",
+        "7.5",
+        "8",
+        "8.5",
+        "9",
+        "9.5",
+        "10",
+        "11",
+        "12"
+      ],
+      "processingTime": "1–2 business days (Standard sizes) / 5–7 business days (Custom sizing)",
+      "shippingTime": "3–5 business days via DHL Express from Jaipur, India to USA & Canada",
+      "packaging": "Lumora Hardcover Velvet Presentation Vault, BIS Hallmark Certificate Card, Microfiber Polishing Cloth",
+      "returnsEligibility": "Eligible for 30-Day Return in original unworn condition with intact security tags. Custom engraved pieces are non-returnable.",
+      "careGuide": "Avoid direct contact with perfumes, hand sanitizers, and household chlorine. Clean with lukewarm water, mild baby soap, and soft bristle brush."
+    },
+    {
+      "id": "lum-02",
+      "name": "Kyoto Hand-Carved Botanical Signet Ring",
+      "category": "rings",
+      "subtitle": "Chiseled Relief with Natural Blue Moonstone",
+      "priceUSD": 145,
+      "priceCAD": 200,
+      "isSample": true,
+      "isBestSeller": true,
+      "isNew": false,
+      "featured": true,
+      "images": [
+        "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "description": "Substantial heirloom-weight 925 sterling silver or solid gold signet ring featuring hand-carved botanical floral engraving and an untreated natural rainbow moonstone exhibiting vivid blue adularescence.",
+      "stoneType": "Natural Rainbow Moonstone (Untreated)",
+      "stoneDetails": {
+        "type": "Natural Moonstone",
+        "carat": "2.50 ct (10x8mm Cabochon)",
+        "color": "Electric Blue Flash on Translucent White",
+        "clarity": "Natural Mineral Inclusions (Eye Clean)",
+        "cut": "Polished Smooth Oval Cabochon",
+        "certification": "[Certificate of Authenticity Provided — Mineral Verification Placeholder]"
+      },
+      "metalDetails": {
+        "purityOptions": [
+          "925 Sterling Silver",
+          "9K Gold (375)",
+          "14K Gold (585)"
+        ],
+        "colorOptions": [
+          "White Gold (Rhodium)",
+          "Yellow Gold",
+          "Rose Gold"
+        ],
+        "approxWeightGrams": 6.4,
+        "hallmark": "925 Laser Stamped / BIS 585"
+      },
+      "variants": [
+        {
+          "id": "v2-925",
+          "metal": "925 Sterling Silver",
+          "purity": "925",
+          "color": "White Gold (Rhodium)",
+          "priceUSD": 145,
+          "priceCAD": 200,
+          "stock": 20
+        },
+        {
+          "id": "v2-9k-yg",
+          "metal": "9K Gold",
+          "purity": "375",
+          "color": "Yellow Gold",
+          "priceUSD": 360,
+          "priceCAD": 495,
+          "stock": 5
+        },
+        {
+          "id": "v2-14k-yg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "Yellow Gold",
+          "priceUSD": 490,
+          "priceCAD": 675,
+          "stock": 4
+        }
+      ],
+      "ringSizes": [
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "processingTime": "1–2 business days for ready stock",
+      "shippingTime": "3–5 business days via DHL Express from Jaipur, India to USA & Canada",
+      "packaging": "Velvet Travel Pouch and Presentation Box, Polishing Cloth",
+      "returnsEligibility": "30-Day Return window for unworn condition. Engraved pieces excluded.",
+      "careGuide": "Store separately to protect moonstone surface. Polish gently with dry microfiber cloth."
+    },
+    {
+      "id": "lum-03",
+      "name": "Elysian Radiant Cut Tennis Bracelet",
+      "category": "bracelets",
+      "subtitle": "Full Eternity Diamond Line with Double Safety Clasp",
+      "priceUSD": 780,
+      "priceCAD": 1070,
+      "isSample": true,
+      "isBestSeller": true,
+      "isNew": true,
+      "featured": true,
+      "images": [
+        "https://images.unsplash.com/photo-1611591475152-47831c367295?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "description": "A continuous line of radiant cut lab-grown diamonds set in precision 4-prong baskets with an articulated fluid hinge design. Finished with an engineered double-safety tongue clasp.",
+      "stoneType": "Lab-Grown Diamond (CVD/HPHT)",
+      "stoneDetails": {
+        "type": "Lab-Grown Diamond",
+        "carat": "4.50 ct Total Diamond Weight (approx 52 stones)",
+        "color": "F-G (Near Colorless)",
+        "clarity": "VS1 - VS2",
+        "cut": "Radiant Cut Brilliant",
+        "certification": "[Diamond Laboratory Certificate Provided with Shipment — ID Pending]"
+      },
+      "metalDetails": {
+        "purityOptions": [
+          "925 Sterling Silver",
+          "14K Gold (585)",
+          "18K Gold (750)"
+        ],
+        "colorOptions": [
+          "White Gold (Rhodium)",
+          "Yellow Gold",
+          "Rose Gold"
+        ],
+        "approxWeightGrams": 11.5,
+        "hallmark": "BIS 585 / BIS 750 / 925"
+      },
+      "variants": [
+        {
+          "id": "v3-925",
+          "metal": "925 Sterling Silver",
+          "purity": "925",
+          "color": "White Gold (Rhodium)",
+          "priceUSD": 360,
+          "priceCAD": 495,
+          "stock": 10
+        },
+        {
+          "id": "v3-14k-wg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "White Gold (Rhodium)",
+          "priceUSD": 780,
+          "priceCAD": 1070,
+          "stock": 6
+        },
+        {
+          "id": "v3-14k-yg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "Yellow Gold",
+          "priceUSD": 780,
+          "priceCAD": 1070,
+          "stock": 7
+        },
+        {
+          "id": "v3-18k-wg",
+          "metal": "18K Gold",
+          "purity": "750",
+          "color": "White Gold (Rhodium)",
+          "priceUSD": 1080,
+          "priceCAD": 1485,
+          "stock": 3
+        },
+        {
+          "id": "v3-18k-yg",
+          "metal": "18K Gold",
+          "purity": "750",
+          "color": "Yellow Gold",
+          "priceUSD": 1080,
+          "priceCAD": 1485,
+          "stock": 4
+        }
+      ],
+      "wristSizes": [
+        "6.5 inch",
+        "7.0 inch",
+        "7.5 inch"
+      ],
+      "processingTime": "2–3 business days inspection and dispatch",
+      "shippingTime": "3–5 business days via DHL Express Priority Air with Signature Required",
+      "packaging": "Jewelry Armored Vault Box with Individual Velvet Travel Case",
+      "returnsEligibility": "30-Day Return window for unworn items with security seals intact.",
+      "careGuide": "Inspect prongs annually. Ultrasonic clean safe only when verified with jeweler."
+    },
+    {
+      "id": "lum-04",
+      "name": "Aurelia Bezel-Set Huggie Hoop Earrings",
+      "category": "earrings",
+      "subtitle": "Daily Luxury Clicker Hoops in Solid Gold",
+      "priceUSD": 240,
+      "priceCAD": 330,
+      "isSample": true,
+      "isBestSeller": true,
+      "isNew": false,
+      "featured": true,
+      "images": [
+        "https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "description": "Low-profile bezel-set lab-grown diamonds set flush into comfort-clicker huggies. Designed for 24/7 wear, active lifestyles, and sleeping without snagging.",
+      "stoneType": "Lab-Grown Diamond (CVD/HPHT)",
+      "stoneDetails": {
+        "type": "Lab-Grown Diamond",
+        "carat": "0.36 ct Total (0.18 ct per earring)",
+        "color": "E-F (Colorless)",
+        "clarity": "VS1",
+        "cut": "Round Brilliant",
+        "certification": "[Atelier Authenticity Certificate Included]"
+      },
+      "metalDetails": {
+        "purityOptions": [
+          "925 Sterling Silver",
+          "9K Gold (375)",
+          "14K Gold (585)",
+          "18K Gold (750)"
+        ],
+        "colorOptions": [
+          "Yellow Gold",
+          "White Gold (Rhodium)",
+          "Rose Gold"
+        ],
+        "approxWeightGrams": 2.9,
+        "hallmark": "BIS 585 / 925"
+      },
+      "variants": [
+        {
+          "id": "v4-925",
+          "metal": "925 Sterling Silver",
+          "purity": "925",
+          "color": "Yellow Gold",
+          "priceUSD": 95,
+          "priceCAD": 130,
+          "stock": 25
+        },
+        {
+          "id": "v4-9k-yg",
+          "metal": "9K Gold",
+          "purity": "375",
+          "color": "Yellow Gold",
+          "priceUSD": 175,
+          "priceCAD": 240,
+          "stock": 12
+        },
+        {
+          "id": "v4-14k-yg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "Yellow Gold",
+          "priceUSD": 240,
+          "priceCAD": 330,
+          "stock": 18
+        },
+        {
+          "id": "v4-14k-wg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "White Gold (Rhodium)",
+          "priceUSD": 240,
+          "priceCAD": 330,
+          "stock": 14
+        },
+        {
+          "id": "v4-14k-rg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "Rose Gold",
+          "priceUSD": 240,
+          "priceCAD": 330,
+          "stock": 9
+        },
+        {
+          "id": "v4-18k-yg",
+          "metal": "18K Gold",
+          "purity": "750",
+          "color": "Yellow Gold",
+          "priceUSD": 340,
+          "priceCAD": 465,
+          "stock": 6
+        }
+      ],
+      "processingTime": "1 business day (Ready in Atelier)",
+      "shippingTime": "3–5 business days via DHL Express to USA / Canada",
+      "packaging": "Satin Ribbon Presentation Box + Polishing Cloth",
+      "returnsEligibility": "30-Day Return policy for hygienic unworn condition with tag seal.",
+      "careGuide": "Listen for audible \"click\" when securing clasp. Wipe clean after wearing."
+    },
+    {
+      "id": "lum-05",
+      "name": "Soleil Hammered Byzantine Medallion Pendant",
+      "category": "necklaces",
+      "subtitle": "Artisanal Chiseled Medallion on Solid Chain",
+      "priceUSD": 385,
+      "priceCAD": 530,
+      "isSample": true,
+      "isBestSeller": false,
+      "isNew": true,
+      "featured": true,
+      "images": [
+        "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1611591475152-47831c367295?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "description": "Inspired by historical Byzantine relics, each disc is hand-hammered by Surat metalsmiths to catch light with organic brilliance. Suspended from an adjustable 16-18-20 inch cable chain.",
+      "stoneType": "Center Lab-Grown Diamond (0.08ct) Accent",
+      "stoneDetails": {
+        "type": "Lab-Grown Diamond Accent",
+        "carat": "0.08 ct Star-Set Center",
+        "color": "G-H",
+        "clarity": "SI1",
+        "cut": "Single Cut Round",
+        "certification": "[Authenticity Certificate Included]"
+      },
+      "metalDetails": {
+        "purityOptions": [
+          "925 Sterling Silver",
+          "14K Gold (585)",
+          "18K Gold (750)"
+        ],
+        "colorOptions": [
+          "Yellow Gold",
+          "Rose Gold",
+          "White Gold (Rhodium)"
+        ],
+        "approxWeightGrams": 5.6,
+        "hallmark": "BIS 585 / BIS 750 / 925"
+      },
+      "variants": [
+        {
+          "id": "v5-925",
+          "metal": "925 Sterling Silver",
+          "purity": "925",
+          "color": "Yellow Gold",
+          "priceUSD": 140,
+          "priceCAD": 195,
+          "stock": 15
+        },
+        {
+          "id": "v5-14k-yg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "Yellow Gold",
+          "priceUSD": 385,
+          "priceCAD": 530,
+          "stock": 8
+        },
+        {
+          "id": "v5-14k-rg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "Rose Gold",
+          "priceUSD": 385,
+          "priceCAD": 530,
+          "stock": 5
+        },
+        {
+          "id": "v5-18k-yg",
+          "metal": "18K Gold",
+          "purity": "750",
+          "color": "Yellow Gold",
+          "priceUSD": 540,
+          "priceCAD": 740,
+          "stock": 4
+        }
+      ],
+      "chainLengths": [
+        "16 inch (Choker length)",
+        "18 inch (Standard)",
+        "20 inch (Layering)"
+      ],
+      "processingTime": "1–2 business days",
+      "shippingTime": "3–5 business days to USA / Canada",
+      "packaging": "Velvet Jewelry Box with Anti-Tarnish Strip",
+      "returnsEligibility": "30-Day Return window for unworn items.",
+      "careGuide": "Store flat to prevent chain knotting. Wipe with soft lint-free cloth."
+    },
+    {
+      "id": "lum-06",
+      "name": "Celeste French-Set Diamond Eternity Band",
+      "category": "rings",
+      "subtitle": "Continuous Lab-Grown Diamond Band in Solid Gold",
+      "priceUSD": 460,
+      "priceCAD": 630,
+      "isSample": true,
+      "isBestSeller": true,
+      "isNew": false,
+      "featured": false,
+      "images": [
+        "https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "description": "Scalloped French-set lab-grown diamonds wrapping 360 degrees around the finger. Low-profile design sits completely flush next to any engagement ring.",
+      "stoneType": "Lab-Grown Diamond (CVD/HPHT)",
+      "stoneDetails": {
+        "type": "Lab-Grown Diamond",
+        "carat": "0.85 ct Total Carat Weight (approx 28 stones)",
+        "color": "DEF (Colorless)",
+        "clarity": "VS1",
+        "cut": "Round Brilliant",
+        "certification": "[Atelier Laboratory Diamond Grade Verification]"
+      },
+      "metalDetails": {
+        "purityOptions": [
+          "925 Sterling Silver",
+          "9K Gold (375)",
+          "14K Gold (585)",
+          "18K Gold (750)"
+        ],
+        "colorOptions": [
+          "Yellow Gold",
+          "White Gold (Rhodium)",
+          "Rose Gold"
+        ],
+        "approxWeightGrams": 2.6,
+        "hallmark": "BIS 585 / BIS 750 / 925"
+      },
+      "variants": [
+        {
+          "id": "v6-925",
+          "metal": "925 Sterling Silver",
+          "purity": "925",
+          "color": "White Gold (Rhodium)",
+          "priceUSD": 175,
+          "priceCAD": 240,
+          "stock": 14
+        },
+        {
+          "id": "v6-14k-yg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "Yellow Gold",
+          "priceUSD": 460,
+          "priceCAD": 630,
+          "stock": 10
+        },
+        {
+          "id": "v6-14k-wg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "White Gold (Rhodium)",
+          "priceUSD": 460,
+          "priceCAD": 630,
+          "stock": 9
+        },
+        {
+          "id": "v6-18k-yg",
+          "metal": "18K Gold",
+          "purity": "750",
+          "color": "Yellow Gold",
+          "priceUSD": 620,
+          "priceCAD": 850,
+          "stock": 4
+        }
+      ],
+      "ringSizes": [
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "processingTime": "2–4 business days",
+      "shippingTime": "3–5 business days to USA & Canada",
+      "packaging": "Luxury Ring Presentation Vault",
+      "returnsEligibility": "30-Day Return window. Note: Eternity bands cannot be resized after forging.",
+      "careGuide": "Clean gently between scalloped settings using a soft toothbrush."
+    },
+    {
+      "id": "lum-07",
+      "name": "Chandrika Royal Filigree Chandelier Earrings",
+      "category": "earrings",
+      "subtitle": "Jaipur Openwork Artistry in 925 Silver & 18K Gold Vermeil",
+      "priceUSD": 195,
+      "priceCAD": 270,
+      "isSample": true,
+      "isBestSeller": false,
+      "isNew": true,
+      "featured": false,
+      "images": [
+        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "description": "Heritage royal openwork filigree crafted by traditional Jaipur silver and goldsmiths. Features articulate dangling drops that move with luminous grace.",
+      "stoneType": "Natural Freshwater Seed Pearls",
+      "stoneDetails": {
+        "type": "Natural Cultured Freshwater Pearls",
+        "carat": "3mm Seed Pearls with High Luster",
+        "color": "Warm Ivory Luster",
+        "clarity": "Natural Organic Surface",
+        "cut": "Near Round",
+        "certification": "[Cultured Pearl Origin Certificate Included]"
+      },
+      "metalDetails": {
+        "purityOptions": [
+          "925 Sterling Silver",
+          "14K Gold (585)"
+        ],
+        "colorOptions": [
+          "Yellow Gold",
+          "White Gold (Rhodium)"
+        ],
+        "approxWeightGrams": 7.2,
+        "hallmark": "925 Laser Hallmark / BIS 585"
+      },
+      "variants": [
+        {
+          "id": "v7-925",
+          "metal": "925 Sterling Silver",
+          "purity": "925",
+          "color": "Yellow Gold",
+          "priceUSD": 195,
+          "priceCAD": 270,
+          "stock": 18
+        },
+        {
+          "id": "v7-925-wg",
+          "metal": "925 Sterling Silver",
+          "purity": "925",
+          "color": "White Gold (Rhodium)",
+          "priceUSD": 195,
+          "priceCAD": 270,
+          "stock": 15
+        },
+        {
+          "id": "v7-14k-yg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "Yellow Gold",
+          "priceUSD": 690,
+          "priceCAD": 950,
+          "stock": 3
+        }
+      ],
+      "processingTime": "1–2 business days",
+      "shippingTime": "3–5 business days to USA & Canada",
+      "packaging": "Jewelry Presentation Vault with Velvet Insert",
+      "returnsEligibility": "30-Day Return window for unworn items with security seals.",
+      "careGuide": "Keep pearls away from moisture and cosmetic sprays. Put on after perfume dries."
+    },
+    {
+      "id": "lum-08",
+      "name": "Noor Marquise Cluster Tennis Necklace",
+      "category": "necklaces",
+      "subtitle": "Graduated Marquise Lab-Grown Diamond Collar",
+      "priceUSD": 1250,
+      "priceCAD": 1720,
+      "isSample": true,
+      "isBestSeller": false,
+      "isNew": true,
+      "featured": true,
+      "images": [
+        "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1611591475152-47831c367295?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "description": "An architectural statement piece featuring alternating marquise and round brilliant lab-grown diamonds that rest gracefully on the collarbone. Handcrafted in solid 14K or 18K gold.",
+      "stoneType": "Lab-Grown Diamond (CVD/HPHT)",
+      "stoneDetails": {
+        "type": "Lab-Grown Diamond",
+        "carat": "6.20 ct Total Diamond Weight",
+        "color": "E-F (Colorless)",
+        "clarity": "VVS2 - VS1",
+        "cut": "Marquise & Round Brilliant Ideal Cut",
+        "certification": "[Independent Diamond Laboratory Certification Included]"
+      },
+      "metalDetails": {
+        "purityOptions": [
+          "14K Gold (585)",
+          "18K Gold (750)"
+        ],
+        "colorOptions": [
+          "White Gold (Rhodium)",
+          "Yellow Gold"
+        ],
+        "approxWeightGrams": 16.8,
+        "hallmark": "BIS 585 / BIS 750"
+      },
+      "variants": [
+        {
+          "id": "v8-14k-wg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "White Gold (Rhodium)",
+          "priceUSD": 1250,
+          "priceCAD": 1720,
+          "stock": 4
+        },
+        {
+          "id": "v8-14k-yg",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "Yellow Gold",
+          "priceUSD": 1250,
+          "priceCAD": 1720,
+          "stock": 5
+        },
+        {
+          "id": "v8-18k-wg",
+          "metal": "18K Gold",
+          "purity": "750",
+          "color": "White Gold (Rhodium)",
+          "priceUSD": 1680,
+          "priceCAD": 2310,
+          "stock": 2
+        }
+      ],
+      "chainLengths": [
+        "16 inch Collar Fit",
+        "17 inch Comfort Fit"
+      ],
+      "processingTime": "3–5 business days final setting & certification",
+      "shippingTime": "3–5 business days via DHL Express Armored Priority Air",
+      "packaging": "Luxury Handcrafted Velvet Presentation Case with Wax Seal",
+      "returnsEligibility": "30-Day Return window with original laboratory certificate card intact.",
+      "careGuide": "Professional jewelry inspection recommended every 12 months."
+    }
+  ],
+  "discounts": [
+    {
+      "code": "WELCOME10",
+      "discountType": "percentage",
+      "value": 10,
+      "minSpendUSD": 100,
+      "active": true,
+      "description": "10% off for first-time US & Canadian clients"
+    },
+    {
+      "code": "LUMORA50",
+      "discountType": "fixed",
+      "value": 50,
+      "minSpendUSD": 400,
+      "active": true,
+      "description": "$50 off orders over $400 USD"
+    },
+    {
+      "code": "HEIRLOOM15",
+      "discountType": "percentage",
+      "value": 15,
+      "minSpendUSD": 750,
+      "active": true,
+      "description": "15% off fine heirloom orders over $750 USD"
+    }
+  ],
+  "settings": {
+    "storeName": "Lumora Fine Jewelry",
+    "domain": "lumorafinejewelery.com",
+    "brandOrigin": "Jaipur & Surat, India",
+    "targetMarkets": [
+      "United States",
+      "Canada"
+    ],
+    "defaultCurrency": "USD",
+    "supportedCurrencies": [
+      "USD",
+      "CAD"
+    ],
+    "currencyRates": {
+      "USD": 1,
+      "CAD": 1.37
+    },
+    "returnPolicyDays": 30,
+    "returnPolicyDetails": "Eligible for 30-day return in original unworn condition with security tags and certificates intact. Custom engravings and bespoke commissions are non-refundable.",
+    "returnAddressPlaceholder": "[US/Canadian Return Logistics Facility: Address to be configured by merchant upon carrier onboarding]",
+    "shippingOriginCity": "Jaipur & Surat, India",
+    "shippingCarrier": "DHL Express Worldwide & FedEx International Priority",
+    "dispatchLeadTime": "1–2 business days for ready pieces / 5–7 business days for custom sizing",
+    "transitTimeUSA": "3–5 business days",
+    "transitTimeCanada": "4–6 business days",
+    "freeShippingThresholdUSD": 150,
+    "freeShippingThresholdCAD": 200,
+    "standardShippingFeeUSD": 24,
+    "standardShippingFeeCAD": 32,
+    "priorityArmoredFeeUSD": 35,
+    "priorityArmoredFeeCAD": 48,
+    "usaCustomsExplanation": "USA Section 321 De Minimis: Under 19 U.S.C. § 1321, shipments imported by one person on one day valued at $800 USD or less are generally exempt from US Customs duty and formal entry. Courier handles electronic entry.",
+    "canadaCustomsExplanation": "Canada CBSA Import: Fine jewelry imports into Canada are subject to CBSA customs duties (standard 6.5%) and provincial taxes (GST/HST). Lumora provides optional DDP (Delivered Duty Paid) checkout calculation to avoid COD surprise fees.",
+    "dutyHandlingMode": "DDP",
+    "rbiPurposeCode": "P0103",
+    "iecCodePlaceholder": "[IEC: Import Export Code to be entered in Admin]",
+    "adCodePlaceholder": "[AD Code: Bank Authorized Dealer Code registered with Customs]",
+    "gstLutPlaceholder": "[GST LUT: Letter of Undertaking for Zero-Rated Exports]",
+    "hallmarkAuthority": "Bureau of Indian Standards (BIS) Approved Assaying Centers",
+    "paymentProvider": "Stripe India (Hosted Checkout) / International Cards",
+    "stripeTestMode": true,
+    "stripePublicKey": "",
+    "stripeSecretKey": "",
+    "stripeWebhookSecret": "",
+    "supportEmail": "concierge@lumorafinejewelery.com",
+    "whatsappNumber": "+91 98765 43210 (VIP Concierge)",
+    "usPhonePlaceholder": "[US/Canada Toll-Free Inquiries: Number to be configured]",
+    "supportHours": "Mon–Sat: 9:00 AM – 8:00 PM EST (Dedicated North America hours)"
+  },
+  "orders": [
+    {
+      "id": "LUM-162969",
+      "date": "2026-10-02T19:26:46.693Z",
+      "customer": {
+        "firstName": "Liam",
+        "lastName": "Tremblay",
+        "email": "liam.tremblay@example.ca",
+        "phone": "+1 (416) 555-0144",
+        "address1": "180 University Ave",
+        "address2": "Suite 2200",
+        "city": "Toronto",
+        "state": "ON",
+        "postalCode": "M5H 0A2",
+        "country": "CA"
+      },
+      "items": [
+        {
+          "id": "lum-03",
+          "name": "Elysian Radiant Cut Tennis Bracelet",
+          "metal": "14K White Gold",
+          "size": "7.0 inch",
+          "quantity": 1,
+          "unitPrice": 1070
+        }
+      ],
+      "pricing": {
+        "subtotal": 1070,
+        "discountAmount": 0,
+        "discountCode": null,
+        "shippingFee": 0,
+        "dutiesTaxes": 218,
+        "total": 1288,
+        "currency": "CAD"
+      },
+      "payment": {
+        "status": "paid",
+        "method": "Credit Card (Stripe India Test Simulation)",
+        "transactionId": "tx_canada_test_1790969206595",
+        "paidAt": "2026-10-02T19:26:46.693Z",
+        "currencyCharged": "CAD"
+      },
+      "shipping": {
+        "carrier": "DHL Express Worldwide",
+        "trackingNumber": "DHL-IN-5637073545",
+        "origin": "Jaipur / Surat Atelier, India",
+        "destination": "Toronto, ON, CA",
+        "csbVNumber": "CSB-V-2026-DEL-562828",
+        "hsCode": "7113.19.10",
+        "fulfillmentStatus": "processing",
+        "statusHistory": [
+          {
+            "status": "order_confirmed",
+            "timestamp": "2026-10-02T19:26:46.693Z",
+            "note": "Order placed and payment authorized. Atelier preparing pieces for quality verification."
+          }
+        ]
+      },
+      "returnRequest": null
+    },
+    {
+      "id": "LUM-991310",
+      "date": "2026-10-02T19:26:28.887Z",
+      "customer": {
+        "firstName": "Elena",
+        "lastName": "Rostova",
+        "email": "elena.rostova@example.com",
+        "phone": "+1 (310) 555-0199",
+        "address1": "9641 Sunset Blvd",
+        "address2": "Suite 400",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "postalCode": "90210",
+        "country": "US"
+      },
+      "items": [
+        {
+          "id": "lum-01",
+          "name": "Astraea Oval Solitaire Ring",
+          "metal": "14K Gold",
+          "size": "7.0",
+          "quantity": 1,
+          "unitPrice": 420
+        }
+      ],
+      "pricing": {
+        "subtotal": 420,
+        "discountAmount": 42,
+        "discountCode": "WELCOME10",
+        "shippingFee": 0,
+        "dutiesTaxes": 0,
+        "total": 378,
+        "currency": "USD"
+      },
+      "payment": {
+        "status": "paid",
+        "method": "Credit Card (Stripe India Test Simulation)",
+        "transactionId": "tx_test_suite_1790969188885",
+        "paidAt": "2026-10-02T19:26:28.887Z",
+        "currencyCharged": "USD"
+      },
+      "shipping": {
+        "carrier": "DHL Express Worldwide",
+        "trackingNumber": "DHL-IN-1776688905",
+        "origin": "Jaipur / Surat Atelier, India",
+        "destination": "Beverly Hills, CA, US",
+        "csbVNumber": "CSB-V-2026-DEL-423639",
+        "hsCode": "7113.19.10",
+        "fulfillmentStatus": "processing",
+        "statusHistory": [
+          {
+            "status": "order_confirmed",
+            "timestamp": "2026-10-02T19:26:28.887Z",
+            "note": "Order placed and payment authorized. Atelier preparing pieces for quality verification."
+          }
+        ]
+      },
+      "returnRequest": {
+        "requestedAt": "2026-10-02T19:26:28.902Z",
+        "reason": "size_adjustment",
+        "itemIds": [],
+        "notes": "Need ring adjusted from size 7 to size 6.5.",
+        "status": "pending_review",
+        "instructions": "Please do not ship items back without authorization. If approved, return hub instructions will be dispatched to your email."
+      }
+    },
+    {
+      "id": "LUM-552283",
+      "date": "2026-10-02T19:25:44.179Z",
+      "customer": {
+        "firstName": "Elena",
+        "lastName": "Rostova",
+        "email": "elena.rostova@example.com",
+        "phone": "+1 (310) 555-0199",
+        "address1": "9641 Sunset Blvd",
+        "address2": "Suite 400",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "postalCode": "90210",
+        "country": "US"
+      },
+      "items": [
+        {
+          "id": "lum-01",
+          "name": "Astraea Oval Solitaire Ring",
+          "metal": "14K Gold",
+          "size": "7.0",
+          "quantity": 1,
+          "unitPrice": 420
+        }
+      ],
+      "pricing": {
+        "subtotal": 420,
+        "discountAmount": 42,
+        "discountCode": "WELCOME10",
+        "shippingFee": 0,
+        "dutiesTaxes": 0,
+        "total": 378,
+        "currency": "USD"
+      },
+      "payment": {
+        "status": "paid",
+        "method": "Credit Card (Stripe India Test Simulation)",
+        "transactionId": "tx_test_suite_1790969144174",
+        "paidAt": "2026-10-02T19:25:44.179Z",
+        "currencyCharged": "USD"
+      },
+      "shipping": {
+        "carrier": "DHL Express Worldwide",
+        "trackingNumber": "DHL-IN-9094583229",
+        "origin": "Jaipur / Surat Atelier, India",
+        "destination": "Beverly Hills, CA, US",
+        "csbVNumber": "CSB-V-2026-DEL-338099",
+        "hsCode": "7113.19.10",
+        "fulfillmentStatus": "processing",
+        "statusHistory": [
+          {
+            "status": "order_confirmed",
+            "timestamp": "2026-10-02T19:25:44.179Z",
+            "note": "Order placed and payment authorized. Atelier preparing pieces for quality verification."
+          }
+        ]
+      },
+      "returnRequest": {
+        "requestedAt": "2026-10-02T19:25:44.199Z",
+        "reason": "size_adjustment",
+        "itemIds": [],
+        "notes": "Need ring adjusted from size 7 to size 6.5.",
+        "status": "pending_review",
+        "instructions": "Please do not ship items back without authorization. If approved, return hub instructions will be dispatched to your email."
+      }
+    },
+    {
+      "id": "LUM-84920",
+      "date": "2026-09-28T14:22:00Z",
+      "customer": {
+        "firstName": "Sarah",
+        "lastName": "Jenkins",
+        "email": "sarah.jenkins@example.com",
+        "phone": "+1 (415) 555-0198",
+        "address1": "450 Sutter St, Suite 1200",
+        "address2": "",
+        "city": "San Francisco",
+        "state": "CA",
+        "postalCode": "94108",
+        "country": "US"
+      },
+      "items": [
+        {
+          "id": "lum-01",
+          "name": "Astraea Oval Solitaire Ring",
+          "metal": "14K Gold",
+          "purity": "585",
+          "color": "Yellow Gold",
+          "size": "6.5",
+          "quantity": 1,
+          "unitPrice": 420,
+          "currency": "USD"
+        }
+      ],
+      "pricing": {
+        "subtotal": 420,
+        "discountAmount": 42,
+        "discountCode": "WELCOME10",
+        "shippingFee": 0,
+        "dutiesTaxes": 0,
+        "total": 378,
+        "currency": "USD"
+      },
+      "payment": {
+        "status": "paid",
+        "method": "Credit Card (Stripe Hosted Checkout)",
+        "transactionId": "ch_test_3Oq9V4Lk201948271",
+        "paidAt": "2026-09-28T14:23:45Z",
+        "currencyCharged": "USD"
+      },
+      "shipping": {
+        "carrier": "DHL Express Worldwide",
+        "trackingNumber": "DHL-IN-9382049182",
+        "origin": "Jaipur Atelier, India",
+        "destination": "San Francisco, CA, USA",
+        "csbVNumber": "CSB-V-2026-DEL-098234",
+        "hsCode": "7113.19.10",
+        "fulfillmentStatus": "in_transit",
+        "statusHistory": [
+          {
+            "status": "order_confirmed",
+            "timestamp": "2026-09-28T14:23:45Z",
+            "note": "Order confirmed and sent to atelier"
+          },
+          {
+            "status": "crafting_complete",
+            "timestamp": "2026-09-29T11:00:00Z",
+            "note": "Quality inspection and BIS hallmark verified"
+          },
+          {
+            "status": "csb_filed",
+            "timestamp": "2026-09-30T09:30:00Z",
+            "note": "Indian Customs CSB-V Electronic Bill filed at Air Cargo Complex"
+          },
+          {
+            "status": "handed_to_carrier",
+            "timestamp": "2026-09-30T17:45:00Z",
+            "note": "Handed over to DHL Express Air Cargo"
+          }
+        ]
+      },
+      "returnRequest": null
+    }
+  ],
+  "processedWebhooks": {
+    "tx_test_suite_1790969144174": {
+      "timestamp": "2026-10-02T19:25:44.181Z",
+      "orderId": "LUM-552283",
+      "amount": 378,
+      "currency": "USD"
+    },
+    "tx_test_suite_1790969188885": {
+      "timestamp": "2026-10-02T19:26:28.889Z",
+      "orderId": "LUM-991310",
+      "amount": 378,
+      "currency": "USD"
+    },
+    "tx_canada_test_1790969206595": {
+      "timestamp": "2026-10-02T19:26:46.695Z",
+      "orderId": "LUM-162969",
+      "amount": 1288,
+      "currency": "CAD"
+    }
+  },
+  "lastUpdated": "2026-10-02T19:26:46.695Z"
+}
