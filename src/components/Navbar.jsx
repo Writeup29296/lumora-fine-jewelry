@@ -11,13 +11,12 @@ import {
   HelpCircle, Search, ArrowRight, Heart 
 } from 'lucide-react';
 
-export const Navbar = ({ onNavigate, onOpenAdmin, onSelectProduct, products = [] }) => {
-  const { country, setCountry, currency, setCurrency, activeCurrency, activeCountry } = useCurrency();
+export const Navbar = ({ onNavigate, onSelectProduct, products = [] }) => {
+  const { currency, activeCurrency } = useCurrency();
   const { cartCount, openCart } = useCart();
-  const { currentUser, isAdmin, isLoggedIn, openLogin, logout } = useAuth();
+  const { currentUser, isLoggedIn, openLogin, logout } = useAuth();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [countryDropdownOpen, setCountryDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState(null);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
@@ -180,6 +179,16 @@ export const Navbar = ({ onNavigate, onOpenAdmin, onSelectProduct, products = []
           <button 
             onClick={() => {
               setActiveMegaMenu(null);
+              onNavigate('home');
+            }}
+            className="hover:text-[#1F2022] transition-colors py-7 font-semibold"
+          >
+            Home
+          </button>
+
+          <button 
+            onClick={() => {
+              setActiveMegaMenu(null);
               onNavigate('shop');
             }}
             className="hover:text-[#1F2022] transition-colors py-7"
@@ -269,81 +278,17 @@ export const Navbar = ({ onNavigate, onOpenAdmin, onSelectProduct, products = []
           </button>
         </div>
 
-        {/* Right Actions: Search + Country/Currency + Account + Cart */}
+        {/* Right Actions: Search + Account + Cart */}
         <div className="flex items-center space-x-2.5 sm:space-x-4">
           
           {/* Live Search Trigger */}
           <button
             onClick={() => setSearchModalOpen(true)}
-            className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#EAE3D5] text-[#747780] hover:text-[#1F2022] hover:border-[#C5A059] transition-colors text-xs"
+            className="hidden lg:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#EAE3D5] text-[#747780] hover:text-[#1F2022] hover:border-[#C5A059] transition-colors text-xs"
           >
             <Search className="w-3.5 h-3.5 text-[#A8843E]" />
             <span className="text-xs">Search Jewelry...</span>
           </button>
-
-          {/* Admin Command Center Quick Button */}
-          {isAdmin && (
-            <button
-              onClick={onOpenAdmin}
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#1F2022] text-[#FAF8F5] hover:bg-[#A8843E] text-xs font-semibold uppercase tracking-wider transition-all shadow-xs"
-              title="Open Admin Dashboard"
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" />
-              <span>Admin</span>
-            </button>
-          )}
-
-          {/* Country & Currency Switcher (USA & Canada) */}
-          <div className="relative">
-            <button
-              onClick={() => setCountryDropdownOpen(!countryDropdownOpen)}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white border border-[#EAE3D5] text-[#1F2022] hover:border-[#C5A059] transition-colors text-xs font-semibold"
-            >
-              <span className="text-sm">{activeCountry.flag}</span>
-              <span>{currency}</span>
-              <ChevronDown className="w-3 h-3 text-[#747780]" />
-            </button>
-
-            {countryDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-56 bg-white border border-[#EAE3D5] rounded-xl shadow-lg p-2 z-50 text-xs">
-                <span className="block px-3 py-1 text-[10px] uppercase tracking-wider text-[#747780] font-semibold">
-                  Destination & Currency:
-                </span>
-                <button
-                  onClick={() => {
-                    setCountry('US');
-                    setCurrency('USD');
-                    setCountryDropdownOpen(false);
-                  }}
-                  className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-left transition-colors ${
-                    country === 'US' ? 'bg-[#FAF8F5] text-[#A8843E] font-semibold' : 'text-[#575A61] hover:bg-[#FAF8F5]'
-                  }`}
-                >
-                  <span className="flex items-center gap-2">
-                    <span>🇺🇸</span>
-                    <span>United States (USD $)</span>
-                  </span>
-                  {country === 'US' && <span className="text-xs font-bold text-[#A8843E]">&check;</span>}
-                </button>
-                <button
-                  onClick={() => {
-                    setCountry('CA');
-                    setCurrency('CAD');
-                    setCountryDropdownOpen(false);
-                  }}
-                  className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-left transition-colors ${
-                    country === 'CA' ? 'bg-[#FAF8F5] text-[#A8843E] font-semibold' : 'text-[#575A61] hover:bg-[#FAF8F5]'
-                  }`}
-                >
-                  <span className="flex items-center gap-2">
-                    <span>🇨🇦</span>
-                    <span>Canada (CAD CA$)</span>
-                  </span>
-                  {country === 'CA' && <span className="text-xs font-bold text-[#A8843E]">&check;</span>}
-                </button>
-              </div>
-            )}
-          </div>
 
           {/* Account / Tracking Dropdown */}
           <div className="relative">
@@ -373,18 +318,6 @@ export const Navbar = ({ onNavigate, onOpenAdmin, onSelectProduct, products = []
                       <Package className="w-4 h-4 text-[#A8843E]" />
                       <span>Order Tracking & Returns</span>
                     </button>
-                    {isAdmin && (
-                      <button
-                        onClick={() => {
-                          setUserDropdownOpen(false);
-                          onOpenAdmin();
-                        }}
-                        className="w-full text-left px-3 py-2 hover:bg-[#FAF8F5] text-[#A8843E] font-medium rounded flex items-center gap-2"
-                      >
-                        <ShieldCheck className="w-4 h-4" />
-                        <span>Director Admin Portal</span>
-                      </button>
-                    )}
                     <button
                       onClick={() => {
                         logout();
@@ -523,6 +456,15 @@ export const Navbar = ({ onNavigate, onOpenAdmin, onSelectProduct, products = []
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-[#EAE3D5] bg-[#FAF8F5] px-6 py-6 space-y-5 animate-fade-in shadow-lg">
           <div className="space-y-3 text-xs uppercase tracking-wider font-semibold text-[#1F2022]">
+            <button 
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onNavigate('home');
+              }}
+              className="block w-full text-left py-2 border-b border-[#EAE3D5] text-[#A8843E]"
+            >
+              Home
+            </button>
             <button 
               onClick={() => {
                 setMobileMenuOpen(false);

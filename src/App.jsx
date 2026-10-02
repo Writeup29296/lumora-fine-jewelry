@@ -12,6 +12,7 @@ import { AuthModal } from './components/AuthModal';
 import { DomainSetupModal } from './components/DomainSetupModal';
 import { CookieConsentBanner } from './components/CookieConsentBanner';
 import { AdminDashboard } from './components/AdminDashboard';
+import { SecretAdminModal } from './components/SecretAdminModal';
 
 // All 13 Pages
 import { HomePage } from './pages/HomePage';
@@ -60,6 +61,52 @@ function StoreLayout() {
   const [shopCategory, setShopCategory] = useState('all');
   const [confirmedOrder, setConfirmedOrder] = useState(null);
   const [domainGuideOpen, setDomainGuideOpen] = useState(false);
+  const [secretAdminModalOpen, setSecretAdminModalOpen] = useState(false);
+
+  // Secret Shortcut: Ctrl + Shift + AkM to open Admin Portal
+  useEffect(() => {
+    let keyBuffer = [];
+    let bufferTimer = null;
+
+    const handleKeyDown = (e) => {
+      // Check if Ctrl and Shift are held down
+      if (e.ctrlKey && e.shiftKey) {
+        const key = (e.key || '').toLowerCase();
+
+        // Track sequence of keys pressed with Ctrl+Shift
+        keyBuffer.push(key);
+        clearTimeout(bufferTimer);
+        bufferTimer = setTimeout(() => {
+          keyBuffer = [];
+        }, 1500);
+
+        const joined = keyBuffer.join('');
+
+        // Triggers if 'a', 'k', 'm' or typed sequence "akm" with Ctrl+Shift
+        if (
+          key === 'a' || 
+          key === 'k' || 
+          key === 'm' || 
+          joined.includes('akm') ||
+          joined.includes('ak')
+        ) {
+          e.preventDefault();
+          keyBuffer = [];
+          if (isAdmin) {
+            handleNavigate('admin');
+          } else {
+            setSecretAdminModalOpen(true);
+          }
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      clearTimeout(bufferTimer);
+    };
+  }, [isAdmin]);
 
   // Sync route with URL hash for browser back/forward and deep linking
   useEffect(() => {
@@ -72,7 +119,14 @@ function StoreLayout() {
           setActiveProduct(found);
           setCurrentView('product');
         }
-      } else if (['home', 'shop', 'about', 'contact', 'care', 'ring-size-guide', 'shipping', 'returns', 'privacy', 'faq', 'checkout', 'confirmation', 'account', 'admin'].includes(hash)) {
+      } else if (hash === 'admin') {
+        if (isAdmin) {
+          setCurrentView('admin');
+        } else {
+          setSecretAdminModalOpen(true);
+          setCurrentView('home');
+        }
+      } else if (['home', 'shop', 'about', 'contact', 'care', 'ring-size-guide', 'shipping', 'returns', 'privacy', 'faq', 'checkout', 'confirmation', 'account'].includes(hash)) {
         setCurrentView(hash);
       } else if (!hash) {
         setCurrentView('home');
@@ -82,7 +136,7 @@ function StoreLayout() {
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [products]);
+  }, [products, isAdmin]);
 
   // Navigate helper
   const handleNavigate = (viewName, params = {}) => {
@@ -108,15 +162,6 @@ function StoreLayout() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleOpenAdmin = () => {
-    if (isAdmin) {
-      setCurrentView('admin');
-      window.location.hash = '#admin';
-    } else {
-      openLogin();
-    }
-  };
-
   // If Admin View is active and user is admin, render Admin Dashboard
   if (currentView === 'admin' && isAdmin) {
     return (
@@ -132,8 +177,6 @@ function StoreLayout() {
       {/* Navigation Header */}
       <Navbar 
         onNavigate={handleNavigate}
-        onOpenAdmin={handleOpenAdmin}
-        onOpenDomainGuide={() => setDomainGuideOpen(true)}
         onSelectProduct={handleSelectProduct}
         products={products}
       />
@@ -252,7 +295,6 @@ function StoreLayout() {
       {/* Footer */}
       <Footer 
         onNavigate={handleNavigate}
-        onOpenAdmin={handleOpenAdmin}
         onOpenDomainGuide={() => setDomainGuideOpen(true)}
       />
 
@@ -267,8 +309,18 @@ function StoreLayout() {
         onClose={() => setDomainGuideOpen(false)}
       />
 
-      {/* Customer & Director Authentication Modal */}
+      {/* Customer Authentication Modal */}
       <AuthModal />
+
+      {/* Secret Admin Authentication Modal (Ctrl + Shift + AkM) */}
+      <SecretAdminModal
+        isOpen={secretAdminModalOpen}
+        onClose={() => setSecretAdminModalOpen(false)}
+        onSuccess={() => {
+          setSecretAdminModalOpen(false);
+          handleNavigate('admin');
+        }}
+      />
 
       {/* Cookie & Privacy Consent Banner */}
       <CookieConsentBanner 

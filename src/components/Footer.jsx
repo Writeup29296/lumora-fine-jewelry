@@ -53,13 +53,6 @@ export const Footer = ({ onNavigate, onOpenAdmin, onOpenDomainGuide }) => {
                 <Settings className="w-3.5 h-3.5 text-[#A8843E]" />
                 <span>Domain & DNS Setup Hub</span>
               </button>
-              <button
-                onClick={onOpenAdmin}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-[#EAE3D5] text-xs font-mono text-[#1F2022] hover:border-[#C5A059] transition-colors"
-              >
-                <Lock className="w-3.5 h-3.5 text-[#A8843E]" />
-                <span>Admin Portal</span>
-              </button>
             </div>
           </div>
 

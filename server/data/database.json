@@ -838,6 +838,131 @@
   },
   "orders": [
     {
+      "id": "LUM-647856",
+      "date": "2026-10-02T20:11:59.156Z",
+      "customer": {
+        "firstName": "Liam",
+        "lastName": "Tremblay",
+        "email": "liam.tremblay@example.ca",
+        "phone": "+1 (416) 555-0144",
+        "address1": "180 University Ave",
+        "address2": "Suite 2200",
+        "city": "Toronto",
+        "state": "ON",
+        "postalCode": "M5H 0A2",
+        "country": "CA"
+      },
+      "items": [
+        {
+          "id": "lum-03",
+          "name": "Elysian Radiant Cut Tennis Bracelet",
+          "metal": "14K White Gold",
+          "size": "7.0 inch",
+          "quantity": 1,
+          "unitPrice": 1070
+        }
+      ],
+      "pricing": {
+        "subtotal": 1070,
+        "discountAmount": 0,
+        "discountCode": null,
+        "shippingFee": 0,
+        "dutiesTaxes": 218,
+        "total": 1288,
+        "currency": "CAD"
+      },
+      "payment": {
+        "status": "paid",
+        "method": "Credit Card (Stripe India Test Simulation)",
+        "transactionId": "tx_canada_test_1790971919096",
+        "paidAt": "2026-10-02T20:11:59.156Z",
+        "currencyCharged": "CAD"
+      },
+      "shipping": {
+        "carrier": "DHL Express Worldwide",
+        "trackingNumber": "DHL-IN-2594017898",
+        "origin": "Jaipur / Surat Atelier, India",
+        "destination": "Toronto, ON, CA",
+        "csbVNumber": "CSB-V-2026-DEL-279251",
+        "hsCode": "7113.19.10",
+        "fulfillmentStatus": "processing",
+        "statusHistory": [
+          {
+            "status": "order_confirmed",
+            "timestamp": "2026-10-02T20:11:59.156Z",
+            "note": "Order placed and payment authorized. Atelier preparing pieces for quality verification."
+          }
+        ]
+      },
+      "returnRequest": null
+    },
+    {
+      "id": "LUM-517687",
+      "date": "2026-10-02T20:11:58.996Z",
+      "customer": {
+        "firstName": "Elena",
+        "lastName": "Rostova",
+        "email": "elena.rostova@example.com",
+        "phone": "+1 (310) 555-0199",
+        "address1": "9641 Sunset Blvd",
+        "address2": "Suite 400",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "postalCode": "90210",
+        "country": "US"
+      },
+      "items": [
+        {
+          "id": "lum-01",
+          "name": "Astraea Oval Solitaire Ring",
+          "metal": "14K Gold",
+          "size": "7.0",
+          "quantity": 1,
+          "unitPrice": 420
+        }
+      ],
+      "pricing": {
+        "subtotal": 420,
+        "discountAmount": 42,
+        "discountCode": "WELCOME10",
+        "shippingFee": 0,
+        "dutiesTaxes": 0,
+        "total": 378,
+        "currency": "USD"
+      },
+      "payment": {
+        "status": "paid",
+        "method": "Credit Card (Stripe India Test Simulation)",
+        "transactionId": "tx_test_suite_1790971918995",
+        "paidAt": "2026-10-02T20:11:58.996Z",
+        "currencyCharged": "USD"
+      },
+      "shipping": {
+        "carrier": "DHL Express Worldwide",
+        "trackingNumber": "DHL-IN-6460568447",
+        "origin": "Jaipur / Surat Atelier, India",
+        "destination": "Beverly Hills, CA, US",
+        "csbVNumber": "CSB-V-2026-DEL-926919",
+        "hsCode": "7113.19.10",
+        "fulfillmentStatus": "processing",
+        "statusHistory": [
+          {
+            "status": "order_confirmed",
+            "timestamp": "2026-10-02T20:11:58.996Z",
+            "note": "Order placed and payment authorized. Atelier preparing pieces for quality verification."
+          }
+        ]
+      },
+      "returnRequest": {
+        "requestedAt": "2026-10-02T20:11:59.008Z",
+        "reason": "size_adjustment",
+        "itemIds": [],
+        "notes": "Need ring adjusted from size 7 to size 6.5.",
+        "status": "pending_review",
+        "instructions": "Please do not ship items back without authorization. If approved, return hub instructions will be dispatched to your email."
+      }
+    },
+    {
       "id": "LUM-660575",
       "date": "2026-10-02T20:03:26.048Z",
       "customer": {
@@ -1398,7 +1523,19 @@
       "orderId": "LUM-660575",
       "amount": 1288,
       "currency": "CAD"
+    },
+    "tx_test_suite_1790971918995": {
+      "timestamp": "2026-10-02T20:11:58.997Z",
+      "orderId": "LUM-517687",
+      "amount": 378,
+      "currency": "USD"
+    },
+    "tx_canada_test_1790971919096": {
+      "timestamp": "2026-10-02T20:11:59.158Z",
+      "orderId": "LUM-647856",
+      "amount": 1288,
+      "currency": "CAD"
     }
   },
-  "lastUpdated": "2026-10-02T20:03:26.049Z"
+  "lastUpdated": "2026-10-02T20:11:59.158Z"
 }

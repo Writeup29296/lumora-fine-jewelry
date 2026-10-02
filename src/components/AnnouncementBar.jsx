@@ -70,7 +70,7 @@ export const AnnouncementBar = ({ onNavigate, isAdmin, onOpenAdmin, openLogin })
           </button>
         </div>
 
-        {/* Right Arrow + Admin Trigger */}
+        {/* Right Arrow */}
         <div className="flex items-center gap-2">
           <button 
             onClick={handleNext}
@@ -78,17 +78,6 @@ export const AnnouncementBar = ({ onNavigate, isAdmin, onOpenAdmin, openLogin })
             aria-label="Next announcement"
           >
             <ChevronRight className="w-3.5 h-3.5" />
-          </button>
-
-          <span className="hidden sm:inline text-[#EAE3D5]">|</span>
-
-          {/* Quick Admin Access */}
-          <button
-            onClick={isAdmin ? onOpenAdmin : openLogin}
-            className="text-[#A8843E] hover:text-[#1F2022] flex items-center gap-1 font-mono text-[11px] transition-colors"
-          >
-            <Lock className="w-3 h-3" />
-            <span className="hidden sm:inline">{isAdmin ? 'Admin' : 'Admin'}</span>
           </button>
         </div>
 
