@@ -8,6 +8,7 @@
     "dev:server": "node server/server.js",
     "dev:client": "vite",
     "build": "vite build",
+    "test": "node server/run-tests.js",
     "start": "node server/server.js",
     "lint": "oxlint",
     "preview": "vite preview"
