@@ -7,6 +7,7 @@ import {
 import { useCurrency } from '../context/CurrencyContext';
 import { useCart } from '../context/CartContext';
 import { QuickViewModal } from '../components/QuickViewModal';
+import { LumoraCrest } from '../components/LumoraCrest';
 
 export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'all' }) => {
   const { formatPrice, activeCurrency } = useCurrency();
@@ -111,13 +112,13 @@ export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'al
       {/* Category Header Banner */}
       <div className="bg-[#FAF8F5] border border-[#EAE3D5] rounded-2xl p-6 sm:p-10 text-center space-y-3">
         <span className="text-xs uppercase tracking-[0.2em] text-[#A8843E] font-semibold">
-          Handcrafted in Jaipur & Surat
+          Handcrafted in Surat, Gujarat, India
         </span>
         <h1 className="text-3xl sm:text-4xl font-serif text-[#1F2022] font-normal capitalize">
           {selectedCategory === 'all' ? 'The Fine Jewelry Collection' : `${selectedCategory} Collection`}
         </h1>
         <p className="text-xs sm:text-sm text-[#575A61] max-w-2xl mx-auto leading-relaxed">
-          Solid 9K, 14K, and 18K gold and 925 sterling silver set with certified lab-grown diamonds (CVD/HPHT). Delivered door-to-door to the USA and Canada with 100% full insurance coverage.
+          Solid 9K, 14K, and 18K gold and 925 sterling silver set with certified lab-grown diamonds (CVD/HPHT). Delivered door-to-door worldwide with 100% full insurance coverage.
         </p>
 
         {/* Quick Category Chips */}
@@ -361,7 +362,7 @@ export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'al
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
               {filteredProducts.map((product) => {
                 const hasMultipleImages = product.images && product.images.length > 1;
                 const isHovered = hoveredCardId === product.id;
@@ -387,25 +388,26 @@ export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'al
                         className="w-full h-full object-cover object-center transition-all duration-500 group-hover:scale-105"
                       />
 
-                      {/* Sample Data Badge */}
-                      <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-[#1F2022]/85 text-[#FAF8F5] text-[10px] font-mono tracking-tight">
-                        Sample Data
+                      {/* Atelier Cut Royal Badge */}
+                      <div className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-[#1F2022]/90 backdrop-blur-xs text-[#FAF8F5] text-[9px] font-serif tracking-wider uppercase border border-white/10 flex items-center gap-1 shadow-xs">
+                        <LumoraCrest className="w-2.5 h-2.5" color="#E8D3A2" />
+                        <span>Atelier Cut</span>
                       </div>
 
                       {product.isBestSeller && (
-                        <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-[#F4EFE6] text-[#A8843E] border border-[#E0D5C1] text-[10px] font-semibold uppercase tracking-wider">
+                        <div className="absolute top-2 right-2 px-1.5 py-0.5 sm:px-2 rounded bg-[#F4EFE6] text-[#A8843E] border border-[#E0D5C1] text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider">
                           Best Seller
                         </div>
                       )}
 
                       {/* Quick View Button on Hover */}
-                      <div className="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="absolute inset-x-2 bottom-2 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block">
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             setQuickViewProduct(product);
                           }}
-                          className="w-full py-2 bg-white/95 backdrop-blur-xs text-[#1F2022] hover:bg-[#1F2022] hover:text-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors shadow-sm flex items-center justify-center gap-1.5"
+                          className="w-full py-1.5 sm:py-2 bg-white/95 backdrop-blur-xs text-[#1F2022] hover:bg-[#1F2022] hover:text-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-[11px] font-semibold uppercase tracking-wider transition-colors shadow-sm flex items-center justify-center gap-1.5"
                         >
                           <Eye className="w-3.5 h-3.5" />
                           <span>Quick View</span>
@@ -414,28 +416,28 @@ export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'al
                     </div>
 
                     {/* Body Content */}
-                    <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                    <div className="p-3 sm:p-5 flex-1 flex flex-col justify-between space-y-2 sm:space-y-3">
                       <div>
-                        <div className="flex items-center justify-between text-[10px] uppercase tracking-wider text-[#A8843E] font-semibold">
+                        <div className="flex items-center justify-between text-[9px] sm:text-[10px] uppercase tracking-wider text-[#A8843E] font-semibold">
                           <span>{product.category}</span>
-                          <span className="text-[#747780] font-normal">Jaipur Atelier</span>
+                          <span className="text-[#747780] font-normal hidden xs:inline">Surat Atelier</span>
                         </div>
                         
                         <h3
                           onClick={() => onSelectProduct(product)}
-                          className="font-serif text-base text-[#1F2022] font-medium hover:text-[#A8843E] cursor-pointer transition-colors mt-1 line-clamp-1"
+                          className="font-serif text-xs sm:text-base text-[#1F2022] font-medium hover:text-[#A8843E] cursor-pointer transition-colors mt-0.5 line-clamp-1"
                         >
                           {product.name}
                         </h3>
 
-                        <p className="text-xs text-[#747780] line-clamp-2 mt-1">
+                        <p className="text-[11px] sm:text-xs text-[#747780] line-clamp-2 mt-0.5">
                           {product.description}
                         </p>
 
                         {/* Interactive Color/Metal Swatches (Mejuri standard) */}
                         {product.variants && product.variants.length > 0 && (
-                          <div className="flex items-center gap-1.5 mt-2.5">
-                            {product.variants.map((v, i) => (
+                          <div className="flex items-center gap-1 mt-2">
+                            {product.variants.slice(0, 3).map((v, i) => (
                               <button
                                 key={i}
                                 onClick={(e) => {
@@ -443,7 +445,7 @@ export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'al
                                   setSelectedSwatches({ ...selectedSwatches, [product.id]: v });
                                 }}
                                 title={`${v.metal} (${v.color})`}
-                                className={`w-3.5 h-3.5 rounded-full border transition-all ${
+                                className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border transition-all ${
                                   activeSwatch?.id === v.id ? 'ring-2 ring-[#C5A059] scale-110' : 'border-black/20'
                                 } ${
                                   v.color.includes('Yellow') ? 'bg-amber-300' :
@@ -451,28 +453,33 @@ export const ShopPage = ({ products = [], onSelectProduct, initialCategory = 'al
                                 }`}
                               />
                             ))}
-                            <span className="text-[10px] text-[#747780] ml-1">
+                            <span className="text-[9px] sm:text-[10px] text-[#747780] ml-1">
                               {activeSwatch ? activeSwatch.metal : `${product.variants.length} metals`}
                             </span>
                           </div>
                         )}
                       </div>
 
-                      <div className="pt-3 border-t border-[#F5F1E8] flex items-center justify-between">
+                      <div className="pt-2 border-t border-[#F5F1E8] flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                         <div>
-                          <span className="text-base font-semibold text-[#1F2022]">
-                            {formatPrice(displayPriceUSD)}
-                          </span>
-                          <span className="block text-[10px] text-[#747780]">
-                            {activeCurrency.statement}
+                          <div className="flex items-baseline gap-1.5 flex-wrap">
+                            <span className="text-xs sm:text-base font-semibold text-[#1F2022]">
+                              {formatPrice(displayPriceUSD)}
+                            </span>
+                            <span className="text-[10px] sm:text-xs text-[#747780] line-through font-light">
+                              {formatPrice(Math.round(displayPriceUSD * 2.8))}
+                            </span>
+                          </div>
+                          <span className="block text-[8px] sm:text-[9px] text-[#A8843E] font-medium tracking-tight">
+                            Save ~65% Direct Atelier
                           </span>
                         </div>
 
                         <button
                           onClick={() => onSelectProduct(product)}
-                          className="px-3 py-1.5 rounded bg-[#FAF8F5] hover:bg-[#1F2022] hover:text-[#FAF8F5] border border-[#EAE3D5] text-xs font-medium text-[#1F2022] transition-colors"
+                          className="w-full sm:w-auto px-2 sm:px-3 py-1 sm:py-1.5 rounded bg-[#FAF8F5] hover:bg-[#1F2022] hover:text-[#FAF8F5] border border-[#EAE3D5] text-[10px] sm:text-xs font-semibold text-[#1F2022] transition-colors text-center"
                         >
-                          Details
+                          View Piece
                         </button>
                       </div>
                     </div>

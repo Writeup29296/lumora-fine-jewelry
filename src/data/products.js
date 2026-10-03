@@ -34,7 +34,7 @@ export const products = [
       { label: 'Band Profile', value: '1.8mm Comfort Fit French Pavé' },
       { label: 'Assay Hallmarking', value: 'BIS Bureau of Indian Standards Laser Stamp' },
       { label: 'Certification', value: 'Individual Certificate of Authenticity Included' },
-      { label: 'Origin', value: 'Handcrafted in Jaipur, India' }
+      { label: 'Origin', value: 'Handcrafted in Surat, Gujarat, India' }
     ]
   },
   {
@@ -104,7 +104,7 @@ export const products = [
       { label: 'Lock Type', value: 'Custom Double-Latching Box Clasp' },
       { label: 'Metal Weight', value: '11.5 grams solid gold' },
       { label: 'Hallmark', value: 'BIS 585 / 750 Certified' },
-      { label: 'US Customs Duty', value: '$0.00 (Qualifies for Section 321 Duty-Free)' },
+      { label: 'Worldwide Shipping', value: '100% Insured Doorstep Delivery via DHL Express' },
       { label: 'Insurance', value: '100% Insured Armored Transit via DHL Express' }
     ]
   },
@@ -242,7 +242,7 @@ export const products = [
       { label: 'Gem Treatment', value: 'Traditional Minor Cedarwood Oil (Standard)' },
       { label: 'Side Stones', value: 'Tapered Baguette Lab Diamonds (0.50 ctw)' },
       { label: 'Gold Purity', value: '18 Karat Solid Gold (75.0% Fine Gold)' },
-      { label: 'Origin of Cutting', value: 'Jaipur Precision Lapidary' }
+      { label: 'Origin of Cutting', value: 'Surat Precision Lapidary' }
     ]
   },
   {
@@ -339,7 +339,7 @@ export const products = [
     ],
     availableSizes: ['Standard 48mm Drop Length'],
     specs: [
-      { label: 'Technique', value: 'Centuries-old Jaipur Tarakashi (Wire Filigree)' },
+      { label: 'Technique', value: 'Heritage Surat Artisan Filigree' },
       { label: 'Accents', value: 'Natural Basra Seed Pearls' },
       { label: 'Earring Post', value: 'Solid 925 Silver Post & Push Backing' },
       { label: 'Length', value: '48mm drop x 22mm bell diameter' }

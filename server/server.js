@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import fs from 'fs';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import Stripe from 'stripe';
@@ -87,9 +88,17 @@ app.post(
   }
 );
 
-// Standard Middlewares
+// Standard Middlewares (High limit for original resolution photos and videos)
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ extended: true, limit: '100mb' }));
+
+// Ensure public/uploads directory exists and serve statically
+const uploadsDir = path.join(__dirname, '..', 'public', 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
+app.use('/uploads', express.static(uploadsDir));
 
 // Logging Middleware
 app.use((req, res, next) => {
@@ -126,11 +135,43 @@ app.get('/api/health', (req, res) => {
     status: 'online',
     brand: 'Lumora Fine Jewelry',
     domain: 'lumorafinejewelery.com',
-    origin: 'Jaipur & Surat, India',
-    targetMarkets: ['USA', 'Canada'],
+    origin: 'Surat, Gujarat, India',
+    targetMarkets: ['Worldwide'],
     paymentMode: stripeClient ? 'Stripe Hosted Live' : 'Test Mode (Demonstration Ready)',
     serverTime: new Date().toISOString()
   });
+});
+
+// Lossless Media Upload Endpoint (Exact same bytes, 0% compression, 100% original quality)
+app.post('/api/upload', checkAdmin, (req, res) => {
+  try {
+    const { data, filename, fileType } = req.body;
+    if (!data || !filename) {
+      return res.status(400).json({ error: 'File data and filename are required.' });
+    }
+
+    const cleanFilename = `${Date.now()}-${filename.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
+    const targetFilePath = path.join(uploadsDir, cleanFilename);
+
+    // Strip Data URI prefix (e.g. data:image/png;base64, or data:video/mp4;base64,)
+    const base64Data = data.replace(/^data:[^;]+;base64,/, '');
+    const buffer = Buffer.from(base64Data, 'base64');
+
+    // Write original file bytes directly to disk with zero degradation or downscaling
+    fs.writeFileSync(targetFilePath, buffer);
+
+    console.log(`📸 Lossless media uploaded: ${cleanFilename} (${(buffer.length / (1024 * 1024)).toFixed(2)} MB, type: ${fileType || 'unknown'})`);
+
+    res.json({
+      success: true,
+      url: `/uploads/${cleanFilename}`,
+      filename: cleanFilename,
+      sizeBytes: buffer.length
+    });
+  } catch (err) {
+    console.error('Upload error:', err);
+    res.status(500).json({ error: 'Failed to upload media file.' });
+  }
 });
 
 // Products
@@ -251,10 +292,10 @@ app.post('/api/checkout/create-session', async (req, res) => {
   try {
     const { items, customer, pricing, successUrl, cancelUrl } = req.body;
 
-    // Validate Country: Strictly USA or Canada
-    if (!customer || !['US', 'CA'].includes(customer.country)) {
+    // Validate Country: Worldwide support
+    if (!customer || !customer.country) {
       return res.status(400).json({ 
-        error: 'Initial checkout shipping destinations are strictly restricted to the United States and Canada.' 
+        error: 'Please provide a valid shipping destination country.' 
       });
     }
 
@@ -273,7 +314,7 @@ app.post('/api/checkout/create-session', async (req, res) => {
           product_data: {
             name: `${item.name} (${item.metal}${item.size ? ` - Size ${item.size}` : ''})`,
             images: item.image ? [item.image] : [],
-            description: `Handcrafted fine jewelry from Lumora Atelier (Jaipur & Surat, India)`
+            description: `Handcrafted fine jewelry from Lumora Atelier (Surat, India)`
           },
           unit_amount: Math.round((item.unitPrice || 0) * 100)
         },
@@ -287,7 +328,7 @@ app.post('/api/checkout/create-session', async (req, res) => {
             currency: currency,
             product_data: {
               name: 'DHL Express Insured International Air Delivery (from India)',
-              description: 'Insured transit to USA / Canada with signature delivery'
+              description: 'Insured worldwide transit with signature delivery'
             },
             unit_amount: Math.round(pricing.shippingFee * 100)
           },
@@ -301,8 +342,8 @@ app.post('/api/checkout/create-session', async (req, res) => {
           price_data: {
             currency: currency,
             product_data: {
-              name: 'Canada CBSA Customs Tariff & Provincial GST/HST (DDP Pre-clearance)',
-              description: 'Guaranteed Delivered Duty Paid — Zero surprise fees at Canadian doorstep'
+              name: 'International Customs Tariff & Local Taxes (DDP Pre-clearance)',
+              description: 'Guaranteed Delivered Duty Paid — Zero surprise fees at your doorstep'
             },
             unit_amount: Math.round(pricing.dutiesTaxes * 100)
           },
@@ -316,11 +357,11 @@ app.post('/api/checkout/create-session', async (req, res) => {
         customer_email: customer.email,
         line_items: lineItems,
         shipping_address_collection: {
-          allowed_countries: ['US', 'CA']
+          allowed_countries: ['US', 'CA', 'GB', 'AU', 'DE', 'FR', 'AE', 'SG', 'IN', 'JP', 'IT', 'ES', 'NL', 'CH', 'SE', 'NZ']
         },
         metadata: {
           orderData: JSON.stringify({ customer, items, pricing }),
-          exportOrigin: 'Jaipur & Surat, India',
+          exportOrigin: 'Surat, Gujarat, India',
           rbiPurposeCode: 'P0103'
         },
         success_url: successUrl || `http://localhost:5173/confirmation?session_id={CHECKOUT_SESSION_ID}`,
@@ -342,7 +383,7 @@ app.post('/api/checkout/create-session', async (req, res) => {
       checkoutUrl: null,
       isTestMode: true,
       notice: 'Stripe API credentials not detected in .env. Test mode is active. Orders can be completed directly via verified simulation.',
-      supportedCurrencies: ['USD', 'CAD'],
+      supportedCurrencies: ['USD', 'EUR', 'GBP', 'AUD', 'CAD', 'INR', 'AED'],
       chargeCurrency: pricing.currency || 'USD'
     });
   } catch (err) {
@@ -356,17 +397,17 @@ app.post('/api/checkout/confirm-test-order', (req, res) => {
   try {
     const { customer, items, pricing, transactionToken } = req.body;
 
-    // Strict USA/Canada Validation
-    if (!customer || !['US', 'CA'].includes(customer.country)) {
+    // Worldwide Country Validation
+    if (!customer || !customer.country) {
       return res.status(400).json({ 
-        error: 'Initial checkout shipping destinations are strictly restricted to the United States and Canada.' 
+        error: 'Please provide a valid shipping destination country.' 
       });
     }
 
     // Required address fields
-    if (!customer.firstName || !customer.lastName || !customer.address1 || !customer.city || !customer.state || !customer.postalCode) {
+    if (!customer.firstName || !customer.lastName || !customer.address1 || !customer.city || !customer.postalCode) {
       return res.status(400).json({
-        error: 'Please fill in all required shipping address fields (Name, Street, City, State/Province, Postal Code).'
+        error: 'Please fill in all required shipping address fields (Name, Street, City, Postal Code).'
       });
     }
 
@@ -470,8 +511,8 @@ app.listen(PORT, () => {
   console.log(`💎 LUMORA FINE JEWELRY - D2C BACKEND SERVER`);
   console.log(`📡 Server listening on: http://localhost:${PORT}`);
   console.log(`🌐 Official Domain: lumorafinejewelery.com`);
-  console.log(`🛫 Origin Atelier: Jaipur & Surat, India`);
-  console.log(`🎯 Target Markets: United States & Canada`);
+  console.log(`🛫 Origin Atelier: Surat, Gujarat, India`);
+  console.log(`🎯 Target Markets: Worldwide`);
   console.log(`💳 Stripe Status: ${stripeClient ? 'Configured (Live/Test)' : 'Test Mode Simulation Active'}`);
   console.log(`====================================================`);
 });

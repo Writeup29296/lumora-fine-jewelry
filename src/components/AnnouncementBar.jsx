@@ -9,14 +9,14 @@ export const AnnouncementBar = ({ onNavigate }) => {
   const messages = [
     {
       icon: Sparkles,
-      text: settings?.announcement1 || 'Direct Atelier Pricing: Handcrafted in Jaipur & Surat • Zero 400% Retail Markups',
+      text: settings?.announcement1 || 'Direct Atelier Pricing: Handcrafted in Surat • Zero 400% Retail Markups',
       linkText: settings?.announcement1Link || 'Our Atelier Story',
       page: settings?.announcement1Page || 'about'
     },
     {
       icon: ShieldCheck,
-      text: settings?.announcement2 || '🇺🇸 USA: Section 321 Duty-Free Under $800 • 🇨🇦 Canada: CBSA & Provincial DDP Pre-Cleared',
-      linkText: settings?.announcement2Link || 'Shipping & Customs',
+      text: settings?.announcement2 || '🌍 Worldwide Insured Express Delivery • Door-to-Door Tracking',
+      linkText: settings?.announcement2Link || 'Shipping Policy',
       page: settings?.announcement2Page || 'shipping'
     },
     {

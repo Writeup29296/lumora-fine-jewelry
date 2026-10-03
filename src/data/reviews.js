@@ -51,8 +51,8 @@ export const demonstrationReviews = [
 ];
 
 export const trustStats = {
-  shippingOrigin: 'Jaipur & Surat, India',
-  targetDestinations: 'United States & Canada',
+  shippingOrigin: 'Surat, Gujarat, India',
+  targetDestinations: 'Worldwide Insured Delivery',
   courierPartners: 'DHL Express Worldwide & FedEx Priority',
   complianceStandard: 'BIS Hallmark / 925 Stamped',
   orderFulfillmentType: 'Insured International Air Cargo (CSB-V)'

@@ -1,7 +1,7 @@
 // ============================================================================
 // LUMORA FINE JEWELRY - BRAND & GLOBAL EXPORT CONFIGURATION
 // Domain: lumorafinejewelery.com
-// Handcrafted in Jaipur & Surat, India — Direct Export to USA & Canada
+// Handcrafted in Surat, Gujarat, India — Worldwide Insured Air Express
 // ============================================================================
 
 export const brandConfig = {
@@ -9,25 +9,26 @@ export const brandConfig = {
   brandName: "LUMORA",
   brandSubtitle: "FINE JEWELRY",
   brandFullName: "Lumora Fine Jewelry",
-  brandTagline: "Artisan Solid Gold & 925 Sterling Silver — Handcrafted in India, Delivered Directly to the United States & Canada",
+  brandTagline: "Jewels That Shine Forever — Handcrafted in Surat, India, Delivered Worldwide",
+  logoUrl: "/lumora-logo.png",
+  logoSquareUrl: "/lumora-logo-square.png",
   domain: "lumorafinejewelery.com",
   siteUrl: "https://lumorafinejewelery.com",
-  brandOrigin: "Jaipur & Surat, Rajasthan / Gujarat, India",
-  shippingOriginNotice: "All orders are handcrafted in our Indian ateliers and dispatched via insured international air express directly to your doorstep in the United States or Canada.",
+  brandOrigin: "Surat, Gujarat, India",
+  shippingOriginNotice: "All orders are handcrafted in our Surat atelier and dispatched via insured international air express directly to your doorstep worldwide.",
 
   // Transparent Value Pillars
   valuePillars: {
-    directArtisan: "Direct-from-Atelier: We design and craft directly in Jaipur and Surat, eliminating traditional 400% retail boutique markups.",
-    usaDeMinimis: "USA Section 321 De Minimis: Under 19 U.S.C. § 1321, single daily imports valued at $800 USD or less are generally exempt from US Customs duty and formal entry.",
-    canadaDDP: "Canada Customs & DDP: Orders to Canada are subject to CBSA customs duties (approx. 6.5%) and provincial taxes (GST/HST). Optional DDP checkout is available so all duties are calculated transparently before payment.",
+    directArtisan: "Direct-from-Atelier: We design and craft directly in Surat, India's diamond and fine jewelry capital, eliminating traditional 400% retail boutique markups.",
+    worldwideDelivery: "Worldwide Insured Express Delivery: Safe, fully tracked, door-to-door courier service to clients across the globe.",
     expressAir: "Fast 3–5 Business Day Insured Air Transit via DHL Express Worldwide & FedEx International Priority.",
-    certifiedPurity: "Every gold piece is verified under BIS Hallmarking standards (585 / 750) and sterling silver is stamped 925 with an assay card."
+    certifiedPurity: "Every gold piece is verified under BIS Hallmarking standards (375 / 585 / 750) and sterling silver is stamped 925 with an assay card."
   },
 
   // Indian Export & Customs Credentials (CSB-V)
   exportCompliance: {
     iecStatus: "[Merchant IEC Code: Import Export Code to be configured in Admin]",
-    adCodeStatus: "[AD Code: Registered at Air Cargo Complex - Jaipur / Delhi / Mumbai]",
+    adCodeStatus: "[AD Code: Registered at Air Cargo Complex - Surat / Mumbai / Delhi]",
     gstLutStatus: "[GST LUT: Zero-Rated Export under Letter of Undertaking]",
     shippingMode: "Courier Shipping Bill - V (CSB-V) Electronic Customs Clearance",
     hsCodeGold: "7113.19.10 (Articles of jewelry of gold)",
@@ -38,11 +39,11 @@ export const brandConfig = {
 
   // Contact & Concierge
   concierge: {
-    supportEmail: "concierge@lumorafinejewelery.com",
-    ordersEmail: "orders@lumorafinejewelery.com",
-    whatsappNumber: "+91 98765 43210 (VIP Concierge)",
-    usPhonePlaceholder: "[US / Canada Toll-Free Inquiries: Dedicated Phone Line to be configured]",
-    businessHours: "Mon – Sat: 9:00 AM – 8:00 PM EST (Dedicated North American Customer Support)"
+    supportEmail: "lumoragemofficial@gmail.com",
+    ordersEmail: "lumoragemofficial@gmail.com",
+    whatsappNumber: "+91 79840 29296",
+    whatsappLink: "https://wa.me/917984029296",
+    businessHours: "Mon – Sat: 9:00 AM – 8:00 PM EST (Dedicated Customer Support)"
   },
 
   // Logistics & Policies
@@ -54,8 +55,7 @@ export const brandConfig = {
     priorityArmoredCostUSD: 35,
     priorityArmoredCostCAD: 48,
     dispatchLeadTime: "1 to 2 business days (In-stock ready pieces) / 5 to 7 business days (Custom sizing or bespoke settings)",
-    deliveryTimeUSA: "3 to 5 business days via DHL Express / FedEx Priority",
-    deliveryTimeCanada: "4 to 6 business days via DHL Express / FedEx Priority",
+    deliveryTimeWorldwide: "3 to 6 business days via DHL Express / FedEx Priority",
     carriers: ["DHL Express Worldwide", "FedEx International Priority"],
     packaging: "Luxury hardcover velvet presentation vault box, BIS hallmark assay verification card, anti-tarnish storage pouch, and polishing cloth."
   },
@@ -63,7 +63,7 @@ export const brandConfig = {
   // Configurable 30-Day Returns & Policies
   guarantees: {
     returns: "Configurable 30-Day Return window for eligible unworn pieces with security tags and certificates intact. Custom-engraved and bespoke pieces are excluded.",
-    returnAddressPlaceholder: "[North American Return Processing Facility: Address details to be finalized upon carrier onboarding]",
+    returnAddressPlaceholder: "[Return Logistics Facility: Address details to be finalized upon carrier onboarding]",
     warrantyPlaceholder: "[Manufacturer Craftsmanship Warranty: Details to be finalized by merchant]",
     insurance: "100% Insured Transit: Every shipment is covered until delivery confirmation with signature requirement."
   }

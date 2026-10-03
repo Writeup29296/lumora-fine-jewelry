@@ -9,6 +9,7 @@ import { CartProvider } from './context/CartContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CartDrawer } from './components/CartDrawer';
+import { MobileBottomNav } from './components/MobileBottomNav';
 import { AuthModal } from './components/AuthModal';
 import { DomainSetupModal } from './components/DomainSetupModal';
 import { CookieConsentBanner } from './components/CookieConsentBanner';
@@ -202,7 +203,7 @@ function StoreLayout() {
       />
 
       {/* Main Page Content */}
-      <main className="flex-1">
+      <main className="flex-1 pb-16 lg:pb-0">
         
         {/* 1. HOMEPAGE */}
         {currentView === 'home' && (
@@ -345,6 +346,12 @@ function StoreLayout() {
       {/* Cookie & Privacy Consent Banner */}
       <CookieConsentBanner 
         onNavigateToPrivacy={() => handleNavigate('privacy')}
+      />
+
+      {/* Luxury Mobile Bottom Navigation Dock */}
+      <MobileBottomNav 
+        currentView={currentView} 
+        onNavigate={handleNavigate} 
       />
 
     </div>

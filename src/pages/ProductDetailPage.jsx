@@ -3,7 +3,7 @@ import {
   ShieldCheck, Plane, Award, Sparkles, Check, 
   ArrowLeft, ShoppingBag, Eye, Heart, HelpCircle, 
   Clock, Package, RefreshCw, ZoomIn, Play, Star, ChevronRight, 
-  Share2, Gem, CheckCircle2 
+  Share2, Gem, CheckCircle2, MessageCircle 
 } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
 import { useCart } from '../context/CartContext';
@@ -11,6 +11,7 @@ import { brandConfig } from '../data/brandConfig';
 import { DeliveryEstimator } from '../components/DeliveryEstimator';
 import { DiamondScaleVisualizer } from '../components/DiamondScaleVisualizer';
 import { StickyAddToCart } from '../components/StickyAddToCart';
+import { LumoraCrest } from '../components/LumoraCrest';
 
 export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate, allProducts = [] }) => {
   const { formatPrice, activeCurrency, activeCountry } = useCurrency();
@@ -132,19 +133,39 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
             onMouseLeave={handleMouseLeave}
           >
             {isVideoOpen ? (
-              <div className="w-full h-full flex flex-col items-center justify-center bg-[#FAF8F5] p-6 text-center space-y-3">
-                <div className="w-16 h-16 rounded-full bg-[#F4EFE6] border border-[#E0D5C1] flex items-center justify-center text-[#A8843E] animate-pulse">
-                  <Play className="w-8 h-8 fill-[#A8843E]" />
-                </div>
-                <h4 className="font-serif text-lg text-[#1F2022]">360&deg; High-Definition Studio Preview</h4>
-                <p className="text-xs text-[#575A61] max-w-sm">
-                  Rotating view under daylight-balanced 5500K diamond lighting in our Jaipur testing laboratory.
-                </p>
+              <div className="w-full h-full flex flex-col items-center justify-center bg-black relative rounded-2xl overflow-hidden">
+                {product.video || product.videoUrl ? (
+                  <video
+                    src={product.video || product.videoUrl}
+                    controls
+                    autoPlay
+                    loop
+                    playsInline
+                    className="w-full h-full object-contain"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-[#FAF8F5] p-6 text-center space-y-3">
+                    <div className="w-16 h-16 rounded-full bg-[#F4EFE6] border border-[#E0D5C1] flex items-center justify-center text-[#A8843E] animate-pulse">
+                      <Play className="w-8 h-8 fill-[#A8843E]" />
+                    </div>
+                    <h4 className="font-serif text-lg text-[#1F2022]">360&deg; High-Definition Studio Preview</h4>
+                    <p className="text-xs text-[#575A61] max-w-sm">
+                      Rotating view under daylight-balanced 5500K diamond lighting in our Surat testing atelier.
+                    </p>
+                    <button
+                      onClick={() => setIsVideoOpen(false)}
+                      className="px-4 py-1.5 bg-[#1F2022] text-[#FAF8F5] rounded text-xs uppercase tracking-wider"
+                    >
+                      Return to Photography
+                    </button>
+                  </div>
+                )}
                 <button
                   onClick={() => setIsVideoOpen(false)}
-                  className="px-4 py-1.5 bg-[#1F2022] text-[#FAF8F5] rounded text-xs uppercase tracking-wider"
+                  className="absolute top-3 right-3 p-1.5 rounded-full bg-black/60 text-white hover:bg-black transition-colors z-30"
+                  title="Close Video"
                 >
-                  Return to Photography
+                  <ArrowLeft className="w-4 h-4" />
                 </button>
               </div>
             ) : (
@@ -152,7 +173,7 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
                 <img
                   src={product.images[activeImageIndex] || product.images[0]}
                   alt={`${product.name} - View ${activeImageIndex + 1}`}
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover object-center [image-rendering:high-quality]"
                 />
                 
                 {/* Floating Zoom Lens Preview */}
@@ -164,9 +185,10 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
                   }}
                 />
 
-                {/* Sample Tag */}
-                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#1F2022]/85 text-[#FAF8F5] text-xs font-mono tracking-tight z-10">
-                  Sample Data
+                {/* Atelier Designation Badge */}
+                <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#1F2022]/90 backdrop-blur-md text-[#FAF8F5] text-[10px] font-serif tracking-widest uppercase border border-[#C5A059]/40 flex items-center gap-1.5 shadow-md z-10">
+                  <LumoraCrest className="w-3 h-3" color="#E8D3A2" />
+                  <span>Surat Atelier Cut</span>
                 </div>
 
                 {/* Zoom Hint */}
@@ -222,7 +244,7 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
           <div className="grid grid-cols-3 gap-3 p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE3D5] text-xs text-[#575A61]">
             <div className="flex items-center gap-2">
               <Plane className="w-4 h-4 text-[#A8843E] shrink-0" />
-              <span>Direct Jaipur/Surat Export</span>
+              <span>Direct Surat Export</span>
             </div>
             <div className="flex items-center gap-2">
               <Award className="w-4 h-4 text-[#A8843E] shrink-0" />
@@ -241,9 +263,12 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
           
           <div className="space-y-2 border-b border-[#EAE3D5] pb-5">
             <div className="flex items-center justify-between">
-              <span className="text-xs uppercase tracking-[0.2em] text-[#A8843E] font-semibold">
-                Lumora Atelier Heirlooms
-              </span>
+              <div className="flex items-center gap-2">
+                <img src="/lumora-logo-square.png" alt="Lumora" className="w-5 h-5 object-contain" />
+                <span className="text-xs uppercase tracking-[0.2em] text-[#A8843E] font-semibold">
+                  Lumora Atelier Heirlooms
+                </span>
+              </div>
               <button
                 onClick={handleShare}
                 className="text-xs text-[#747780] hover:text-[#1F2022] flex items-center gap-1"
@@ -315,7 +340,7 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
             <div className="space-y-2">
               <div className="flex items-center justify-between text-xs">
                 <label className="font-semibold text-[#1F2022] uppercase tracking-wider text-[11px]">
-                  US / Canadian Ring Size:
+                  Ring Size (Standard International Fit):
                 </label>
                 <button
                   onClick={() => onNavigate('ring-size-guide')}
@@ -398,6 +423,17 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
               Instant Express Checkout &rarr;
             </button>
 
+            {/* Master Setter WhatsApp Concierge */}
+            <a
+              href={`https://wa.me/917984029296?text=${encodeURIComponent(`Hello Lumora Atelier, I am inquiring about the ${product.name} (${formatPrice(currentPriceUSD)}). Could you provide guidance on diamond fire and custom bespoke sizing?`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-2.5 bg-white hover:bg-[#FAF8F5] text-[#1F2022] border border-[#EAE3D5] hover:border-[#C5A059] transition-all rounded text-xs uppercase tracking-wider font-medium flex items-center justify-center gap-2 group shadow-2xs"
+            >
+              <MessageCircle className="w-4 h-4 text-[#25D366] group-hover:scale-110 transition-transform" />
+              <span>Inquire with Master Setter via WhatsApp Concierge</span>
+            </a>
+
             {addedNotice && (
               <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2 animate-fade-in">
                 <Check className="w-4 h-4 text-emerald-600" />
@@ -447,7 +483,7 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
                 </div>
                 <div className="grid grid-cols-2 py-1.5 border-b border-[#F5F1E8]">
                   <span className="text-[#747780]">Crafting Atelier</span>
-                  <span className="text-[#1F2022] font-medium">Jaipur & Surat, India</span>
+                  <span className="text-[#1F2022] font-medium">Surat, Gujarat, India</span>
                 </div>
               </div>
             )}
@@ -487,35 +523,64 @@ export const ProductDetailPage = ({ product, onBack, onSelectProduct, onNavigate
               </div>
             )}
 
-            {/* TAB 3: SHIPPING & CUSTOMS */}
+            {/* TAB 3: SHIPPING & DELIVERY */}
             {activeTab === 'shipping' && (
               <div className="space-y-2.5 text-xs text-[#575A61]">
                 <p>
-                  <strong>United States:</strong> Orders enter duty-free under 19 U.S.C. § 1321 ($800 de minimis threshold).
+                  <strong>Worldwide Delivery:</strong> Handcrafted in our Surat atelier and shipped internationally via DHL Express Worldwide and FedEx Priority.
                 </p>
                 <p>
-                  <strong>Canada:</strong> CBSA 6.5% jewelry tariff and provincial taxes (HST/GST) calculated at checkout for Delivery Duty Paid (DDP) transit.
+                  <strong>Transit Time:</strong> Typically 3–5 business days with full online tracking and insurance.
                 </p>
                 <p>
-                  <strong>Carrier:</strong> Dispatched via DHL Express Worldwide with adult signature verification.
+                  <strong>Export Clearance:</strong> Cleared via official Indian Customs Courier Shipping Bill (CSB-V) with zero retail intermediaries.
                 </p>
               </div>
             )}
 
             {/* TAB 4: UNBOXING EXPERIENCE */}
             {activeTab === 'unboxing' && (
-              <div className="space-y-3 text-xs text-[#575A61]">
-                <div className="flex gap-3 items-center">
-                  <img
-                    src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=200&q=80"
-                    alt="Lumora Velvet Vault Presentation Box"
-                    className="w-16 h-16 rounded-lg object-cover border border-[#EAE3D5]"
-                  />
-                  <div>
-                    <h5 className="font-serif text-sm text-[#1F2022] font-medium">Signature Velvet Vault Box</h5>
-                    <p className="text-[11px] text-[#747780]">
-                      Includes plush velvet travel case, embossed certificate envelope, and gold cleaning cloth.
-                    </p>
+              <div className="space-y-3 text-xs bg-[#FAF8F5] p-4 rounded-xl border border-[#EAE3D5]">
+                <div className="flex items-center gap-1.5 text-[#A8843E] font-semibold uppercase tracking-wider text-[11px]">
+                  <Package className="w-4 h-4" />
+                  <span>The Velvet Vault™ Unboxing Ritual</span>
+                </div>
+                
+                <p className="text-[#575A61] leading-relaxed text-[11px]">
+                  Every Lumora heirloom arrives in museum-grade presentation packaging designed for heirloom preservation and unboxing splendor:
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                  <div className="flex items-start gap-2.5 p-2.5 rounded-lg bg-white border border-[#EAE3D5]">
+                    <span className="w-5 h-5 rounded-full bg-[#F4EFE6] text-[#A8843E] font-serif font-bold text-[10px] flex items-center justify-center shrink-0">1</span>
+                    <div>
+                      <strong className="block text-[#1F2022] text-[11px]">Signature Velvet Vault Box</strong>
+                      <span className="text-[10px] text-[#747780]">Heavyweight keepsake box with champagne satin interior cushion.</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 p-2.5 rounded-lg bg-white border border-[#EAE3D5]">
+                    <span className="w-5 h-5 rounded-full bg-[#F4EFE6] text-[#A8843E] font-serif font-bold text-[10px] flex items-center justify-center shrink-0">2</span>
+                    <div>
+                      <strong className="block text-[#1F2022] text-[11px]">Embossed Provenance Portfolio</strong>
+                      <span className="text-[10px] text-[#747780]">Gold-embossed certificate folder with official BIS hallmark assay.</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 p-2.5 rounded-lg bg-white border border-[#EAE3D5]">
+                    <span className="w-5 h-5 rounded-full bg-[#F4EFE6] text-[#A8843E] font-serif font-bold text-[10px] flex items-center justify-center shrink-0">3</span>
+                    <div>
+                      <strong className="block text-[#1F2022] text-[11px]">Atelier Suede Travel Pouch</strong>
+                      <span className="text-[10px] text-[#747780]">Plush microfibre pouch & high-density gold polishing cloth.</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 p-2.5 rounded-lg bg-white border border-[#EAE3D5]">
+                    <span className="w-5 h-5 rounded-full bg-[#F4EFE6] text-[#A8843E] font-serif font-bold text-[10px] flex items-center justify-center shrink-0">4</span>
+                    <div>
+                      <strong className="block text-[#1F2022] text-[11px]">Tamper-Evident Armored Seal</strong>
+                      <span className="text-[10px] text-[#747780]">Direct from Surat bench to your hands via insured express air courier.</span>
+                    </div>
                   </div>
                 </div>
               </div>

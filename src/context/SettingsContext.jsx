@@ -8,17 +8,19 @@ export const DEFAULT_CMS_SETTINGS = {
   brandName: "LUMORA",
   brandSubtitle: "FINE JEWELRY",
   domain: "lumorafinejewelery.com",
-  brandOrigin: "Jaipur & Surat, Rajasthan / Gujarat, India",
-  supportEmail: "concierge@lumorafinejewelery.com",
-  whatsappNumber: "+91 98765 43210 (VIP Concierge)",
-  atelierAddress: "Ateliers in Jaipur & Surat, Rajasthan / Gujarat, India",
-  brandTagline: "Solid gold (9K, 14K, 18K) and 925 sterling silver fine jewelry handcrafted in the historic artisan workshops of Jaipur and Surat, India. Delivered directly to clients across the United States and Canada with 100% transit insurance and transparent customs clearance.",
+  brandOrigin: "Surat, Gujarat, India",
+  supportEmail: "lumoragemofficial@gmail.com",
+  whatsappNumber: "+91 79840 29296",
+  atelierAddress: "Atelier in Surat, Gujarat, India",
+  logoUrl: "/lumora-logo.png",
+  logoSquareUrl: "/lumora-logo-square.png",
+  brandTagline: "Jewels That Shine Forever — Handcrafted in Surat, India, Delivered Worldwide.",
 
   // 1. HERO SECTION
-  heroBadge: "Jaipur & Surat Ateliers • Direct Export to USA & Canada",
+  heroBadge: "Surat Atelier • Worldwide Express Delivery",
   heroTitle: "Everyday Heirlooms,",
   heroTitleHighlight: "Direct from Master Ateliers.",
-  heroDescription: "Handcrafted solid gold, 925 sterling silver, and certified lab-grown diamonds. Shipped directly from the jewelry capitals of Jaipur and Surat straight to North America — without traditional 400% boutique markups.",
+  heroDescription: "Handcrafted solid gold, 925 sterling silver, and certified lab-grown diamonds. Shipped directly from the diamond capital of Surat to clients worldwide — without traditional 400% boutique markups.",
   heroImageUrl: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80",
   heroCardTitle: "Aura Solitaire Diamond Ring",
   heroCardSubtitle: "14K Gold • BIS 585",
@@ -29,11 +31,11 @@ export const DEFAULT_CMS_SETTINGS = {
 
   // 2. ANNOUNCEMENT BAR
   announcementActive: true,
-  announcement1: "Direct Atelier Pricing: Handcrafted in Jaipur & Surat • Zero 400% Retail Markups",
+  announcement1: "Direct Atelier Pricing: Handcrafted in Surat • Zero 400% Retail Markups",
   announcement1Link: "Our Atelier Story",
   announcement1Page: "about",
-  announcement2: "🇺🇸 USA: Section 321 Duty-Free Under $800 • 🇨🇦 Canada: CBSA & Provincial DDP Pre-Cleared",
-  announcement2Link: "Shipping & Customs",
+  announcement2: "🌍 Worldwide Insured Express Delivery • Door-to-Door Tracking",
+  announcement2Link: "Shipping Policy",
   announcement2Page: "shipping",
   announcement3: "Complimentary Insured DHL Air Express on Orders Over $150 • 30-Day Effortless Returns",
   announcement3Link: "30-Day Return Policy",
@@ -51,7 +53,7 @@ export const DEFAULT_CMS_SETTINGS = {
 
   // 4. PROMOTIONAL LAB DIAMOND FEATURE BANNER
   bannerBadge: "Science & Conscience",
-  bannerTitle: "Why Discerning North American Buyers Choose Certified Lab Diamonds",
+  bannerTitle: "Why Discerning Buyers Choose Certified Lab Diamonds",
   bannerDescription: "Lab-grown diamonds are 100% crystallized carbon. Under the microscope, Raman spectroscopy, and diamond testers, they possess the exact same physical, optical, and chemical lattice as mined diamonds (Mohs hardness 10).",
   bannerImageUrl: "https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=1000&q=80",
   bannerButtonText: "Browse Solitaire Lab Diamonds",
@@ -67,10 +69,10 @@ export const DEFAULT_CMS_SETTINGS = {
   giftSubtitle: "The Art of Giving",
 
   // 6. TRUST BADGES
-  trustBadge1Title: "Ships from India",
-  trustBadge1Desc: "3–5 Days via DHL Express",
-  trustBadge2Title: "US Section 321 / DDP",
-  trustBadge2Desc: "Zero US Duty under $800",
+  trustBadge1Title: "Ships from Surat, India",
+  trustBadge1Desc: "Fast Worldwide Air Express",
+  trustBadge2Title: "Insured Worldwide Transit",
+  trustBadge2Desc: "100% Door-to-Door Coverage",
   trustBadge3Title: "BIS Hallmarked",
   trustBadge3Desc: "Solid 9K/14K/18K Gold",
 

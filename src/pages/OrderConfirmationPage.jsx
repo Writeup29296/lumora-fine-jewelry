@@ -32,8 +32,9 @@ export const OrderConfirmationPage = ({ order, onNavigate }) => {
       
       {/* 1. Success Hero Banner */}
       <div className="text-center space-y-3 bg-[#FAF8F5] border border-[#EAE3D5] rounded-3xl p-8 sm:p-12 shadow-sm">
-        <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 mx-auto flex items-center justify-center">
-          <CheckCircle2 className="w-9 h-9" />
+        <img src="/lumora-logo.png" alt="Lumora" className="h-10 mx-auto object-contain mb-2 select-none" />
+        <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 mx-auto flex items-center justify-center">
+          <CheckCircle2 className="w-8 h-8" />
         </div>
         <span className="text-xs uppercase tracking-[0.2em] text-[#A8843E] font-semibold">
           Payment Authorized & Verified
@@ -42,7 +43,7 @@ export const OrderConfirmationPage = ({ order, onNavigate }) => {
           Thank You for Your Lumora Order
         </h1>
         <p className="text-sm text-[#575A61] max-w-lg mx-auto">
-          Your order has been transmitted directly to our master jewelers in Jaipur & Surat, India. A formal confirmation and commercial export invoice have been sent to <strong>{order.customer?.email}</strong>.
+          Your order has been transmitted directly to our master jewelers in Surat, Gujarat, India. A formal confirmation and commercial export invoice have been sent to <strong>{order.customer?.email}</strong>.
         </p>
 
         <div className="pt-2 flex flex-wrap justify-center items-center gap-3 text-xs">
@@ -62,7 +63,7 @@ export const OrderConfirmationPage = ({ order, onNavigate }) => {
             <Plane className="w-5 h-5 text-[#A8843E]" />
             <span>International Export & Delivery Stages</span>
           </h2>
-          <span className="text-xs text-[#747780]">Origin: Jaipur & Surat, India &rarr; {order.customer?.country}</span>
+          <span className="text-xs text-[#747780]">Origin: Surat Atelier, India &rarr; {order.customer?.country}</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 text-xs">

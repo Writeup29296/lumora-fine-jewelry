@@ -104,7 +104,7 @@ export const QuickViewModal = ({ product, isOpen, onClose, onSelectProduct, onNa
                 <ShieldCheck className="w-3.5 h-3.5 text-[#A8843E]" />
                 BIS Hallmarked
               </span>
-              <span>Jaipur & Surat Atelier</span>
+              <span>Surat Atelier</span>
             </div>
           </div>
 

@@ -5,10 +5,12 @@ import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { AnnouncementBar } from './AnnouncementBar';
 import { SearchModal } from './SearchModal';
+import { LumoraCrest } from './LumoraCrest';
 import { 
   Globe, ShoppingBag, Menu, X, Sparkles, ShieldCheck, 
   ChevronDown, Settings, User, LogOut, Package, Lock, 
-  HelpCircle, Search, ArrowRight, Heart 
+  HelpCircle, Search, ArrowRight, Heart, Ruler, 
+  RefreshCw, Plane, MessageCircle 
 } from 'lucide-react';
 
 export const Navbar = ({ onNavigate, onSelectProduct, products = [] }) => {
@@ -46,7 +48,7 @@ export const Navbar = ({ onNavigate, onSelectProduct, products = [] }) => {
         { label: 'All Earrings', category: 'earrings' },
         { label: 'Clicker Huggie Hoops', category: 'earrings' },
         { label: 'Lab Diamond Solitaire Studs', category: 'earrings' },
-        { label: 'Jaipur Filigree Drop Earrings', category: 'earrings' },
+        { label: 'Surat Filigree Drop Earrings', category: 'earrings' },
         { label: 'Solid 14K Gold & 925 Silver Hoops', category: 'earrings' }
       ],
       featured: {
@@ -150,25 +152,20 @@ export const Navbar = ({ onNavigate, onSelectProduct, products = [] }) => {
           </button>
         </div>
 
-        {/* Brand Logo */}
+        {/* Official Brand Symbol & Logo */}
         <div 
           onClick={() => {
             setActiveMegaMenu(null);
             onNavigate('home');
           }}
-          className="flex flex-col text-center lg:text-left cursor-pointer group"
+          className="flex items-center cursor-pointer group py-1"
+          title="Lumora — Jewels That Shine Forever"
         >
-          <div className="flex items-center gap-2 justify-center lg:justify-start">
-            <span className="text-2xl sm:text-3xl font-serif tracking-[0.25em] font-semibold text-[#1F2022] group-hover:text-[#A8843E] transition-colors">
-              LUMORA
-            </span>
-            <span className="text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full border border-[#C5A059]/40 text-[#A8843E] bg-[#F4EFE6] font-sans hidden sm:inline-block font-medium">
-              FINE JEWELRY
-            </span>
-          </div>
-          <span className="text-[10px] tracking-[0.2em] uppercase text-[#747780] font-medium hidden xs:block">
-            Solid Gold & 925 Silver &bull; Jaipur & Surat to North America
-          </span>
+          <img 
+            src="/lumora-logo.png" 
+            alt="Lumora — Jewels That Shine Forever" 
+            className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03] select-none"
+          />
         </div>
 
         {/* Desktop Links with Hover Mega-Menu */}
@@ -401,7 +398,7 @@ export const Navbar = ({ onNavigate, onSelectProduct, products = [] }) => {
                     <ShieldCheck className="w-3.5 h-3.5 text-[#A8843E]" />
                     BIS Assay Hallmarked
                   </span>
-                  <span>Jaipur & Surat Direct Export</span>
+                  <span>Surat Direct Export</span>
                   <span>DHL Air Express 3-5 Days</span>
                 </div>
               </div>
@@ -449,91 +446,157 @@ export const Navbar = ({ onNavigate, onSelectProduct, products = [] }) => {
 
       </nav>
 
-      {/* 4. MOBILE DRAWER NAVIGATION */}
+      {/* 4. LUXURY MOBILE SLIDE-OVER DRAWER */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[#EAE3D5] bg-[#FAF8F5] px-6 py-6 space-y-5 animate-fade-in shadow-lg">
-          <div className="space-y-3 text-xs uppercase tracking-wider font-semibold text-[#1F2022]">
-            <button 
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onNavigate('home');
-              }}
-              className="block w-full text-left py-2 border-b border-[#EAE3D5] text-[#A8843E]"
-            >
-              Home
-            </button>
-            <button 
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onNavigate('shop');
-              }}
-              className="block w-full text-left py-2 border-b border-[#EAE3D5]"
-            >
-              Shop All Jewelry
-            </button>
-            <button 
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onNavigate('shop', { category: 'rings' });
-              }}
-              className="block w-full text-left py-2 border-b border-[#EAE3D5]"
-            >
-              Rings & Bands
-            </button>
-            <button 
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onNavigate('shop', { category: 'earrings' });
-              }}
-              className="block w-full text-left py-2 border-b border-[#EAE3D5]"
-            >
-              Earrings & Huggies
-            </button>
-            <button 
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onNavigate('shop', { category: 'necklaces' });
-              }}
-              className="block w-full text-left py-2 border-b border-[#EAE3D5]"
-            >
-              Necklaces & Pendants
-            </button>
-            <button 
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onNavigate('shop', { category: 'bracelets' });
-              }}
-              className="block w-full text-left py-2 border-b border-[#EAE3D5]"
-            >
-              Tennis Bracelets
-            </button>
-            <button 
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onNavigate('about');
-              }}
-              className="block w-full text-left py-2 border-b border-[#EAE3D5]"
-            >
-              Atelier Heritage & Jaipur Story
-            </button>
-            <button 
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onNavigate('ring-size-guide');
-              }}
-              className="block w-full text-left py-2 border-b border-[#EAE3D5]"
-            >
-              US / Canada Ring Size Guide
-            </button>
-            <button 
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onNavigate('shipping');
-              }}
-              className="block w-full text-left py-2 border-b border-[#EAE3D5]"
-            >
-              Shipping & Customs (Section 321 / DDP)
-            </button>
+        <div className="fixed inset-0 z-50 lg:hidden overflow-hidden">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-xs transition-opacity animate-fade-in"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+
+          <div className="fixed inset-y-0 left-0 max-w-full flex">
+            <div className="w-[88vw] max-w-xs bg-[#FAF8F5] border-r border-[#EAE3D5] flex flex-col shadow-2xl animate-slide-right text-[#1F2022] overflow-y-auto">
+              
+              {/* Drawer Header */}
+              <div className="p-5 border-b border-[#EAE3D5] flex items-center justify-between bg-white sticky top-0 z-10">
+                <div 
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onNavigate('home');
+                  }}
+                  className="cursor-pointer"
+                  title="Lumora — Jewels That Shine Forever"
+                >
+                  <img 
+                    src="/lumora-logo.png" 
+                    alt="Lumora — Jewels That Shine Forever" 
+                    className="h-9 w-auto object-contain select-none"
+                  />
+                </div>
+
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-2 text-[#747780] hover:text-[#1F2022] rounded-lg hover:bg-[#FAF8F5] transition-colors"
+                  aria-label="Close menu"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Drawer Content */}
+              <div className="p-5 space-y-6 flex-1">
+                
+                {/* Search Trigger */}
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setSearchModalOpen(true);
+                  }}
+                  className="w-full py-2.5 px-3.5 rounded-xl bg-white border border-[#EAE3D5] text-[#747780] flex items-center gap-2 text-xs text-left shadow-xs hover:border-[#C5A059] transition-colors"
+                >
+                  <Search className="w-4 h-4 text-[#A8843E]" />
+                  <span>Search solitaires, bands, metals...</span>
+                </button>
+
+                {/* Main Collections Navigation */}
+                <div className="space-y-1">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#A8843E] font-semibold block px-2 mb-1.5">
+                    Fine Collections
+                  </span>
+
+                  {[
+                    { label: 'Shop All Jewelry', category: 'all', badge: 'Complete Suite' },
+                    { label: 'Heirloom Rings & Bands', category: 'rings', badge: 'Solitaires' },
+                    { label: 'Earrings & Huggie Hoops', category: 'earrings', badge: 'Pavé' },
+                    { label: 'Necklaces & Pendants', category: 'necklaces', badge: 'Chains' },
+                    { label: 'Tennis Suite & Bracelets', category: 'bracelets', badge: 'Diamond' },
+                  ].map((item, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        onNavigate('shop', { category: item.category });
+                      }}
+                      className="w-full flex items-center justify-between py-2.5 px-3 rounded-lg text-xs font-medium text-[#1F2022] hover:bg-white hover:text-[#A8843E] transition-all text-left"
+                    >
+                      <span className="font-serif text-sm">{item.label}</span>
+                      <span className="text-[10px] text-[#747780] font-sans px-2 py-0.5 rounded bg-white/70 border border-[#EAE3D5]">
+                        {item.badge}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Essential Client Services */}
+                <div className="space-y-1 pt-3 border-t border-[#EAE3D5]">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#747780] font-semibold block px-2 mb-1.5">
+                    Client Services
+                  </span>
+
+                  {[
+                    { label: 'International Ring Size Guide', page: 'ring-size-guide', icon: Ruler },
+                    { label: 'Surat Atelier Heritage & Craft', page: 'about', icon: Sparkles },
+                    { label: 'Jewelry Care & Cleaning Guide', page: 'care', icon: ShieldCheck },
+                    { label: 'Worldwide Insured Air Shipping', page: 'shipping', icon: Plane },
+                    { label: '30-Day Evaluation & Returns', page: 'returns', icon: RefreshCw },
+                    { label: 'Frequently Asked Questions', page: 'faq', icon: HelpCircle },
+                    { label: 'Order Tracking & Account', page: 'account', icon: Package }
+                  ].map((srv, idx) => {
+                    const SrvIcon = srv.icon || ChevronRight;
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          setMobileMenuOpen(false);
+                          onNavigate(srv.page);
+                        }}
+                        className="w-full flex items-center gap-2.5 py-2 px-3 rounded-lg text-xs text-[#575A61] hover:text-[#1F2022] hover:bg-white transition-all text-left"
+                      >
+                        <SrvIcon className="w-3.5 h-3.5 text-[#A8843E] shrink-0" />
+                        <span>{srv.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* VIP WhatsApp Concierge Card */}
+                <div className="p-4 rounded-xl bg-white border border-[#EAE3D5] shadow-xs space-y-2 text-left">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] uppercase tracking-wider text-emerald-700 font-semibold flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      Atelier WhatsApp Concierge
+                    </span>
+                    <span className="text-[10px] text-[#747780] font-mono">+91 79840 29296</span>
+                  </div>
+                  <p className="text-[11px] text-[#575A61] leading-relaxed">
+                    Collaborate directly with our Surat master goldsmiths for custom sizes, 18K purity, or video previews.
+                  </p>
+                  <a
+                    href="https://wa.me/917984029296"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 w-full py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs transition-colors shadow-xs"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    <span>Open WhatsApp VIP Chat</span>
+                  </a>
+                </div>
+
+              </div>
+
+              {/* Drawer Footer */}
+              <div className="p-4 bg-white border-t border-[#EAE3D5] text-[11px] text-[#747780] space-y-1">
+                <div className="flex items-center justify-between">
+                  <span>Origin: Surat, Gujarat, India</span>
+                  <span className="text-emerald-700 font-medium">100% BIS Hallmarked</span>
+                </div>
+                <div className="text-[10px] text-[#575A61]">
+                  Complimentary Insured Delivery Worldwide
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       )}

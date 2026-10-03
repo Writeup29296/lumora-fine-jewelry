@@ -98,8 +98,8 @@ export const CartProvider = ({ children }) => {
   const freeShippingRemainingUSD = Math.max(0, freeShippingThresholdUSD - cartSubtotalUSD);
   const freeShippingProgressPercent = Math.min(100, Math.round((cartSubtotalUSD / freeShippingThresholdUSD) * 100));
 
-  // US Section 321 de minimis limit is $800 USD
-  const isUsDeMinimisEligible = cartSubtotalUSD > 0 && cartSubtotalUSD < 800;
+  // Worldwide insured door-to-door transit
+  const isUsDeMinimisEligible = true;
 
   return (
     <CartContext.Provider

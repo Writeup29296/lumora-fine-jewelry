@@ -17,7 +17,7 @@ export const AboutPage = ({ onNavigate }) => {
         </div>
         <h1 className="text-4xl sm:text-5xl font-serif text-[#1F2022] font-normal leading-tight">
           Handcrafted in India.<br />
-          <span className="italic font-light text-[#A8843E]">Cherished in North America.</span>
+          <span className="italic font-light text-[#A8843E]">Cherished by Connoisseurs Worldwide.</span>
         </h1>
         <p className="text-base text-[#575A61] leading-relaxed">
           Lumora Fine Jewelry was founded on a simple conviction: luxury fine jewelry should reflect the true value of precious metals and diamond craftsmanship, not the inflated markups of traditional boutique showrooms.
@@ -28,25 +28,25 @@ export const AboutPage = ({ onNavigate }) => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <div className="lg:col-span-6 space-y-6">
           <span className="text-xs uppercase tracking-[0.2em] text-[#A8843E] font-semibold">
-            Our Two Ateliers
+            Our Atelier Heritage
           </span>
           <h2 className="text-3xl font-serif text-[#1F2022] font-normal">
-            Jaipur & Surat: The Historic Epicenters of Jewelry Artistry
+            Surat: The Global Epicenter of Diamond & Fine Jewelry Artistry
           </h2>
           <p className="text-sm text-[#575A61] leading-relaxed">
-            For over four centuries, the walled city of <strong>Jaipur, Rajasthan</strong> has served as the gemstone cutting capital of the world. Here, generational silversmiths and goldsmiths preserve intricate techniques like hand-chiseled engraving, comfort-fit bezel setting, and filigree wirework.
+            Located in <strong>Surat, Gujarat, India</strong>, the undisputed diamond cutting and fine jewelry capital of the world, our atelier houses generational artisans and modern precision laser setters. Surat processes over 90% of the world's diamonds and leads global innovation in certified lab-grown diamonds.
           </p>
           <p className="text-sm text-[#575A61] leading-relaxed">
-            Just south in <strong>Surat, Gujarat</strong>, our diamond setting studio works with cutting-edge optical lasers and master setters to forge precision four-prong solitaires, seamless French pavé eternity bands, and radiant tennis bracelets.
+            Our master jewelers hand-forge solid gold solitaires, French pavé eternity bands, and luminous 925 sterling silver heirlooms with uncompromising perfection, comfort-fit ergonomics, and official BIS hallmarking.
           </p>
 
           <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE3D5] space-y-2">
             <div className="flex items-center gap-2 text-xs font-semibold text-[#1F2022]">
               <MapPin className="w-4 h-4 text-[#A8843E]" />
-              <span>Transparent Shipping Origin: India</span>
+              <span>Transparent Shipping Origin: Surat, Gujarat, India</span>
             </div>
             <p className="text-xs text-[#747780]">
-              Every order is handcrafted in our Indian workshops and dispatched via insured international express air courier (DHL Express & FedEx) directly to clients throughout the United States and Canada.
+              Every order is handcrafted in our Surat workshop and dispatched via insured international express air courier (DHL Express & FedEx) directly to clients worldwide.
             </p>
           </div>
         </div>
@@ -55,7 +55,7 @@ export const AboutPage = ({ onNavigate }) => {
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-[#EAE3D5] shadow-lg bg-white">
             <img
               src="https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=1200&q=80"
-              alt="Artisans crafting fine gold jewelry in Jaipur"
+              alt="Artisans crafting fine gold jewelry in Surat"
               className="w-full h-full object-cover object-center"
             />
           </div>
@@ -124,7 +124,7 @@ export const AboutPage = ({ onNavigate }) => {
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                <span>Transparent customs handling: US Section 321 duty-free under $800 & Canada DDP</span>
+                <span>Transparent export handling: 100% insured door-to-door courier delivery worldwide</span>
               </li>
             </ul>
           </div>
@@ -187,7 +187,7 @@ export const AboutPage = ({ onNavigate }) => {
           &bull; <strong>Merchant Address:</strong> {brandConfig.brandOrigin}.
         </p>
         <p>
-          &bull; <strong>US/Canadian Returns:</strong> {brandConfig.guarantees.returnAddressPlaceholder}.
+          &bull; <strong>Worldwide Returns:</strong> Handled with insured door-to-door courier service via our global concierge.
         </p>
       </div>
 

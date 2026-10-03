@@ -90,7 +90,7 @@ export const AuthModal = () => {
         {/* Header */}
         <div className="px-6 py-5 border-b border-[#EAE3D5] bg-[#FAF8F5] flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-[#1F2022] font-serif tracking-widest text-lg font-bold">LUMORA</span>
+            <img src="/lumora-logo.png" alt="LUMORA" className="h-6 w-auto object-contain" />
             <span className="text-[#EAE3D5]">|</span>
             <span className="text-xs uppercase tracking-wider text-[#A8843E] font-medium">
               {authModalMode === 'login' ? 'Authentication' : authModalMode === 'forgot' ? 'Reset Password' : 'Register Account'}

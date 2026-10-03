@@ -18,7 +18,7 @@ const INITIAL_ORDERS = [
     dutyUSD: 0,
     taxUSD: 0,
     grandTotalUSD: 420,
-    dutyType: 'Section 321 Duty-Free Entry ($0.00)',
+    dutyType: 'Insured International Courier Transit ($0.00)',
     csbVNumber: 'CSB-V/DEL/AIR/2026/41092',
     hsCode: '7113.19.10',
     items: [
@@ -88,7 +88,7 @@ export const OrdersProvider = ({ children }) => {
     const newOrder = {
       ...order,
       createdAt: new Date().toISOString(),
-      status: 'Processing in Jaipur Atelier'
+      status: 'Processing in Surat Atelier'
     };
     setOrders((prev) => [newOrder, ...prev]);
     return newOrder;

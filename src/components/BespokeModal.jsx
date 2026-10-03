@@ -77,13 +77,13 @@ export const BespokeModal = ({ isOpen, onClose, initialProduct = null }) => {
           <div className="space-y-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#d4af37]/15 text-xs font-semibold text-[#d4af37] uppercase tracking-wider font-mono">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Jaipur Atelier VIP Concierge</span>
+              <span>Surat Atelier VIP Concierge</span>
             </div>
             <h3 className="text-2xl font-serif font-medium text-white tracking-tight">
               Commission a Bespoke Heirloom
             </h3>
             <p className="text-xs text-white/60 leading-relaxed font-light">
-              Collaborate directly with our master goldsmiths in Jaipur to forge unique engagement rings, anniversary bands, custom 18K/22K gold, or rare gemstone settings.
+              Collaborate directly with our master goldsmiths in Surat to forge unique engagement rings, anniversary bands, custom 18K/22K gold, or rare gemstone settings.
             </p>
           </div>
 
@@ -179,7 +179,7 @@ export const BespokeModal = ({ isOpen, onClose, initialProduct = null }) => {
                   className="w-full px-3 py-2 bg-[#1a1d26] border border-white/10 rounded-lg text-white focus:outline-none focus:border-[#d4af37]"
                 >
                   <option value="$150 - $400 USD">$150 – $400 USD (Silver & Everyday 14K)</option>
-                  <option value="$400 - $800 USD">$400 – $800 USD (Duty-Free US Section 321)</option>
+                  <option value="$400 - $800 USD">$400 – $800 USD (Direct Atelier Value)</option>
                   <option value="$800 - $2,500 USD">$800 – $2,500 USD (18K Bridal & Solitaires)</option>
                   <option value="$2,500+ USD">$2,500+ USD (High Jewelry / Heavy Karat)</option>
                 </select>
@@ -216,7 +216,7 @@ export const BespokeModal = ({ isOpen, onClose, initialProduct = null }) => {
               </div>
 
               <div className="text-center text-[10px] text-white/40 pt-1">
-                Direct response from our Jaipur master goldsmith within 12 hours. Zero commitment.
+                Direct response from our Surat master goldsmith within 12 hours. Zero commitment.
               </div>
 
             </form>

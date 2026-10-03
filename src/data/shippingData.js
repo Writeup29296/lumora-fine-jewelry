@@ -1,14 +1,14 @@
 export const shippingData = {
-  headline: "White-Glove Express Shipping to USA & Canada",
-  subheadline: "Direct from our Jaipur & Surat ateliers to your doorstep via DHL Express & FedEx Priority. 100% insured with complete customs pre-clearance.",
+  headline: "White-Glove Express Shipping Worldwide",
+  subheadline: "Direct from our Surat atelier to your doorstep via DHL Express & FedEx Priority. 100% insured door-to-door transit.",
 
   northAmericaHighlights: [
     {
       country: "United States",
       flag: "🇺🇸",
       deliveryTime: "3–5 Business Days",
-      dutyTitle: "100% Duty-Free under US Section 321",
-      dutyDetails: "Under 19 U.S.C. § 1321, personal shipments under $800 USD enter the USA completely free of duty, tariffs, or formal customs delays.",
+      dutyTitle: "100% Insured International Express Delivery",
+      dutyDetails: "Direct electronic export customs filing with full insurance coverage from our Surat atelier to your doorstep.",
       couriers: "DHL Express Worldwide & FedEx International Priority",
       threshold: "Free Insured Express on orders over $150 USD",
       features: [

@@ -85,13 +85,8 @@ export const CheckoutModal = () => {
   let dutyLabel = '';
 
   if (country === 'USA') {
-    if (cartSubtotalUSD < 800) {
-      dutyUSD = 0;
-      dutyLabel = 'Section 321 Duty-Free Exemption (Personal import under $800 USD)';
-    } else {
-      dutyUSD = Math.round(cartSubtotalUSD * 0.055); // ~5.5% estimated for gold over $800
-      dutyLabel = 'Estimated US Customs Duty (HTS 7113.19)';
-    }
+    dutyUSD = 0;
+    dutyLabel = 'Complimentary Insured Courier Transit';
   } else if (country === 'Canada') {
     const selectedProv = CAN_PROVINCES.find((p) => p.code === provinceCode) || CAN_PROVINCES[6];
     const jewelryTariff = 0.065; // 6.5% Canadian CBSA jewellery tariff
@@ -143,10 +138,10 @@ export const CheckoutModal = () => {
         {/* Top Header */}
         <div className="px-6 py-4 border-b border-white/10 bg-[#12151e] flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="text-[#d4af37] font-serif tracking-widest text-lg font-bold">LUMORA</span>
+            <img src="/lumora-logo.png" alt="LUMORA" className="h-6 w-auto object-contain brightness-110" />
             <span className="text-white/30">|</span>
             <span className="text-xs uppercase tracking-wider text-white/70 flex items-center gap-1.5">
-              <Lock className="w-3.5 h-3.5 text-emerald-400" /> 256-Bit Encrypted International Checkout
+              <Lock className="w-3.5 h-3.5 text-emerald-400" /> Secure International Checkout
             </span>
           </div>
           <button
@@ -465,7 +460,7 @@ export const CheckoutModal = () => {
               </div>
             </div>
 
-            {/* Right Column: Order Summary & North American Tax Engine */}
+            {/* Right Column: Order Summary & Customs Clearance Engine */}
             <div className="lg:col-span-5 p-6 sm:p-8 bg-[#12151e] flex flex-col justify-between space-y-6">
               <div>
                 <h4 className="text-xs uppercase font-medium tracking-wider text-white/80 pb-3 border-b border-white/10">
@@ -540,10 +535,10 @@ export const CheckoutModal = () => {
                     <>
                       <div className="flex items-center gap-1.5 text-emerald-400 font-semibold text-[11px]">
                         <ShieldCheck className="w-4 h-4" />
-                        <span>US Customs Section 321 Compliance</span>
+                        <span>Insured Doorstep Delivery</span>
                       </div>
                       <p className="text-[11px] text-white/60 leading-relaxed">
-                        Shipments into the USA valued under $800 USD per individual are admitted free of duty and tax under Section 321 (19 U.S.C. 1321). No paperwork required from your end.
+                        Shipments are securely dispatched from our Surat atelier with DHL Express. 100% insured door-to-door transit.
                       </p>
                     </>
                   ) : (
@@ -631,7 +626,7 @@ export const CheckoutModal = () => {
                 <div>
                   <span className="text-white/40 block">Exemption / Duty Type</span>
                   <span className="font-mono text-emerald-400 font-medium">
-                    {orderSummary.country === 'United States' ? 'Section 321 Duty-Free Entry' : 'Delivered Duty Paid (DDP)'}
+                    Insured International Transit (CSB-V)
                   </span>
                 </div>
               </div>

@@ -59,7 +59,7 @@ export const DeliveryEstimator = () => {
       </div>
 
       <div className="pt-1 border-t border-[#EAE3D5]/60 flex items-center justify-between text-[10px] text-[#747780]">
-        <span>Direct from Jaipur/Surat Ateliers</span>
+        <span>Direct from Surat Atelier, India</span>
         <span className="flex items-center gap-1 text-[#1F2022]">
           <ShieldCheck className="w-3 h-3 text-[#A8843E]" />
           100% Insured Doorstep Delivery

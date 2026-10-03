@@ -64,15 +64,15 @@ export const PrivacyTermsPage = () => {
               </p>
               <ul className="list-disc list-inside space-y-1 pl-2">
                 <li><strong>Contact Information:</strong> Name, email address, telephone number.</li>
-                <li><strong>Shipping & Customs Information:</strong> Physical delivery address in the United States or Canada, state/province, ZIP/postal code.</li>
+                <li><strong>Shipping & Customs Information:</strong> Physical delivery address worldwide, region/country, and postal code.</li>
                 <li><strong>Transactional Details:</strong> Items purchased, ring sizing specifications, precious metal purity choices, custom engraving texts.</li>
               </ul>
             </section>
 
             <section className="space-y-2">
-              <h3 className="font-semibold text-sm text-[#1F2022]">2. Payment Processing Security (PCI-DSS)</h3>
+              <h3 className="font-semibold text-sm text-[#1F2022]">2. Payment Processing Security</h3>
               <p>
-                All payment processing is executed through secure hosted checkout sessions powered by <strong>Stripe</strong> (or authorized international banking partners). Lumora Fine Jewelry never stores, views, or logs full credit card numbers, debit PINs, or CVV security codes on our servers. All financial transmissions are encrypted using Transport Layer Security (TLS 1.3).
+                All payment processing is executed through secure checkout sessions powered by authorized international banking partners. Lumora Fine Jewelry never stores, views, or logs credit card numbers or security codes on our servers. All financial transmissions are encrypted using standard industry TLS security.
               </p>
             </section>
 
@@ -82,7 +82,7 @@ export const PrivacyTermsPage = () => {
                 We use collected information strictly to:
               </p>
               <ul className="list-disc list-inside space-y-1 pl-2">
-                <li>Handcraft, resize, and prepare your jewelry orders in our Indian ateliers.</li>
+                <li>Handcraft, resize, and prepare your jewelry orders at our Surat bench.</li>
                 <li>File electronic export declarations (CSB-V) with Indian Customs and air carriers (DHL Express / FedEx).</li>
                 <li>Provide accurate shipping tracking numbers and post-delivery concierge support.</li>
                 <li>We do not sell, rent, or trade customer data to third-party marketing brokers.</li>
@@ -90,9 +90,9 @@ export const PrivacyTermsPage = () => {
             </section>
 
             <section className="space-y-2">
-              <h3 className="font-semibold text-sm text-[#1F2022]">4. Your Privacy Rights (US & Canada)</h3>
+              <h3 className="font-semibold text-sm text-[#1F2022]">4. Your Privacy Rights</h3>
               <p>
-                Under the California Consumer Privacy Act (CCPA) and Canadian PIPEDA, customers may request access to, correction of, or permanent deletion of their personal records by contacting <code>concierge@lumorafinejewelery.com</code>.
+                Customers worldwide may request access to, correction of, or permanent deletion of their personal records by contacting <code>lumoragemofficial@gmail.com</code>.
               </p>
             </section>
           </div>
@@ -106,22 +106,21 @@ export const PrivacyTermsPage = () => {
             <section className="space-y-2">
               <h3 className="font-semibold text-sm text-[#1F2022]">1. Merchant Identity & Origin</h3>
               <p>
-                <strong>Lumora Fine Jewelry</strong> operates from registered workshops in Jaipur and Surat, India. All goods are exported under the regulatory framework of the Indian Directorate General of Foreign Trade (DGFT) and Reserve Bank of India (RBI) under Purpose Code <code>P0103</code>.
+                <strong>Lumora Fine Jewelry</strong> operates from registered workshops and cutting facilities in Surat, Gujarat, India. All goods are exported under the regulatory framework of the Indian Directorate General of Foreign Trade (DGFT) and Reserve Bank of India (RBI) under Purpose Code <code>P0103</code>.
               </p>
             </section>
 
             <section className="space-y-2">
               <h3 className="font-semibold text-sm text-[#1F2022]">2. Currency & Checkout Transparency</h3>
               <p>
-                Prices are displayed in US Dollars (USD) or Canadian Dollars (CAD). The checkout engine clearly states the exact charged amount prior to final payment authorization. We do not apply unannounced currency conversion surcharges.
+                Prices are displayed in US Dollars (USD). The checkout engine clearly states the exact charged amount prior to final payment authorization. We do not apply unannounced currency conversion surcharges.
               </p>
             </section>
 
             <section className="space-y-2">
-              <h3 className="font-semibold text-sm text-[#1F2022]">3. Customs, Duties & De Minimis</h3>
+              <h3 className="font-semibold text-sm text-[#1F2022]">3. Worldwide Customs & Insured Export</h3>
               <p>
-                <strong>USA:</strong> Single daily shipments valued under $800 USD are eligible for Section 321 de minimis duty-free entry under 19 U.S.C. § 1321.<br />
-                <strong>Canada:</strong> Shipments are subject to CBSA assessment of customs duties (~6.5%) and provincial taxes (GST/HST). Where DDP (Delivered Duty Paid) is selected, these charges are calculated upfront. Where DDU is selected, CBSA assessments are the responsibility of the recipient.
+                All orders are exported under Indian Customs electronic CSB-V guidelines with DHL Express and FedEx Priority. Every parcel is shipped with 100% full declared-value transit insurance door-to-door.
               </p>
             </section>
 

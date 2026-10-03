@@ -24,7 +24,7 @@ export const RingSizeGuide = () => {
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/30 text-xs font-semibold text-[#f3e5ab] uppercase tracking-widest">
             <Ruler className="w-3.5 h-3.5 text-[#d4af37]" />
-            North American Sizing Standard
+            International Ring Standards
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-white tracking-tight">
             Ring Size Converter & Metal Purity Guide
@@ -142,7 +142,7 @@ export const RingSizeGuide = () => {
                 <span className="text-[10px] px-2 py-0.5 rounded bg-[#e6ca65]/20 text-[#f3e5ab] font-mono">58.5% Fine Gold</span>
               </div>
               <p className="text-xs text-white/50 leading-relaxed">
-                The North American gold standard for engagement rings and active lifestyles. Offers superior tensile strength and scratch resistance for everyday wear.
+                The global gold standard for engagement rings and active lifestyles. Offers superior tensile strength and scratch resistance for everyday wear.
               </p>
             </div>
 

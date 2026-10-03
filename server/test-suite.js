@@ -60,7 +60,7 @@ async function runTests() {
     failed++;
   }
 
-  // Test 4: Order Creation (USA Address & Section 321)
+  // Test 4: Order Creation (Worldwide Delivery & Insured Courier)
   let testOrderId = null;
   const uniqueTxToken = `tx_test_suite_${Date.now()}`;
   try {
@@ -107,7 +107,7 @@ async function runTests() {
     const data = await res.json();
     if (data.success && data.order && data.order.id) {
       testOrderId = data.order.id;
-      console.log(`✅ Test 4 Passed: Order placed successfully (ID: ${testOrderId}) with USA Section 321 duty-free entry ($0 duty).`);
+      console.log(`✅ Test 4 Passed: Order placed successfully (ID: ${testOrderId}) with Surat origin and insured worldwide transit.`);
       passed++;
     } else {
       throw new Error('Order creation unsuccessful');

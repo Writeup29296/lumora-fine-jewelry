@@ -48,8 +48,8 @@ export const ProductsProvider = ({ children }) => {
       availableSizes: productData.availableSizes || ['5', '6', '7', '8', '9', '10', '11'],
       specs: productData.specs || [
         { label: 'Purity Stamp', value: 'BIS Hallmark Certified' },
-        { label: 'Origin', value: 'Jaipur Atelier, India' },
-        { label: 'US Customs Duty', value: (Number(productData.priceUSD) || 100) < 800 ? '$0.00 (Section 321 Duty-Free)' : 'Standard HTS 7113' }
+        { label: 'Origin', value: 'Surat Atelier, India' },
+        { label: 'Shipping & Delivery', value: '100% Insured Worldwide Doorstep Delivery' }
       ]
     };
 

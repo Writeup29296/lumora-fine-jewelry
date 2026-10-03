@@ -74,9 +74,7 @@ export const SecretAdminModal = ({ isOpen, onClose, onSuccess }) => {
 
         {/* Header */}
         <div className="p-6 bg-[#FAF8F5] border-b border-[#EAE3D5] text-center space-y-2">
-          <div className="w-12 h-12 rounded-full bg-[#1F2022] text-[#C5A059] mx-auto flex items-center justify-center shadow-md">
-            <Lock className="w-6 h-6" />
-          </div>
+          <img src="/lumora-logo-square.png" alt="Lumora" className="w-14 h-14 mx-auto object-contain" />
           <div>
             <span className="text-[10px] uppercase tracking-[0.25em] text-[#A8843E] font-semibold block">
               Restricted Access Console

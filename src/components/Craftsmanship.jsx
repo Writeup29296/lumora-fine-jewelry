@@ -15,7 +15,7 @@ export const Craftsmanship = () => {
               <div className="rounded-2xl overflow-hidden border border-white/10 aspect-[4/5] bg-black/40">
                 <img
                   src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80"
-                  alt="Jaipur Silver and Gold Crafting"
+                  alt="Surat Diamond and Fine Gold Crafting"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -27,8 +27,8 @@ export const Craftsmanship = () => {
 
             <div className="space-y-4 pt-8">
               <div className="p-4 rounded-xl bg-[#12151e] border border-white/10 text-left">
-                <div className="text-xs font-semibold text-[#d4af37]">Direct Gemstone Lapidary</div>
-                <div className="text-[11px] text-white/50 mt-0.5">Precision faceting in Jaipur's historic Johari Bazaar</div>
+                <div className="text-xs font-semibold text-[#d4af37]">Direct Diamond Lapidary</div>
+                <div className="text-[11px] text-white/50 mt-0.5">Precision cutting & faceting in Surat's world diamond center</div>
               </div>
               <div className="rounded-2xl overflow-hidden border border-white/10 aspect-[4/5] bg-black/40">
                 <img
@@ -52,7 +52,7 @@ export const Craftsmanship = () => {
             </h2>
 
             <p className="text-sm sm:text-base text-white/70 leading-relaxed font-light">
-              For centuries, the Pink City of Jaipur and the diamond centers of Surat have forged the world's most legendary crown jewels. At <strong>{brandConfig.brandFullName}</strong>, we bring this royal heritage directly to the United States and Canada—bypassing traditional retail brokers and luxury brand markups.
+              For generations, the master craftsmen and diamond cutters of Surat, Gujarat—the undisputed diamond capital of the world—have forged the world's most breathtaking fine jewelry. At <strong>{brandConfig.brandFullName}</strong>, we bring this prestigious heritage directly to clients worldwide—bypassing traditional retail brokers and luxury brand markups.
             </p>
 
             <div className="space-y-4 pt-2">
@@ -98,7 +98,7 @@ export const Craftsmanship = () => {
                 href="#collections"
                 className="inline-flex items-center gap-2 text-xs font-semibold text-[#d4af37] uppercase tracking-wider hover:text-[#f3e5ab] transition-colors"
               >
-                <span>Explore the Jaipur Atelier Catalog &rarr;</span>
+                <span>Explore the Surat Atelier Catalog &rarr;</span>
               </a>
             </div>
           </div>

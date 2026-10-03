@@ -1,24 +1,24 @@
 import React from 'react';
 import { 
-  Plane, ShieldCheck, Clock, Package, 
-  MapPin, AlertCircle, Award, CheckCircle2 
+  Plane, ShieldCheck, Clock, MapPin, Package, 
+  CheckCircle2, FileText, Globe 
 } from 'lucide-react';
 import { brandConfig } from '../data/brandConfig';
 
 export const ShippingPolicyPage = ({ onNavigate }) => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 text-left">
       
       {/* 1. Header */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
         <span className="text-xs uppercase tracking-[0.2em] text-[#A8843E] font-semibold">
-          International Logistics & Customs
+          Worldwide Courier Logistics & Clearances
         </span>
         <h1 className="text-4xl font-serif text-[#1F2022] font-normal">
           Shipping & Delivery Policy
         </h1>
         <p className="text-sm text-[#575A61] leading-relaxed">
-          Lumora Fine Jewelry ships directly from our Indian ateliers to customers across the United States and Canada. We communicate all transit times, courier workflows, and cross-border duties transparently.
+          Lumora Fine Jewelry ships directly from our Surat atelier to customers worldwide. We communicate all transit times, courier workflows, and international customs clearance transparently.
         </p>
       </div>
 
@@ -28,8 +28,8 @@ export const ShippingPolicyPage = ({ onNavigate }) => {
           <div className="w-10 h-10 rounded-full bg-[#F4EFE6] border border-[#E0D5C1] mx-auto flex items-center justify-center text-[#A8843E] mb-2">
             <MapPin className="w-5 h-5" />
           </div>
-          <h3 className="font-serif text-base text-[#1F2022] font-medium">Origin: India</h3>
-          <p className="text-xs text-[#747780]">Dispatched directly from Jaipur and Surat workshops.</p>
+          <h3 className="font-serif text-base text-[#1F2022] font-medium">Origin: Surat, India</h3>
+          <p className="text-xs text-[#747780]">Dispatched directly from our Surat diamond & fine jewelry atelier.</p>
         </div>
 
         <div className="p-6 rounded-2xl bg-white border border-[#EAE3D5] space-y-2 text-center">
@@ -37,7 +37,7 @@ export const ShippingPolicyPage = ({ onNavigate }) => {
             <Plane className="w-5 h-5" />
           </div>
           <h3 className="font-serif text-base text-[#1F2022] font-medium">3–5 Business Days</h3>
-          <p className="text-xs text-[#747780]">Air transit via DHL Express & FedEx International Priority.</p>
+          <p className="text-xs text-[#747780]">Fast air transit via DHL Express Worldwide & FedEx International Priority.</p>
         </div>
 
         <div className="p-6 rounded-2xl bg-white border border-[#EAE3D5] space-y-2 text-center">
@@ -57,74 +57,62 @@ export const ShippingPolicyPage = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* 3. North America Customs & Duties (Transparent Guidance) */}
+      {/* 3. Global Shipping & Customs Clearance */}
       <div className="bg-[#FAF8F5] border border-[#EAE3D5] rounded-3xl p-8 sm:p-12 space-y-8">
         <div className="text-center max-w-2xl mx-auto space-y-2">
           <span className="text-xs uppercase tracking-[0.2em] text-[#A8843E] font-semibold">
-            Cross-Border Transparency
+            Worldwide Delivery Standards
           </span>
           <h2 className="text-3xl font-serif text-[#1F2022] font-normal">
-            Import Duties & Customs Clearance
+            International Courier & Customs Processing
           </h2>
           <p className="text-sm text-[#575A61]">
-            How customs, duties, and provincial taxes are assessed on your order based on destination country.
+            Seamless, fully documented international delivery straight from our master atelier to your doorstep.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
-          {/* USA Section 321 */}
           <div className="p-8 rounded-2xl bg-white border border-[#EAE3D5] space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-[#F5F1E8]">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">🇺🇸</span>
-                <h3 className="font-serif text-xl text-[#1F2022] font-medium">United States (Section 321)</h3>
-              </div>
-              <span className="text-xs px-2.5 py-1 rounded bg-emerald-50 text-emerald-800 font-mono">
-                Under $800 USD Duty-Free
-              </span>
+            <div className="flex items-center gap-2 pb-3 border-b border-[#F5F1E8]">
+              <Globe className="w-5 h-5 text-[#A8843E]" />
+              <h3 className="font-serif text-xl text-[#1F2022] font-medium">Insured Worldwide Door-to-Door Delivery</h3>
             </div>
 
             <p className="text-xs text-[#575A61] leading-relaxed">
-              Under 19 U.S.C. § 1321 (commonly referred to as Section 321 De Minimis), shipments imported by one individual on one day with an aggregate fair retail value not exceeding <strong>$800 USD</strong> generally enter the United States free of formal customs duty and taxes.
+              Every shipment is dispatched with DHL Express Worldwide or FedEx International Priority under discrete armored wrapping. We partner with premier air logistics networks to ensure rapid, dependable delivery to clients across the globe.
             </p>
 
             <div className="space-y-2 pt-2 text-xs text-[#575A61]">
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                <span>Orders under $800 USD clear electronically via DHL Express without customs bills to the buyer.</span>
+                <span>Live GPS Tracking: Real-time milestone updates provided via email and SMS.</span>
               </div>
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                <span>For orders exceeding $800 USD, US Customs (CBP) formal entry duties (approx. 5.5% on gold jewelry) will apply and be communicated prior to final delivery.</span>
+                <span>Adult Signature Required: Handed over exclusively with direct signature confirmation.</span>
               </div>
             </div>
           </div>
 
-          {/* Canada CBSA & GST/HST */}
           <div className="p-8 rounded-2xl bg-white border border-[#EAE3D5] space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-[#F5F1E8]">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">🇨🇦</span>
-                <h3 className="font-serif text-xl text-[#1F2022] font-medium">Canada (CBSA & DDP Option)</h3>
-              </div>
-              <span className="text-xs px-2.5 py-1 rounded bg-blue-50 text-blue-800 font-mono">
-                DDP Pre-Clearance
-              </span>
+            <div className="flex items-center gap-2 pb-3 border-b border-[#F5F1E8]">
+              <FileText className="w-5 h-5 text-[#A8843E]" />
+              <h3 className="font-serif text-xl text-[#1F2022] font-medium">Official Customs Clearance (CSB-V)</h3>
             </div>
 
             <p className="text-xs text-[#575A61] leading-relaxed">
-              Canada Border Services Agency (CBSA) assesses imported fine jewelry originating outside NAFTA/USMCA. Under Canadian customs tariff codes (HS 7113), jewelry is subject to an approximate <strong>6.5% customs duty</strong> plus applicable provincial sales tax (GST/HST/PST).
+              Every export is legally processed through Indian Customs using electronic Courier Shipping Bill V (CSB-V) with verified Harmonized System (HS) codes and BIS assay certification.
             </p>
 
             <div className="space-y-2 pt-2 text-xs text-[#575A61]">
               <div className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                <span><strong>Optional DDP (Delivered Duty Paid):</strong> Choose DDP at checkout to calculate and pay duties and GST/HST in advance, eliminating courier COD surprise fees at your doorstep.</span>
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                <span>Full Export Transparency: Commercial invoice and assay certificates accompanied with courier packet.</span>
               </div>
               <div className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                <span><strong>DDU (Delivered Duty Unpaid):</strong> If selected, CBSA duties and provincial taxes will be billed directly by DHL/FedEx prior to final handover.</span>
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                <span>RBI FEMA Reconciliation: Compliant with Reserve Bank of India export Purpose Code P0103.</span>
               </div>
             </div>
           </div>
@@ -173,20 +161,20 @@ export const ShippingPolicyPage = ({ onNavigate }) => {
               <strong className="text-[#1F2022]">1–2 Business Days</strong>
             </div>
             <div className="flex justify-between py-2 border-b border-[#F5F1E8]">
-              <span className="text-[#747780]">Custom Ring Sizing Dispatch:</span>
+              <span className="text-[#747780]">Custom Sizing Dispatch:</span>
               <strong className="text-[#1F2022]">5–7 Business Days</strong>
             </div>
             <div className="flex justify-between py-2 border-b border-[#F5F1E8]">
-              <span className="text-[#747780]">DHL Air Transit to USA:</span>
-              <strong className="text-[#1F2022]">3–5 Business Days</strong>
+              <span className="text-[#747780]">DHL Air Express Transit:</span>
+              <strong className="text-[#1F2022]">3–5 Business Days Worldwide</strong>
             </div>
             <div className="flex justify-between py-2 border-b border-[#F5F1E8]">
-              <span className="text-[#747780]">DHL Air Transit to Canada:</span>
-              <strong className="text-[#1F2022]">4–6 Business Days</strong>
+              <span className="text-[#747780]">Priority Armored Transit:</span>
+              <strong className="text-[#1F2022]">2–4 Business Days Worldwide</strong>
             </div>
             <div className="flex justify-between py-2">
-              <span className="text-[#747780]">Standard Shipping Fee:</span>
-              <strong className="text-[#1F2022]">$24 USD / $32 CAD (Free over $150 USD / $200 CAD)</strong>
+              <span className="text-[#747780]">Standard Shipping:</span>
+              <strong className="text-[#1F2022]">$24 USD (Free over $150 USD)</strong>
             </div>
           </div>
         </div>

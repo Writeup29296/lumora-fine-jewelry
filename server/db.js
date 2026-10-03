@@ -31,7 +31,7 @@ const initialProducts = [
       'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=1200&q=80'
     ],
-    description: 'Forged in solid gold or 925 sterling silver with a delicate hidden halo setting and an elongated oval lab-grown diamond. Hand-finished by master jewelers in Jaipur with comfort-fit band profile.',
+    description: 'Forged in solid gold or 925 sterling silver with a delicate hidden halo setting and an elongated oval lab-grown diamond. Hand-finished by master jewelers in Surat with comfort-fit band profile.',
     stoneType: 'Lab-Grown Diamond (CVD/HPHT)',
     stoneDetails: {
       type: 'Lab-Grown Diamond',
@@ -60,7 +60,7 @@ const initialProducts = [
     ],
     ringSizes: ['4', '4.5', '5', '5.5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '11', '12'],
     processingTime: '1–2 business days (Standard sizes) / 5–7 business days (Custom sizing)',
-    shippingTime: '3–5 business days via DHL Express from Jaipur, India to USA & Canada',
+    shippingTime: '3–5 business days via DHL Express from Surat, India Worldwide',
     packaging: 'Lumora Hardcover Velvet Presentation Vault, BIS Hallmark Certificate Card, Microfiber Polishing Cloth',
     returnsEligibility: 'Eligible for 30-Day Return in original unworn condition with intact security tags. Custom engraved pieces are non-returnable.',
     careGuide: 'Avoid direct contact with perfumes, hand sanitizers, and household chlorine. Clean with lukewarm water, mild baby soap, and soft bristle brush.'
@@ -103,7 +103,7 @@ const initialProducts = [
     ],
     ringSizes: ['5', '6', '7', '8', '9', '10', '11', '12', '13'],
     processingTime: '1–2 business days for ready stock',
-    shippingTime: '3–5 business days via DHL Express from Jaipur, India to USA & Canada',
+    shippingTime: '3–5 business days via DHL Express from Surat, India Worldwide',
     packaging: 'Velvet Travel Pouch and Presentation Box, Polishing Cloth',
     returnsEligibility: '30-Day Return window for unworn condition. Engraved pieces excluded.',
     careGuide: 'Store separately to protect moonstone surface. Polish gently with dry microfiber cloth.'
@@ -281,7 +281,7 @@ const initialProducts = [
     ],
     ringSizes: ['4', '5', '6', '7', '8', '9', '10'],
     processingTime: '2–4 business days',
-    shippingTime: '3–5 business days to USA & Canada',
+    shippingTime: '3–5 business days Worldwide',
     packaging: 'Luxury Ring Presentation Vault',
     returnsEligibility: '30-Day Return window. Note: Eternity bands cannot be resized after forging.',
     careGuide: 'Clean gently between scalloped settings using a soft toothbrush.'
@@ -290,7 +290,7 @@ const initialProducts = [
     id: 'lum-07',
     name: 'Chandrika Royal Filigree Chandelier Earrings',
     category: 'earrings',
-    subtitle: 'Jaipur Openwork Artistry in 925 Silver & 18K Gold Vermeil',
+    subtitle: 'Surat Openwork Artistry in 925 Silver & 18K Gold Vermeil',
     priceUSD: 195,
     priceCAD: 270,
     isSample: true,
@@ -301,7 +301,7 @@ const initialProducts = [
       'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=1200&q=80'
     ],
-    description: 'Heritage royal openwork filigree crafted by traditional Jaipur silver and goldsmiths. Features articulate dangling drops that move with luminous grace.',
+    description: 'Heritage royal openwork filigree crafted by traditional Surat silver and goldsmiths. Features articulate dangling drops that move with luminous grace.',
     stoneType: 'Natural Freshwater Seed Pearls',
     stoneDetails: {
       type: 'Natural Cultured Freshwater Pearls',
@@ -323,7 +323,7 @@ const initialProducts = [
       { id: 'v7-14k-yg', metal: '14K Gold', purity: '585', color: 'Yellow Gold', priceUSD: 690, priceCAD: 950, stock: 3 }
     ],
     processingTime: '1–2 business days',
-    shippingTime: '3–5 business days to USA & Canada',
+    shippingTime: '3–5 business days Worldwide',
     packaging: 'Jewelry Presentation Vault with Velvet Insert',
     returnsEligibility: '30-Day Return window for unworn items with security seals.',
     careGuide: 'Keep pearls away from moisture and cosmetic sprays. Put on after perfume dries.'
@@ -382,8 +382,8 @@ const initialDiscounts = [
 const initialSettings = {
   storeName: 'Lumora Fine Jewelry',
   domain: 'lumorafinejewelery.com',
-  brandOrigin: 'Jaipur & Surat, India',
-  targetMarkets: ['United States', 'Canada'],
+  brandOrigin: 'Surat, India',
+  targetMarkets: ['Worldwide'],
   defaultCurrency: 'USD',
   supportedCurrencies: ['USD', 'CAD'],
   currencyRates: {
@@ -396,7 +396,7 @@ const initialSettings = {
   returnAddressPlaceholder: '[US/Canadian Return Logistics Facility: Address to be configured by merchant upon carrier onboarding]',
   
   // Transparent shipping details
-  shippingOriginCity: 'Jaipur & Surat, India',
+  shippingOriginCity: 'Surat, India',
   shippingCarrier: 'DHL Express Worldwide & FedEx International Priority',
   dispatchLeadTime: '1–2 business days for ready pieces / 5–7 business days for custom sizing',
   transitTimeUSA: '3–5 business days',
@@ -409,8 +409,8 @@ const initialSettings = {
   priorityArmoredFeeCAD: 48,
   
   // Transparent customs & duties explanation
-  usaCustomsExplanation: 'USA Section 321 De Minimis: Under 19 U.S.C. § 1321, shipments imported by one person on one day valued at $800 USD or less are generally exempt from US Customs duty and formal entry. Courier handles electronic entry.',
-  canadaCustomsExplanation: 'Canada CBSA Import: Fine jewelry imports into Canada are subject to CBSA customs duties (standard 6.5%) and provincial taxes (GST/HST). Lumora provides optional DDP (Delivered Duty Paid) checkout calculation to avoid COD surprise fees.',
+  usaCustomsExplanation: 'Worldwide Insured Export: All international orders are dispatched from our Surat atelier with DHL Express / FedEx Priority under official Indian electronic CSB-V air cargo regulations with 100% full transit insurance.',
+  canadaCustomsExplanation: 'Worldwide Delivery: Delivered securely door-to-door with complete electronic export declarations and courier pre-clearance.',
   dutyHandlingMode: 'DDP', // 'DDP' or 'DDU'
 
   // Indian Export & Banking Compliance Credentials
@@ -428,22 +428,22 @@ const initialSettings = {
   stripeWebhookSecret: '',
   
   // Contact
-  supportEmail: 'concierge@lumorafinejewelery.com',
-  whatsappNumber: '+91 98765 43210 (VIP Concierge)',
+  supportEmail: 'lumoragemofficial@gmail.com',
+  whatsappNumber: '+91 79840 29296 (VIP Concierge)',
   usPhonePlaceholder: '[US/Canada Toll-Free Inquiries: Number to be configured]',
-  supportHours: 'Mon–Sat: 9:00 AM – 8:00 PM EST (Dedicated North America hours)',
+  supportHours: 'Mon–Sat: 9:00 AM – 8:00 PM EST (Dedicated Client Care hours)',
 
   // Storefront CMS Studio Settings
   brandName: 'LUMORA',
   brandSubtitle: 'FINE JEWELRY',
-  atelierAddress: 'Ateliers in Jaipur & Surat, Rajasthan / Gujarat, India',
-  brandTagline: 'Solid gold (9K, 14K, 18K) and 925 sterling silver fine jewelry handcrafted in the historic artisan workshops of Jaipur and Surat, India. Delivered directly to clients across the United States and Canada with 100% transit insurance and transparent customs clearance.',
+  atelierAddress: 'Ateliers in Surat, Gujarat, India',
+  brandTagline: 'Solid gold (9K, 14K, 18K) and 925 sterling silver fine jewelry handcrafted in the historic artisan workshops of Surat, Gujarat, India. Delivered directly to clients worldwide with 100% transit insurance and transparent customs clearance.',
   
   // 1. HERO SECTION
-  heroBadge: 'Jaipur & Surat Ateliers • Direct Export to USA & Canada',
+  heroBadge: 'Surat Ateliers • Direct Export Worldwide',
   heroTitle: 'Everyday Heirlooms,',
   heroTitleHighlight: 'Direct from Master Ateliers.',
-  heroDescription: 'Handcrafted solid gold, 925 sterling silver, and certified lab-grown diamonds. Shipped directly from the jewelry capitals of Jaipur and Surat straight to North America — without traditional 400% boutique markups.',
+  heroDescription: 'Handcrafted solid gold, 925 sterling silver, and certified lab-grown diamonds. Shipped directly from the jewelry capitals of Surat straight to clients worldwide — without traditional 400% boutique markups.',
   heroImageUrl: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80',
   heroCardTitle: 'Aura Solitaire Diamond Ring',
   heroCardSubtitle: '14K Gold • BIS 585',
@@ -454,11 +454,11 @@ const initialSettings = {
 
   // 2. ANNOUNCEMENT BAR
   announcementActive: true,
-  announcement1: 'Direct Atelier Pricing: Handcrafted in Jaipur & Surat • Zero 400% Retail Markups',
+  announcement1: 'Direct Atelier Pricing: Handcrafted in Surat • Zero 400% Retail Markups',
   announcement1Link: 'Our Atelier Story',
   announcement1Page: 'about',
-  announcement2: '🇺🇸 USA: Section 321 Duty-Free Under $800 • 🇨🇦 Canada: CBSA & Provincial DDP Pre-Cleared',
-  announcement2Link: 'Shipping & Customs',
+  announcement2: '🌍 Worldwide Insured Express Delivery • Door-to-Door Tracking',
+  announcement2Link: 'Shipping Policy',
   announcement2Page: 'shipping',
   announcement3: 'Complimentary Insured DHL Air Express on Orders Over $150 • 30-Day Effortless Returns',
   announcement3Link: '30-Day Return Policy',
@@ -476,7 +476,7 @@ const initialSettings = {
 
   // 4. PROMOTIONAL LAB DIAMOND FEATURE BANNER
   bannerBadge: 'Science & Conscience',
-  bannerTitle: 'Why Discerning North American Buyers Choose Certified Lab Diamonds',
+  bannerTitle: 'Why Discerning Global Clients Choose Certified Lab Diamonds',
   bannerDescription: 'Lab-grown diamonds are 100% crystallized carbon. Under the microscope, Raman spectroscopy, and diamond testers, they possess the exact same physical, optical, and chemical lattice as mined diamonds (Mohs hardness 10).',
   bannerImageUrl: 'https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=1000&q=80',
   bannerButtonText: 'Browse Solitaire Lab Diamonds',
@@ -494,8 +494,8 @@ const initialSettings = {
   // 6. TRUST BADGES
   trustBadge1Title: 'Ships from India',
   trustBadge1Desc: '3–5 Days via DHL Express',
-  trustBadge2Title: 'US Section 321 / DDP',
-  trustBadge2Desc: 'Zero US Duty under $800',
+  trustBadge2Title: 'Insured Worldwide Transit',
+  trustBadge2Desc: '100% Door-to-Door Coverage',
   trustBadge3Title: 'BIS Hallmarked',
   trustBadge3Desc: 'Solid 9K/14K/18K Gold'
 };
@@ -548,7 +548,7 @@ const initialOrders = [
     shipping: {
       carrier: 'DHL Express Worldwide',
       trackingNumber: 'DHL-IN-9382049182',
-      origin: 'Jaipur Atelier, India',
+      origin: 'Surat Atelier, India',
       destination: 'San Francisco, CA, USA',
       csbVNumber: 'CSB-V-2026-DEL-098234',
       hsCode: '7113.19.10',
@@ -736,7 +736,7 @@ class Database {
       shipping: {
         carrier: 'DHL Express Worldwide',
         trackingNumber: trackingNumber,
-        origin: 'Jaipur / Surat Atelier, India',
+        origin: 'Surat Atelier, India',
         destination: `${orderData.customer.city}, ${orderData.customer.state || ''}, ${orderData.customer.country}`,
         csbVNumber: csbVNumber,
         hsCode: '7113.19.10',

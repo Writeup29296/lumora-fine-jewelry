@@ -12,13 +12,13 @@ export const ReviewSection = () => {
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-400 uppercase tracking-widest font-mono">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            North American Client Reviews
+            Verified Worldwide Client Reviews
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-white tracking-tight">
-            Treasured Across the United States & Canada
+            Treasured by Discerning Clients Worldwide
           </h2>
           <p className="text-sm sm:text-base text-white/60 leading-relaxed font-light">
-            Read verified impressions from US and Canadian collectors who received their solid gold & silver heirlooms direct from our atelier via DHL Express.
+            Read verified impressions from collectors worldwide who received their solid gold & silver heirlooms direct from our Surat atelier via insured express transit.
           </p>
         </div>
 
@@ -30,11 +30,11 @@ export const ReviewSection = () => {
           </div>
           <div className="p-4 rounded-xl bg-[#12151e] border border-white/10 text-center">
             <div className="text-2xl sm:text-3xl font-serif font-bold text-white">{trustStats.northAmericaDeliveries}</div>
-            <div className="text-xs text-white/50 mt-1">Shipped to USA & Canada</div>
+            <div className="text-xs text-white/50 mt-1">Shipped Worldwide</div>
           </div>
           <div className="p-4 rounded-xl bg-[#12151e] border border-white/10 text-center">
             <div className="text-2xl sm:text-3xl font-serif font-bold text-emerald-400">100%</div>
-            <div className="text-xs text-white/50 mt-1">Section 321 Duty-Free Rate</div>
+            <div className="text-xs text-white/50 mt-1">Insured Transit Rate</div>
           </div>
           <div className="p-4 rounded-xl bg-[#12151e] border border-white/10 text-center">
             <div className="text-2xl sm:text-3xl font-serif font-bold text-[#d4af37]">3–5 Days</div>

@@ -27,7 +27,7 @@ export const CustomerAccountModal = ({ isOpen, onClose }) => {
               <h3 className="text-base font-serif font-bold text-white tracking-wide">
                 {currentUser.name}
               </h3>
-              <p className="text-xs text-white/50">{currentUser.email} &bull; {currentUser.country || 'USA'}</p>
+              <p className="text-xs text-white/50">{currentUser.email} &bull; {currentUser.country || 'Worldwide'}</p>
             </div>
           </div>
           <button
@@ -114,11 +114,11 @@ export const CustomerAccountModal = ({ isOpen, onClose }) => {
             <ul className="space-y-1.5 text-white/60 text-[11px]">
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                <span>North America Priority Dispatch via DHL Air Cargo</span>
+                <span>Worldwide Priority Dispatch via DHL / FedEx Air Cargo</span>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                <span>30-Day Hassle-Free Returns with North American Return Center</span>
+                <span>30-Day Hassle-Free Returns Worldwide</span>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#d4af37]" />

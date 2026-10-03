@@ -60,12 +60,12 @@ export const ContactPage = ({ onNavigate }) => {
                   <strong className="block text-[#1F2022] text-xs">Instant WhatsApp VIP Concierge</strong>
                   <span className="text-[#575A61] block mt-0.5">{brandConfig.concierge.whatsappNumber}</span>
                   <a
-                    href="https://wa.me/919876543210"
+                    href="https://wa.me/917984029296"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-block mt-1.5 text-[#A8843E] hover:underline font-medium"
                   >
-                    Open Chat with Jaipur Atelier &rarr;
+                    Open Chat with Surat Atelier &rarr;
                   </a>
                 </div>
               </div>
@@ -117,9 +117,9 @@ export const ContactPage = ({ onNavigate }) => {
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <strong className="block text-[#1F2022] text-xs">Artisanal Atelier Locations</strong>
-                  <span className="text-[#575A61] block mt-0.5">Jaipur & Surat, Rajasthan / Gujarat, India</span>
-                  <span className="text-[#747780] block text-[11px]">All orders dispatch via DHL Air Cargo directly to USA & Canada</span>
+                  <strong className="block text-[#1F2022] text-xs">Artisanal Atelier Location</strong>
+                  <span className="text-[#575A61] block mt-0.5">Surat, Gujarat, India</span>
+                  <span className="text-[#747780] block text-[11px]">All orders dispatch via DHL Air Cargo directly to doorsteps worldwide</span>
                 </div>
               </div>
 
@@ -138,7 +138,7 @@ export const ContactPage = ({ onNavigate }) => {
               </div>
               <h3 className="font-serif text-2xl text-[#1F2022] font-medium">Inquiry Dispatched to Atelier</h3>
               <p className="text-xs text-[#575A61] max-w-md mx-auto leading-relaxed">
-                Thank you, <strong>{formData.name}</strong>. A dedicated concierge specialist from our Jaipur atelier will review your message and reply to <strong>{formData.email}</strong> within 12 business hours.
+                Thank you, <strong>{formData.name}</strong>. A dedicated concierge specialist from our Surat atelier will review your message and reply to <strong>{formData.email}</strong> within 12 business hours.
               </p>
               <button
                 onClick={() => {

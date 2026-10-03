@@ -6,6 +6,7 @@ import { useCurrency } from '../context/CurrencyContext';
 import { useSettings, DEFAULT_CMS_SETTINGS } from '../context/SettingsContext';
 import { ProductFormModal } from './ProductFormModal';
 import { DomainSetupModal } from './DomainSetupModal';
+import { ImageUploader } from './ImageUploader';
 import { 
   Plus, Edit2, Trash2, Search, Filter, ShieldCheck, 
   Package, ShoppingBag, DollarSign, Globe, ExternalLink, 
@@ -241,13 +242,13 @@ export const AdminDashboard = ({ onBackToStore }) => {
 
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-lg font-serif font-bold text-[#1F2022] tracking-wider">LUMORA</span>
+              <img src="/lumora-logo.png" alt="LUMORA" className="h-8 w-auto object-contain" />
               <span className="text-[10px] px-2 py-0.5 rounded bg-[#F4EFE6] text-[#A8843E] border border-[#E0D5C1] font-mono uppercase font-bold">
                 Director Command Center
               </span>
             </div>
             <p className="text-[11px] text-[#747780]">
-              Domain: <strong className="text-[#1F2022] font-mono">lumorafinejewelery.com</strong> &bull; Jaipur & Surat Export Management
+              Domain: <strong className="text-[#1F2022] font-mono">lumorafinejewelery.com</strong> &bull; Surat Atelier Export Management
             </p>
           </div>
         </div>
@@ -293,7 +294,7 @@ export const AdminDashboard = ({ onBackToStore }) => {
             <span className="text-[10px] text-[#747780] uppercase tracking-wider block font-semibold">International Orders</span>
             <div className="text-2xl font-serif font-bold text-[#1F2022] flex items-baseline gap-2">
               <span>{orders.length}</span>
-              <span className="text-[11px] text-emerald-700 font-normal">USA &bull; Canada</span>
+              <span className="text-[11px] text-emerald-700 font-normal">Worldwide Direct</span>
             </div>
           </div>
 
@@ -475,17 +476,17 @@ export const AdminDashboard = ({ onBackToStore }) => {
                     />
                   </div>
 
-                  <div className="space-y-1">
-                    <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Hero Main Photograph URL</label>
-                    <input
-                      type="url"
+                  <div className="space-y-2">
+                    <ImageUploader
+                      label="Hero Main Showcase Image"
                       value={cmsForm.heroImageUrl || ''}
-                      onChange={(e) => setCmsForm({ ...cmsForm, heroImageUrl: e.target.value })}
-                      className="w-full px-3.5 py-2 bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-[#1F2022] font-mono text-[11px]"
+                      onChange={(newUrl) => setCmsForm({ ...cmsForm, heroImageUrl: newUrl })}
+                      shape="rounded"
+                      hint="Upload high-res photography from your PC / Phone (0% Compression)"
                     />
                     {/* Quick Preset Buttons */}
                     <div className="pt-1 flex flex-wrap items-center gap-1.5 text-[10px]">
-                      <span className="text-[#747780]">Presets:</span>
+                      <span className="text-[#747780]">Or choose luxury preset:</span>
                       <button
                         type="button"
                         onClick={() => setCmsForm({ ...cmsForm, heroImageUrl: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80' })}
@@ -624,36 +625,31 @@ export const AdminDashboard = ({ onBackToStore }) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {(cmsForm.categoryPills || []).map((cat, idx) => (
                     <div key={idx} className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE3D5] space-y-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#C5A059] shrink-0 bg-white shadow-2xs">
-                          <img src={cat.image} alt={cat.name} className="w-full h-full object-cover" />
-                        </div>
-                        <div className="flex-1">
-                          <span className="text-[10px] uppercase text-[#A8843E] font-semibold block">Slot #{idx + 1}</span>
-                          <input
-                            type="text"
-                            value={cat.name}
-                            onChange={(e) => {
-                              const copy = [...(cmsForm.categoryPills || [])];
-                              copy[idx] = { ...copy[idx], name: e.target.value };
-                              setCmsForm({ ...cmsForm, categoryPills: copy });
-                            }}
-                            className="w-full px-2.5 py-1 bg-white border border-[#EAE3D5] rounded text-xs font-semibold text-[#1F2022]"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="space-y-1">
-                        <label className="text-[10px] uppercase text-[#747780] font-medium">Image URL</label>
+                      <div className="space-y-1.5">
+                        <span className="text-[10px] uppercase text-[#A8843E] font-semibold block">Circle #{idx + 1} Title</span>
                         <input
-                          type="url"
-                          value={cat.image}
+                          type="text"
+                          value={cat.name}
                           onChange={(e) => {
                             const copy = [...(cmsForm.categoryPills || [])];
-                            copy[idx] = { ...copy[idx], image: e.target.value };
+                            copy[idx] = { ...copy[idx], name: e.target.value };
                             setCmsForm({ ...cmsForm, categoryPills: copy });
                           }}
-                          className="w-full px-2.5 py-1 bg-white border border-[#EAE3D5] rounded text-[11px] font-mono text-[#1F2022]"
+                          className="w-full px-2.5 py-1.5 bg-white border border-[#EAE3D5] rounded text-xs font-semibold text-[#1F2022]"
+                        />
+                      </div>
+
+                      <div className="space-y-1 pt-1.5 border-t border-[#F5F1E8]">
+                        <label className="text-[10px] uppercase text-[#747780] font-medium block">Circle Image</label>
+                        <ImageUploader
+                          compact={true}
+                          shape="circle"
+                          value={cat.image}
+                          onChange={(newUrl) => {
+                            const copy = [...(cmsForm.categoryPills || [])];
+                            copy[idx] = { ...copy[idx], image: newUrl };
+                            setCmsForm({ ...cmsForm, categoryPills: copy });
+                          }}
                         />
                       </div>
 
@@ -702,7 +698,7 @@ export const AdminDashboard = ({ onBackToStore }) => {
 
                 <div className="space-y-4">
                   <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE3D5] space-y-2">
-                    <span className="text-[10px] uppercase text-[#A8843E] font-semibold block">Message 1 (Jaipur & Surat Pricing)</span>
+                    <span className="text-[10px] uppercase text-[#A8843E] font-semibold block">Message 1 (Surat Atelier Direct Pricing)</span>
                     <input
                       type="text"
                       value={cmsForm.announcement1 || ''}
@@ -830,13 +826,13 @@ export const AdminDashboard = ({ onBackToStore }) => {
                     />
                   </div>
 
-                  <div className="space-y-1">
-                    <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Banner Photograph URL</label>
-                    <input
-                      type="url"
+                  <div className="space-y-2">
+                    <ImageUploader
+                      label="Banner Photograph"
                       value={cmsForm.bannerImageUrl || ''}
-                      onChange={(e) => setCmsForm({ ...cmsForm, bannerImageUrl: e.target.value })}
-                      className="w-full px-3 py-1.5 bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg font-mono text-[11px]"
+                      onChange={(newUrl) => setCmsForm({ ...cmsForm, bannerImageUrl: newUrl })}
+                      shape="banner"
+                      hint="Upload wide banner photo from your device (0% Compression)"
                     />
                   </div>
 
@@ -972,7 +968,7 @@ export const AdminDashboard = ({ onBackToStore }) => {
               <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#EAE3D5] space-y-4 shadow-xs text-xs max-w-3xl">
                 <div className="pb-3 border-b border-[#F5F1E8]">
                   <h3 className="font-serif text-xl text-[#1F2022] font-medium">Trust Badges & Export Guarantees</h3>
-                  <p className="text-[11px] text-[#747780]">Highlight your direct shipping from India, US Section 321 de minimis, and BIS hallmarking.</p>
+                  <p className="text-[11px] text-[#747780]">Highlight your direct shipping from Surat India, insured worldwide delivery, and BIS hallmarking.</p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -995,7 +991,7 @@ export const AdminDashboard = ({ onBackToStore }) => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE3D5] space-y-2">
-                    <span className="text-[10px] uppercase text-[#A8843E] font-semibold block">Badge 2 (Customs & Duties)</span>
+                    <span className="text-[10px] uppercase text-[#A8843E] font-semibold block">Badge 2 (Worldwide Transit Coverage)</span>
                     <input
                       type="text"
                       placeholder="Title"
@@ -1099,6 +1095,26 @@ export const AdminDashboard = ({ onBackToStore }) => {
                     value={cmsForm.atelierAddress || ''}
                     onChange={(e) => setCmsForm({ ...cmsForm, atelierAddress: e.target.value })}
                     className="w-full px-3 py-2 bg-[#FAF8F5] border border-[#EAE3D5] rounded-lg text-xs"
+                  />
+                </div>
+
+                {/* Official Brand Symbol & Logo */}
+                <div className="space-y-2 p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE3D5]">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <strong className="block text-xs text-[#1F2022]">Official Brand Symbol & Logo</strong>
+                      <span className="text-[10px] text-[#747780]">Active logo displayed across Navbar, Footer, and Client Certificates</span>
+                    </div>
+                    <img 
+                      src={cmsForm.logoUrl || '/lumora-logo.png'} 
+                      alt="Current Logo" 
+                      className="h-9 w-auto object-contain bg-white p-1 rounded-lg border border-[#EAE3D5]" 
+                    />
+                  </div>
+                  <ImageUploader
+                    currentImage={cmsForm.logoUrl || '/lumora-logo.png'}
+                    onImageUploaded={(url) => setCmsForm({ ...cmsForm, logoUrl: url })}
+                    label="Upload New High-Resolution Brand Logo"
                   />
                 </div>
 
@@ -1207,7 +1223,7 @@ export const AdminDashboard = ({ onBackToStore }) => {
                             <img src={p.images[0]} alt={p.name} className="w-10 h-10 object-cover rounded-lg border border-[#EAE3D5]" />
                             <div>
                               <strong className="block font-serif text-sm text-[#1F2022]">{p.name}</strong>
-                              <span className="text-[10px] font-mono text-[#747780]">ID: {p.id} &bull; Sample Data</span>
+                              <span className="text-[10px] font-mono text-[#747780]">ID: {p.id} &bull; Atelier Catalog</span>
                             </div>
                           </div>
                         </td>
@@ -1283,7 +1299,7 @@ export const AdminDashboard = ({ onBackToStore }) => {
             <div className="p-4 rounded-2xl bg-white border border-[#EAE3D5] flex items-center justify-between">
               <div>
                 <h3 className="font-serif text-lg text-[#1F2022] font-medium">International Order Manifests</h3>
-                <p className="text-xs text-[#747780]">Track order fulfillments from Jaipur workshop to US/Canada doorsteps.</p>
+                <p className="text-xs text-[#747780]">Track order fulfillments from Surat workshop to worldwide doorsteps.</p>
               </div>
               <span className="text-xs font-mono px-3 py-1 rounded bg-[#FAF8F5] border border-[#EAE3D5]">
                 {orders.length} Active Records
@@ -1506,7 +1522,7 @@ export const AdminDashboard = ({ onBackToStore }) => {
               </div>
 
               <div className="space-y-1">
-                <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">North American Return Processing Facility</label>
+                <label className="text-[11px] uppercase tracking-wider text-[#747780] font-medium">Worldwide Return Processing Facility</label>
                 <input
                   type="text"
                   value={storeSettings.returnAddressPlaceholder || ''}

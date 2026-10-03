@@ -8,7 +8,7 @@ export const COUNTRIES = {
     currency: 'USD',
     currencySymbol: '$',
     deMinimisLimit: 800,
-    shippingNotice: 'Eligible for US Section 321 Duty-Free Entry on orders up to $800 USD/day.',
+    shippingNotice: '100% insured door-to-door express delivery from our Surat atelier.',
     deliveryDays: '3–5 business days via DHL Express / FedEx Priority'
   },
   CA: {

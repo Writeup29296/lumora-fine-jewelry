@@ -83,7 +83,7 @@ export const AtelierCostComparison = ({ productPriceUSD = 420, productName = 'Au
               <span className="font-mono text-[#1F2022] font-semibold">{formatPrice(Math.round(productPriceUSD * 0.45))}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="flex items-center gap-1.5 text-[#1F2022] font-medium"><Scissors className="w-3.5 h-3.5 text-[#A8843E]" /> Master Jaipur/Surat Bench Craftsman</span>
+              <span className="flex items-center gap-1.5 text-[#1F2022] font-medium"><Scissors className="w-3.5 h-3.5 text-[#A8843E]" /> Master Surat Bench Craftsman</span>
               <span className="font-mono text-[#1F2022] font-semibold">{formatPrice(Math.round(productPriceUSD * 0.35))}</span>
             </div>
             <div className="flex justify-between items-center">

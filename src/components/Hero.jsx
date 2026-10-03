@@ -36,18 +36,18 @@ export const Hero = ({ onOpenBespoke }) => {
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl font-light">
-              By crafting directly in India's historic jewelry capitals of Jaipur & Surat, <strong className="text-white font-medium">Lumora</strong> eliminates 500%+ luxury retail markups. Every piece is BIS Hallmarked, packaged in vault presentation boxes, and delivered to your doorstep in the <strong className="text-white">United States & Canada</strong> via DHL Express in 3–5 days.
+              By crafting directly in India's premier diamond and jewelry capital of Surat, <strong className="text-white font-medium">Lumora</strong> eliminates 500%+ luxury retail markups. Every piece is BIS Hallmarked, packaged in vault presentation boxes, and delivered to your doorstep <strong className="text-white">Worldwide</strong> via DHL Express in 3–5 days.
             </p>
 
-            {/* Key Differentiators for USA & Canada */}
+            {/* Key Differentiators */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs">
               <div className="flex items-center gap-2 text-white/80">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span><strong>USA:</strong> 0% Import Duty under Section 321</span>
+                <span><strong>Origin:</strong> Handcrafted in Surat, Gujarat</span>
               </div>
               <div className="flex items-center gap-2 text-white/80">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span><strong>Canada:</strong> Guaranteed DDP Pre-Cleared CBSA</span>
+                <span><strong>Worldwide:</strong> 100% Insured Air Express Delivery</span>
               </div>
               <div className="flex items-center gap-2 text-white/80">
                 <CheckCircle2 className="w-4 h-4 text-[#d4af37] shrink-0" />
@@ -55,7 +55,7 @@ export const Hero = ({ onOpenBespoke }) => {
               </div>
               <div className="flex items-center gap-2 text-white/80">
                 <CheckCircle2 className="w-4 h-4 text-[#d4af37] shrink-0" />
-                <span><strong>Logistics:</strong> 100% Insured DHL Air Express</span>
+                <span><strong>Direct Atelier:</strong> Zero Broker & Retail Markups</span>
               </div>
             </div>
 
@@ -109,7 +109,7 @@ export const Hero = ({ onOpenBespoke }) => {
                       <h4 className="text-sm font-serif font-bold text-white">Astraea Oval Solitaire Ring</h4>
                     </div>
                     <span className="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 font-mono text-xs font-bold">
-                      Section 321 US Duty-Free
+                      Worldwide Insured Delivery
                     </span>
                   </div>
 
@@ -144,7 +144,7 @@ export const Hero = ({ onOpenBespoke }) => {
                 </div>
                 <div>
                   <p className="text-[10px] text-white/50 uppercase tracking-wider">DHL Express Direct</p>
-                  <p className="text-xs font-bold text-white">3–5 Days to USA & Canada</p>
+                  <p className="text-xs font-bold text-white">3–5 Days Worldwide Priority</p>
                 </div>
               </div>
 

@@ -24,16 +24,16 @@ const FAQ_SECTIONS = [
     ]
   },
   {
-    category: 'Shipping & Delivery to USA & Canada',
+    category: 'Worldwide Shipping & Delivery',
     icon: Plane,
     questions: [
       {
         q: 'Where does Lumora ship from?',
-        a: 'All Lumora jewelry is handcrafted in our historic jewelry workshops located in Jaipur and Surat, India. Consignments are dispatched directly from our ateliers to the United States and Canada via international express air cargo.'
+        a: 'All Lumora jewelry is handcrafted in our master fine jewelry atelier located in Surat, Gujarat, India. Consignments are dispatched directly from our atelier to clients worldwide via international air express.'
       },
       {
-        q: 'How long does delivery take to the United States and Canada?',
-        a: 'Ready in-stock pieces dispatch within 1–2 business days. Air transit via DHL Express Worldwide or FedEx International Priority takes approximately 3–5 business days to the USA and 4–6 business days to Canada.'
+        q: 'How long does delivery take?',
+        a: 'Ready in-stock pieces dispatch within 1–2 business days. Air transit via DHL Express Worldwide or FedEx International Priority takes approximately 3–5 business days worldwide with full online tracking.'
       },
       {
         q: 'Is my shipment insured during international transit?',
@@ -42,16 +42,16 @@ const FAQ_SECTIONS = [
     ]
   },
   {
-    category: 'Customs, Duties & Taxes',
+    category: 'Customs & Export Clearance',
     icon: ShieldCheck,
     questions: [
       {
-        q: 'Will US customers be charged customs duties on orders under $800 USD?',
-        a: 'Under 19 U.S.C. § 1321 (Section 321 De Minimis), shipments imported by one individual on one day valued at $800 USD or less are generally exempt from formal US Customs duties and taxes. DHL Express clears Section 321 shipments electronically without billing the customer.'
+        q: 'How does international customs clearance work?',
+        a: 'All international consignments are declared under Indian Customs Courier Shipping Bill V (CSB-V) electronic manifests with verified HS Codes and accompanied by official BIS assay certification.'
       },
       {
-        q: 'How do customs and taxes work for Canadian orders?',
-        a: 'Under Canadian customs regulations, fine jewelry imports are assessed an approximate 6.5% CBSA duty plus provincial sales tax (GST/HST). Lumora provides an optional DDP (Delivered Duty Paid) checkout option so you can pre-pay exact taxes and duties upfront, avoiding surprise COD fees at delivery.'
+        q: 'What packaging is used for high-value fine jewelry shipments?',
+        a: 'Every piece arrives in our signature hardcover velvet presentation vault box, sealed inside a tamper-evident numbered pouch and packed in a discreet, unbranded exterior carton with adult signature required.'
       }
     ]
   },
@@ -60,12 +60,12 @@ const FAQ_SECTIONS = [
     icon: CreditCard,
     questions: [
       {
-        q: 'Can I pay in US Dollars (USD) or Canadian Dollars (CAD)?',
-        a: 'Yes. You can switch between USD and CAD using our country/currency selector. The checkout system clearly displays the exact currency charged to your card before you authorize payment, ensuring zero hidden conversion markups.'
+        q: 'What currency are orders processed in?',
+        a: 'All orders are transparently priced and billed in US Dollars (USD). The checkout displays the exact item cost, insured shipping, and total before authorization with zero hidden fees.'
       },
       {
-        q: 'How are online payments processed securely?',
-        a: 'All transactions are processed through Stripe Hosted Checkout, compliant with Level 1 PCI-DSS standards. We support all major credit cards (Visa, MasterCard, American Express), Apple Pay, and Google Pay.'
+        q: 'How are online payments secured?',
+        a: 'All transactions are processed directly through secure hosted payment gateways with full end-to-end encryption. Lumora never stores your credit card details on our servers.'
       }
     ]
   },
@@ -109,7 +109,7 @@ export const FaqPage = ({ onNavigate }) => {
           Frequently Asked Questions
         </h1>
         <p className="text-sm text-[#575A61] leading-relaxed">
-          Everything you need to know about our Indian atelier craftsmanship, lab-grown diamond standards, US/Canada customs clearance, and 30-day return policies.
+          Everything you need to know about our Surat atelier craftsmanship, lab-grown diamond standards, worldwide shipping, and 30-day return policies.
         </p>
       </div>
 
@@ -160,7 +160,7 @@ export const FaqPage = ({ onNavigate }) => {
       <div className="p-8 rounded-3xl bg-[#FAF8F5] border border-[#EAE3D5] text-center space-y-4">
         <h3 className="font-serif text-2xl text-[#1F2022] font-medium">Still have a question?</h3>
         <p className="text-xs text-[#575A61] max-w-md mx-auto">
-          Our VIP jewelry concierge team in Jaipur is available on WhatsApp or email to assist with custom sizing, bespoke settings, and delivery inquiries.
+          Our VIP jewelry concierge team in Surat is available on WhatsApp (+91 79840 29296) or email (lumoragemofficial@gmail.com) to assist with custom sizing, bespoke settings, and delivery inquiries.
         </p>
         <button
           onClick={() => onNavigate('contact')}

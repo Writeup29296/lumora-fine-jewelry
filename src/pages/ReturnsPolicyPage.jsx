@@ -128,7 +128,7 @@ export const ReturnsPolicyPage = ({ onNavigate }) => {
           <div className="p-5 rounded-xl bg-white border border-[#EAE3D5] space-y-2">
             <strong className="block text-sm font-serif text-[#1F2022]">Step 1: Request RMA</strong>
             <p>
-              Log in to your <strong>Customer Account</strong> or email <code>concierge@lumorafinejewelery.com</code> with your Order ID and photo of the item with security tag intact.
+              Log in to your <strong>Customer Account</strong> or email <code>lumoragemofficial@gmail.com</code> with your Order ID and photo of the item with security tag intact.
             </p>
           </div>
 

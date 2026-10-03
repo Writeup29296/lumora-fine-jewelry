@@ -93,7 +93,7 @@ export const SearchModal = ({ isOpen, onClose, products = [], onSelectProduct, o
             <div className="space-y-4">
               <div className="flex items-center gap-1.5 text-xs font-semibold text-[#A8843E] uppercase tracking-wider">
                 <TrendingUp className="w-4 h-4" />
-                <span>Trending Searches in USA & Canada</span>
+                <span>Trending Worldwide Searches</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {popularSearches.map((term) => (
@@ -178,7 +178,7 @@ export const SearchModal = ({ isOpen, onClose, products = [], onSelectProduct, o
 
         {/* Footer */}
         <div className="p-3 bg-[#FAF8F5] border-t border-[#EAE3D5] flex items-center justify-between text-[11px] text-[#747780] px-5">
-          <span>🇺🇸 Section 321 Duty-Free &bull; 🇨🇦 Canada DDP Pre-Cleared</span>
+          <span>Surat Atelier &bull; Insured Worldwide Courier Delivery</span>
           <button
             onClick={() => {
               onClose();

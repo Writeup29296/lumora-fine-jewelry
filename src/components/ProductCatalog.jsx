@@ -90,7 +90,7 @@ export const ProductCatalog = ({ onSelectProduct, onOpenBespoke }) => {
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#d4af37]/30 bg-[#d4af37]/10 text-xs text-[#d4af37] uppercase tracking-widest font-semibold">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>North American Direct Catalog</span>
+            <span>Worldwide Atelier Direct Catalog</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-white tracking-tight">
             Curated Fine Gold & Sterling Silver Heirlooms
@@ -185,12 +185,10 @@ export const ProductCatalog = ({ onSelectProduct, onOpenBespoke }) => {
                     </div>
                   )}
 
-                  {/* US Section 321 Duty-Free Marker */}
-                  {currency === 'USD' && product.usDeMinimisEligible && (
-                    <div className="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-emerald-500/20 backdrop-blur-md border border-emerald-500/30 text-emerald-400 text-[10px] font-mono flex items-center gap-1">
-                      <ShieldCheck className="w-3 h-3" /> US Duty-Free &lt;$800
-                    </div>
-                  )}
+                  {/* Worldwide Insured Delivery Marker */}
+                  <div className="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-[#A8843E]/20 backdrop-blur-md border border-[#A8843E]/40 text-[#f3e5ab] text-[10px] font-mono flex items-center gap-1">
+                    <ShieldCheck className="w-3 h-3 text-[#A8843E]" /> Worldwide Insured
+                  </div>
 
                   {/* Favorite Button */}
                   <button
@@ -290,7 +288,7 @@ export const ProductCatalog = ({ onSelectProduct, onOpenBespoke }) => {
           </div>
           <h3 className="text-2xl font-serif text-white">Seeking a Custom Gold Purity, 22K Karat, or Bespoke Diamond Setting?</h3>
           <p className="text-xs sm:text-sm text-white/70 max-w-xl mx-auto leading-relaxed">
-            Our Jaipur master ateliers craft bespoke engagement rings, matching bridal bands, family crest signets, and investment gold bullion pieces. Direct video consultation with our goldsmith.
+            Our Surat master ateliers craft bespoke engagement rings, matching bridal bands, family crest signets, and investment gold bullion pieces. Direct video consultation with our goldsmith.
           </p>
           <button
             onClick={() => onOpenBespoke()}

@@ -70,7 +70,7 @@ export const DomainSetupModal = ({ isOpen, onClose }) => {
             }`}
           >
             <CreditCard className="w-3.5 h-3.5 text-[#d4af37]" />
-            <span>2. USA & Canada Payments</span>
+            <span>2. Worldwide Payments</span>
           </button>
           <button
             onClick={() => setActiveTab('export')}
@@ -160,7 +160,7 @@ export const DomainSetupModal = ({ isOpen, onClose }) => {
           {activeTab === 'payments' && (
             <div className="space-y-4">
               <div className="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 text-white/90 space-y-1">
-                <p className="font-semibold text-blue-300">Receiving USD ($) and CAD ($) from USA & Canadian Shoppers</p>
+                <p className="font-semibold text-blue-300">Receiving International Currencies from Global Shoppers</p>
                 <p className="text-white/60">
                   Because you have an Indian entity with IEC & GST LUT, you can receive foreign currencies directly into your Indian Current Account.
                 </p>
@@ -172,7 +172,7 @@ export const DomainSetupModal = ({ isOpen, onClose }) => {
                     <span className="text-lg">💳</span> Stripe India (Export Mode)
                   </div>
                   <p className="text-white/60 text-[11px] leading-relaxed">
-                    Allows US/CA customers to pay with Visa, Mastercard, Amex, Apple Pay, and Google Pay.
+                    Allows international customers to pay with Visa, Mastercard, Amex, Apple Pay, and Google Pay.
                   </p>
                   <ul className="text-[10px] text-white/50 space-y-1 list-disc list-inside">
                     <li>Requires Purpose Code: <strong className="text-white">P0103 (Export of goods)</strong></li>
@@ -186,7 +186,7 @@ export const DomainSetupModal = ({ isOpen, onClose }) => {
                     <span className="text-lg">🅿️</span> PayPal India Business
                   </div>
                   <p className="text-white/60 text-[11px] leading-relaxed">
-                    Huge conversion booster in the USA and Canada where 40%+ of buyers prefer 1-click PayPal.
+                    High conversion booster worldwide where international buyers prefer 1-click PayPal.
                   </p>
                   <ul className="text-[10px] text-white/50 space-y-1 list-disc list-inside">
                     <li>Link your GST & IEC to PayPal India</li>
@@ -224,11 +224,11 @@ export const DomainSetupModal = ({ isOpen, onClose }) => {
                   },
                   {
                     step: 'Step 4: Tamper-Evident Packaging & Pickup',
-                    desc: 'Affix the Airway Bill (AWB) and CSB-V barcode. Courier collects the parcel from your atelier in Jaipur/Surat and transports it to Air Cargo Complex.'
+                    desc: 'Affix the Airway Bill (AWB) and CSB-V barcode. Courier collects the parcel from your atelier in Surat, Gujarat and transports it to Air Cargo Complex.'
                   },
                   {
-                    step: 'Step 5: North American Clearance & Delivery',
-                    desc: 'Parcels under $800 USD clear US Customs automatically under Section 321. Canadian parcels clear via DHL DDP. Delivered in 3-5 business days!'
+                    step: 'Step 5: Worldwide Fast Clearance & Doorstep Delivery',
+                    desc: 'Parcels clear international customs electronically with DHL/FedEx Express with 100% full insurance coverage. Delivered worldwide in 3-5 business days!'
                   }
                 ].map((s, idx) => (
                   <div key={idx} className="p-3 rounded-lg bg-white/5 border border-white/5 flex gap-3 items-start">

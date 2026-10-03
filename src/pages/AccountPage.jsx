@@ -638,7 +638,7 @@ export const AccountPage = ({ onNavigate }) => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE3D5] space-y-1">
               <span className="text-[10px] uppercase text-[#747780] block font-semibold">Origin & Carrier:</span>
-              <p className="font-medium text-[#1F2022]">Jaipur & Surat Atelier, India</p>
+              <p className="font-medium text-[#1F2022]">Surat Atelier, India</p>
               <p className="text-[#A8843E] font-mono">{lookupResult.shipping?.carrier || lookupResult.carrier || 'DHL Express Worldwide'}</p>
             </div>
 

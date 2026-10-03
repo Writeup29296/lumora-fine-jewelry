@@ -285,7 +285,7 @@ export const RingSizeGuidePage = ({ onNavigate }) => {
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
                 <div className="p-3 rounded-xl bg-white border border-[#EAE3D5]">
-                  <span className="text-[10px] uppercase text-[#747780] block font-semibold">USA & Canada</span>
+                  <span className="text-[10px] uppercase text-[#747780] block font-semibold">US / Global Size</span>
                   <strong className="text-lg font-serif text-[#1F2022] block mt-0.5">Size {ringOnScreenMatch.us}</strong>
                   <span className="text-[10px] text-[#747780]">Lumora Standard</span>
                 </div>
@@ -401,7 +401,7 @@ export const RingSizeGuidePage = ({ onNavigate }) => {
               Country-Wise Ring Size Chart
             </h2>
             <p className="text-xs text-[#747780]">
-              Accredited jeweler measurements across USA/Canada, UK/Australia, European Union, Germany, Japan, and India.
+              Accredited jeweler measurements across US/Global, UK/Australia, European Union, Germany, Japan, and India.
             </p>
           </div>
 
@@ -409,7 +409,7 @@ export const RingSizeGuidePage = ({ onNavigate }) => {
           <div className="flex flex-wrap items-center gap-1.5 text-xs">
             {[
               { id: 'all', label: 'All Standards' },
-              { id: 'na', label: 'USA & Canada' },
+              { id: 'na', label: 'US / Global' },
               { id: 'uk', label: 'UK & Australia' },
               { id: 'eu', label: 'European Union' },
               { id: 'asia', label: 'India & Japan' }
@@ -434,7 +434,7 @@ export const RingSizeGuidePage = ({ onNavigate }) => {
           <table className="w-full text-left text-xs">
             <thead>
               <tr className="bg-[#FAF8F5] text-[#1F2022] border-b border-[#EAE3D5]">
-                <th className="py-3.5 px-4 font-semibold uppercase tracking-wider">USA & Canada</th>
+                <th className="py-3.5 px-4 font-semibold uppercase tracking-wider">US / Global Size</th>
                 {(regionFilter === 'all' || regionFilter === 'uk') && (
                   <th className="py-3.5 px-4 font-semibold uppercase tracking-wider">UK, Australia, NZ</th>
                 )}
